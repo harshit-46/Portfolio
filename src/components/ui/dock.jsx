@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from "../../utils/cn";
 import { IconLayoutNavbarCollapse } from '@tabler/icons-react';
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';

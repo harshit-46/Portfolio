@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from "../ui/aurora-bg";
+import FloatingDockDemo from "../test/dockbar";
 
 function AuroraBackgroundDemo() {
     return (
@@ -26,6 +27,7 @@ function AuroraBackgroundDemo() {
                     </div>
                 </motion.div>
             </AuroraBackground>
+            <FloatingDockDemo/>
         </>
     );
 }
