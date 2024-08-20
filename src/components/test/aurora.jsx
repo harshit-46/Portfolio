@@ -26,8 +26,8 @@ function AuroraBackgroundDemo() {
                         Do checkout my social handles.
                     </div>
                 </motion.div>
+                <FloatingDockDemo/>
             </AuroraBackground>
-            <FloatingDockDemo/>
         </>
     );
 }
