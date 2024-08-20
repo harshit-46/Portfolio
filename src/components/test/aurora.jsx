@@ -19,10 +19,10 @@ function AuroraBackgroundDemo() {
                     }}
                     className="relative flex flex-col gap-4 items-center justify-center px-4"
                 >
-                    <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
+                    <div className="text-3xl md:text-7xl font-bold text-white text-center mt-48">
                         Welcome to my Portfolio.
                     </div>
-                    <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+                    <div className="font-extralight text-base md:text-4xl text-neutral-200 py-4">
                         Do checkout my social handles.
                     </div>
                 </motion.div>
