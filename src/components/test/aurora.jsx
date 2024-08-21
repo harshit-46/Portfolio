@@ -27,6 +27,7 @@ function AuroraBackgroundDemo() {
                     </div>
                 </motion.div>
                 <FloatingDockDemo/>
+                <img src="/src/assets/icons/next-arrow.jpg" alt="continue" height="140px" width="140px" className="mb-20"/>
             </AuroraBackground>
         </>
     );
