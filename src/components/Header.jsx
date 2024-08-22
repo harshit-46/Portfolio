@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div className="bg-black">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                {/*<Link to="/welcome" className="flex-shrink-0"><img src="../assets/icons/AppLogo.png" alt="" height="80" width="80" className="ml-2 sm:ml-0" /></Link>*/}
+                <Link to="/" className="flex-shrink-0" aria-current="page"><img src="../assets/icons/AppLogo.png" height="80" width="80" className="ml-2 sm:ml-0" /></Link>
                 <div className="hidden sm:block">
                     <ul className="flex space-x-4">
                         <li><Link to="/home" className="text-white px-3 py-2 rounded hover:bg-gray-700">Home</Link></li>

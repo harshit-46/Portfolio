@@ -1,17 +1,19 @@
-import AuroraBackgroundDemo from './components/test/aurora';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Welcome from './components/Welcome';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Tech from './components/Tech';
 import Contact from './components/Contact';
+import Header from "./components/Header";
 import './index.css';
 
 function App() {
   return (
     <main className='text-4xl font-bold'>
       <Router>
-      <AuroraBackgroundDemo/>
+        <Header/>
         <Routes>
+          <Route exact path="/" element={<Welcome/>}></Route>
           <Route exact path="/home" element={<Home/>}></Route>
           <Route exact path="/skills" element={<Tech/>}></Route>
           <Route exact path="/projects" element={<Projects/>}></Route>
