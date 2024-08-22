@@ -9,8 +9,8 @@ import './index.css';
 function App() {
   return (
     <main className='text-4xl font-bold'>
-      <AuroraBackgroundDemo/>
       <Router>
+      <AuroraBackgroundDemo/>
         <Routes>
           <Route exact path="/home" element={<Home/>}></Route>
           <Route exact path="/skills" element={<Tech/>}></Route>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from "../ui/aurora-bg";
 import FloatingDockDemo from "../test/dockbar";
+import { Link } from "react-router-dom";
 
 function AuroraBackgroundDemo() {
     return (
@@ -27,7 +28,7 @@ function AuroraBackgroundDemo() {
                     </div>
                 </motion.div>
                 <FloatingDockDemo/>
-                <img src="/src/assets/icons/next-arrow.jpg" alt="continue" height="140px" width="140px" className="mb-20"/>
+                <Link to="/home"><img src="/src/assets/icons/next-arrow.jpg" alt="continue" height="140px" width="140px" className="mb-20"/></Link>
             </AuroraBackground>
         </>
     );

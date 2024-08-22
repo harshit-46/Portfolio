@@ -51,7 +51,7 @@ export default function FloatingDockDemo() {
             icon: (
                 <IconBrandGmail className="h-full w-full text-neutral-300" />
             ),
-            href: 'iamharshit999@gmail.com'
+            href: 'https://mail.google.com/mail/u/0/#inbox?compose=new'
         }
     ];
 
