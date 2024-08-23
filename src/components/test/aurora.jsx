@@ -6,6 +6,7 @@ import { AuroraBackground } from "../ui/aurora-bg";
 import FloatingDockDemo from "../test/dockbar";
 import { Link } from "react-router-dom";
 import nextImg from "/src/assets/icons/next-arrow.jpg";
+import HeartImg from '/src/assets/icons/heart.png';
 
 function AuroraBackgroundDemo() {
     return (
@@ -30,7 +31,7 @@ function AuroraBackgroundDemo() {
                 </motion.div>
                 <FloatingDockDemo/>
                 <Link to="/home"><img src={nextImg} alt="continue" height="140px" width="140px" className="mb-20"/></Link>
-                <p className="mb-10">Made with love by Harshit Gupta.</p>
+                <p className="mb-10">Made with <img src={HeartImg} height="35px" width="35px" className="inline-block"/> by Harshit Gupta.</p>
             </AuroraBackground>
         </>
     );
