@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { GridBackgroundProjects } from './test/grid-projects';
 
 const Projects = () => {
     return (
         <div>
-            This is a Projects component.
+            <GridBackgroundProjects/>
         </div>
     )
 }

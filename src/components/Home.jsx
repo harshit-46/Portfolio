@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { GridBackgroundDemo } from './test/grid';
 
 const Home = () => {
     return (
         <div>
-            This is Home div.
+            <GridBackgroundDemo/>
         </div>
     )
 }

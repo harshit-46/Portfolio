@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import {GridBackgroundContact} from './test/grid-contact';
 
 const Contact = () => {
     return (
         <div>
-            This is a Contact component.
+            <GridBackgroundContact/>
         </div>
     )
 }
