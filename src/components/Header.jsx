@@ -5,7 +5,7 @@ import AppLogo from "../assets/icons/AppLogo.png";
 
 const Header = () => {
     return (
-        <div className="bg-black border-b-2 border-gray-700 sticky top-0 z-50"> {/* bg-opacity-60 shadow-md */}
+        <div className="bg-black border-b-2 border-gray-700 sticky top-0 z-50 bg-opacity-60 shadow-md"> {/* bg-opacity-60 shadow-md */}
             <nav className="max-w-7xl mx-auto py-2 flex items-center justify-between h-14">
                 <Link to="/" className="flex-shrink-0" aria-current="page"><img src={AppLogo} height="80" width="80" className="ml-2 sm:ml-0" /></Link>
                 <div className="hidden sm:block">
