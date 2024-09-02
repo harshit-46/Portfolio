@@ -5,16 +5,19 @@ import { TypewriterEffectSmooth } from "../ui/typewriter";
 export default function TypewriterEffectSmoothDemo() {
     const words = [
         {
-            text: "Welcome",
+            text: "Hi",
         },
         {
-            text: "to",
+            text: "there,",
         },
         {
-            text: "my",
+            text: "I",
         },
         {
-            text: "Portfolio.",
+            text: "am",
+        },
+        {
+            text: "Harshit Gupta.",
             className: "text-blue-500 dark:text-blue-500",
         },
     ];
