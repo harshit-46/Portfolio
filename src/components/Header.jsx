@@ -6,7 +6,7 @@ import '../assets/CSS/header.css';
 
 const Header = () => {
     return (
-        <div className="bg-black border-b border-stone-600 sticky top-0 z-50"> {/* bg-opacity-60 shadow-md */}
+        <div className="bg-black border-b border-stone-800 sticky top-0 z-50"> {/* bg-opacity-60 shadow-md */}
             <nav id="navbar" className="max-w-7xl mx-auto py-2 flex items-center justify-between h-14">
                 <Link to="/" className="flex-shrink-0" aria-current="page"><img src={AppLogo} height="80" width="80" className="ml-2 sm:ml-0" /></Link>
                 <div id="nav-head" className="hidden sm:block">

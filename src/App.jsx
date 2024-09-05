@@ -6,7 +6,6 @@ import Tech from './components/Tech';
 import Contact from './components/Contact';
 import Header from "./components/Header";
 import Education from "./components/Education";
-import './index.css';
 
 function App() {
   return (

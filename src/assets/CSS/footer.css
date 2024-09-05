@@ -1,13 +1,9 @@
 #foot-para {
-    height: 10px;
+    font-size: 15px;
     display: inline-block;
-    font-family: SUSE, sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
+    margin-left: 128px;
 }
 
 #foot-link {
-    height: 10px;
     color: rgb(14,165,233);
 }
