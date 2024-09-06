@@ -1,12 +1,21 @@
 #foot-para {
-  font-size: 18px;
-  display: inline-block;
-  margin-left: 128px;
-  font-family: "Baskervville SC", serif;
-  font-weight: 800;
-  font-style: normal;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 128px;
+    font-family: "Baskervville SC", serif;
+    font-weight: 800;
+    font-style: normal;
 }
 
 #foot-link {
-  color: rgb(14, 165, 233);
+    color: rgb(14, 165, 233);
+}
+
+#links {
+    display: inline-grid;
+    font-size: 12px;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
