@@ -1,3 +1,5 @@
+// NOTE: Have to center links of a Navbar vertically.
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import githubLogo from "../assets/icons/github.png";

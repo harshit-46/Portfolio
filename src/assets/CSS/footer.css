@@ -1,9 +1,12 @@
 #foot-para {
-    font-size: 15px;
-    display: inline-block;
-    margin-left: 128px;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 128px;
+  font-family: "Baskervville SC", serif;
+  font-weight: 800;
+  font-style: normal;
 }
 
 #foot-link {
-    color: rgb(14,165,233);
+  color: rgb(14, 165, 233);
 }
