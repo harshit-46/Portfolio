@@ -1,9 +1,11 @@
+//NOTE: To resolve these imports which are commented.
+
 "use client";
 import React from "react";
-import Image from "next/image";
+//import Image from "next/image";
 import { twMerge } from "tailwind-merge";
-import { TracingBeam } from "../ui/tracing-beam";
-import { calsans } from "@/fonts/calsans";
+import { TracingBeam } from "../ui/beam";
+//import { calsans } from "@/fonts/calsans";
 
 export function TracingBeamDemo() {
     return (
