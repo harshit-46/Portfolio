@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useScroll } from "framer-motion"
+import { useTransform } from "framer-motion"
+import { useSpring } from "framer-motion"
 import { cn } from "../../utils/cn";
 
 export const TracingBeam = ({ children, className }) => {
     const ref = useRef(null);
-    const { scrollYProgress } = motion.useScroll({
+    const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end start"],
     });
@@ -18,15 +21,15 @@ export const TracingBeam = ({ children, className }) => {
         }
     }, []);
 
-    const y1 = motion.useSpring(
-        motion.useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
+    const y1 = useSpring(
+        useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
         {
             stiffness: 500,
             damping: 90,
         }
     );
-    const y2 = motion.useSpring(
-        motion.useTransform(scrollYProgress, [0, 1], [50, svgHeight - 200]),
+    const y2 = useSpring(
+        useTransform(scrollYProgress, [0, 1], [50, svgHeight - 200]),
         {
             stiffness: 500,
             damping: 90,
