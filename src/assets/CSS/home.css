@@ -3,18 +3,17 @@
     font-weight: 700;
     font-style: bold;
     font-size: 5rem;
-    margin-left: 6rem;
-    //margin-top: 11rem;
-    display: inline-block;
-    border: 2px solid red;
-    display: inline-block;
+    margin-left: 8rem;
+    margin-top: 11rem;
 }
 
 #dev-para{
-    font-family: "Raleway", sans-serif;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     color: white;
-    font-size: 2rem;
-    margin-top: 18rem;
-    margin-left: 2rem;
-    border: 2px solid yellow;
+    font-size: 27px;
+    margin-top: 16rem;
+    margin-left: -20.5rem;
 }
