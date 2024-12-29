@@ -1,5 +1,5 @@
 import React from "react";
-import '../../assets/CSS/home.css'
+import '../../assets/CSS/home.css';
 
 export function GridBackgroundDemo() {
     return (

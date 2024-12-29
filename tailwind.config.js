@@ -16,6 +16,25 @@ module.exports = {
       animation: {
         aurora: "aurora 60s ease-in-out infinite",
       },
+      
+      
+      animation: {
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+      },
+      keyframes: {
+        spotlight: {
+          "0%": {
+            opacity: 0,
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+      },
+
+
       keyframes: {
         aurora: {
           "0%": {
@@ -65,50 +84,3 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": newVars,
   });
 }
-
-// INFO: This was the last working code -->
-
-/*
-
-const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
-
-this is as it is /** @type {import('tailwindcss').Config} */
-/*module.exports = {
-  content: [
-    // your paths
-    "./src/**/ /* back two star and slash*.{js,jsx}",
-  ],
-  /*darkMode: "class",
-  theme: {
-    extend: {
-      animation: {
-        aurora: "aurora 60s ease-in-out infinite",
-      },
-      keyframes: {
-        aurora: {
-          "0%": {
-            backgroundPosition: "50% 50%, 50% 50%",
-          },
-          "100%": {
-            backgroundPosition: "350% 50%, 350% 50%",
-          },
-        },
-      },
-    },
-  },
-  plugins: [addVariablesForColors],
-}; */
-
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
-/*function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
-
-  addBase({
-    ":root": newVars,
-  });
-}
-
-*/

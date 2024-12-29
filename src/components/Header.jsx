@@ -1,6 +1,6 @@
 // NOTE: Have to center links of a Navbar vertically.
 
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import githubLogo from "../assets/icons/github.png";
 import AppLogo from "../assets/icons/AppLogo.png";
@@ -8,7 +8,7 @@ import '../assets/CSS/header.css';
 
 const Header = () => {
 
-    const [isScrolled, setIsScrolled] = useState(false);
+    /*const [isScrolled, setIsScrolled] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 0);
@@ -21,7 +21,7 @@ const Header = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, []);*/
 
     return (
         <div className="bg-black border-b border-stone-800 sticky top-0 z-50 ${isScrolled ? 'bg-opacity-60 shadow-md' : ''}`}"> {/* bg-opacity-60 shadow-md navbar ${isScrolled ? 'scrolled' : ''}`} */}
