@@ -7,22 +7,6 @@ import AppLogo from "../assets/icons/AppLogo.png";
 import '../assets/CSS/header.css';
 
 const Header = () => {
-
-    /*const [isScrolled, setIsScrolled] = useState(false);
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
-            console.log("isScrolled is : ",isScrolled);
-        };
-
-        handleScroll();
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);*/
-
     return (
         <div className="bg-black border-b border-stone-800 sticky top-0 z-50 ${isScrolled ? 'bg-opacity-60 shadow-md' : ''}`}"> {/* bg-opacity-60 shadow-md navbar ${isScrolled ? 'scrolled' : ''}`} */}
             <nav id="navbar" className="max-w-7xl mx-auto py-2 flex items-center justify-between h-14">

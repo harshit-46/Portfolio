@@ -1,25 +1,27 @@
-//NOTE: To resolve these imports which are commented.
-
 "use client";
 import React from "react";
-import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "../ui/beam";
 
 export function TracingBeamDemo() {
     return (
         <TracingBeam className="px-6">
-            <div className="max-w-2xl mx-auto antialiased pt-4">
+            <div className="max-w-2xl mx-auto antialiased pt-4 relative">
                 {dummyContent.map((item, index) => (
                     <div key={`content-${index}`} className="mb-10">
-                        <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
-                            {item.badge}
-                        </h2>
-
-                        <p className={twMerge("text-xl mb-4")}>
+                        <p className="text-xl mb-4">
                             {item.title}
                         </p>
 
                         <div className="text-sm prose prose-sm dark:prose-invert">
+                            {item?.image && (
+                                <img
+                                    src={item.image}
+                                    alt="blog thumbnail"
+                                    height="500"
+                                    width="500"
+                                    className="rounded-lg mb-10 object-cover"
+                                />
+                            )}
                             {item.description}
                         </div>
                     </div>
@@ -31,7 +33,7 @@ export function TracingBeamDemo() {
 
 const dummyContent = [
     {
-        title: "Lorem Ipsum Dolor Sit Amet",
+        title: "Project 1",
         description: (
             <>
                 <p>
@@ -58,11 +60,10 @@ const dummyContent = [
                     adipisicing aliquip proident officia sunt.
                 </p>
             </>
-        ),
-        badge: "React",
+        )
     },
     {
-        title: "Lorem Ipsum Dolor Sit Amet",
+        title: "Project 2",
         description: (
             <>
                 <p>
@@ -80,11 +81,10 @@ const dummyContent = [
                     cillum ut mollit.
                 </p>
             </>
-        ),
-        badge: "Changelog",
+        )
     },
     {
-        title: "Lorem Ipsum Dolor Sit Amet",
+        title: "Project 3",
         description: (
             <>
                 <p>
@@ -96,7 +96,6 @@ const dummyContent = [
                     commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
                 </p>
             </>
-        ),
-        badge: "Launch Week",
+        )
     },
 ];
