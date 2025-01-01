@@ -1,5 +1,3 @@
-// NOTE: This is a js file.
-
 import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from "../ui/aurora-bg";
