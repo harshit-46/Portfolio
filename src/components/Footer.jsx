@@ -4,17 +4,24 @@ import '../assets/CSS/footer.css'
 
 const Footer = () => {
     return (
-        <div className='bg-black text-white h-80 border-t border-stone-800 '>
+    <div className='h-80 bg-black text-white flex'>
+        <div className='border-2 w-fit border-stone-800'>
             <img src={logo} height="90px" width="90px" className='ml-32 mt-16'/>
-            <div id="foot-para" className='text-stone-500'>Developed by <a href="https://www.linkedin.com/in/harshithere/" id="foot-link" target='_blank'>Harshit Gupta</a></div>
-            <div id="links" className='border-2 border-red-500'>
-                <a href="https://drive.google.com/file/d/1_6PuQCpMIhatcA7hvkGFp-wTSXBNbBO0/view" target='_blank'>Resume</a>
-                <a href="https://www.linkedin.com/in/harshithere/" target='_blank'>Linkedin</a>
-                <a href="https://www.instagram.com/_harshit.25/" target='_blank'>Instagram</a>
-                <a href="https://x.com/harshit__25" target='_blank'>Twitter</a>
-                <a href="https://github.com/harshit-46" target='_blank'>Github</a>
+            <div id="foot-para" className='text-stone-500'>
+                Developed by
+                <a 
+                href="https://www.linkedin.com/in/harshithere/" 
+                className='text-blue-500'
+                target='_blank'
+                rel="noopener noreferrer">
+                Harshit Gupta
+                </a>
             </div>
         </div>
+        <div className='w-2/5 border-2 border-yellow-600 ml-12'>
+            hello
+        </div>
+    </div>
     )
 }
 
