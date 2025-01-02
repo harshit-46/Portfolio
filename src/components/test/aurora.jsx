@@ -26,7 +26,7 @@ function AuroraBackgroundDemo() {
                     </div>
                 </motion.div>
                 <FloatingDockDemo/>
-                <p className="mb-10">Made with <img src={HeartImg} height="35px" width="35px" className="inline-block"/> by Harshit Gupta</p>
+                <p className="para mb-10 font-playfair-display font-normal">Made with <img src={HeartImg} height="35px" width="35px" className="inline-block"/> by Harshit Gupta</p>
             </AuroraBackground>
         </>
     );

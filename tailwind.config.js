@@ -16,25 +16,7 @@ module.exports = {
       animation: {
         aurora: "aurora 60s ease-in-out infinite",
       },
-      
-      
-      animation: {
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-      },
-      keyframes: {
-        spotlight: {
-          "0%": {
-            opacity: 0,
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            opacity: 1,
-            transform: "translate(-50%,-40%) scale(1)",
-          },
-        },
-      },
-
-
+    
       keyframes: {
         aurora: {
           "0%": {
@@ -44,6 +26,9 @@ module.exports = {
             backgroundPosition: "350% 50%, 350% 50%",
           },
         },
+      },
+      fontFamily: {
+        'playfair-display': ['"Playfair Display"', 'serif'],
       },
     },
   },

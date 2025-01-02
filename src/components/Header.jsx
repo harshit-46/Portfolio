@@ -6,21 +6,21 @@ import '../assets/CSS/header.css';
 
 const Header = () => {
     return (
-        <div className="navbar-main">
+        <header className="navbar-main">
             <nav className="navbar">
-                <Link to="/" className="applogo" aria-current="page"><img src={AppLogo} height="80" width="80"/></Link>
+                <Link to="/" className="applogo" alt="App logo" aria-current="page"><img src={AppLogo} height="80" width="80"/></Link>
                 <div className="nav-head">
                     <ul className="links">
                         <li><Link to="/home">Home</Link></li>
                         <li><Link to="/skills">Skills</Link></li>
                         <li><Link to="/education">Education</Link></li>
                         <li><Link to="/projects">Projects</Link></li>
-                        <li><Link to="/contact">Contact Me</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </div>
-                <a href="https://github.com/harshit-46" target="_blank" rel="noreferrer"><img src={githubLogo} alt="" height="32" width="32" className="githubLogo" /></a>
+                <a href="https://github.com/harshit-46" alt="Github logo" target="_blank" rel="noopener noreferrer"><img src={githubLogo} height="32" width="32" className="githubLogo" /></a>
             </nav>
-        </div>
+        </header>
     );
 }
 
