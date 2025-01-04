@@ -8,7 +8,7 @@ const Footer = () => {
     <div className='h-96 bg-[#1C1C1C] text-white flex flex-col md:flex-row'>
         <div className='border-t w-full md:w-1/3 border-stone-800'>
             <img src={logo} height="90px" width="90px" className='ml-32 mt-16'/>
-            <div id="foot-para" className='text-stone-400'>
+            <div id="foot-para" className='text-[#78716C] mt-2'>
                 Developed by
                 <a 
                 href="https://www.linkedin.com/in/harshithere/" 

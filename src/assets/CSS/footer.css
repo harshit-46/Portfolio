@@ -1,14 +1,18 @@
+.footer {
+    font-family: "Martian Mono", monospace;
+}
+
 #foot-para {
     font-size: 18px;
     display: inline-block;
     margin-left: 128px;
     font-family: "Baskervville SC", serif;
-    font-weight: 800;
+    font-weight: 600;
     font-style: normal;
 }
 
 .copyright {
-    font-family: Inter var, ui-sans-serif, system-ui, sans-serif;
+    font-family: "Martian Mono", monospace;;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -16,12 +20,13 @@
 }
 
 .footer-links {
-    font-family: Inter var, ui-sans-serif, system-ui, sans-serif;
+    font-family: "Martian Mono", monospace;
     font-size: 1rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 #Main-section,#social-section {
     font-size: 22px;
+    font-weight: 400;
 }
