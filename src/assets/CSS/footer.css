@@ -14,3 +14,14 @@
     font-style: normal;
     font-size: .875rem;
 }
+
+.footer-links {
+    font-family: Inter var, ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#Main-section,#social-section {
+    font-size: 22px;
+}
