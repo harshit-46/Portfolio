@@ -15,10 +15,11 @@
     margin: 0;
     padding: 0;
     color: transparent;
-    background-image: linear-gradient(to top, red, transparent),url('../icons/portvid.gif');
+    background-image: linear-gradient(to top, rgba(187,53,66,0.5),rgba(187,53,66,0.5)), url('../icons/portvid.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-clip: text;
+    background-position: center;
     -webkit-background-clip: text;
     white-space: nowrap;
     line-height: 1;

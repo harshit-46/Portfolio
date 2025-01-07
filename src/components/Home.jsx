@@ -1,12 +1,12 @@
 import React from 'react';
-import { GridBackgroundDemo } from './test/grid';
+import { HeroSection} from './test/grid';
 import Footer from './Footer';
 
 
 const Home = () => {
     return (
         <div>
-            <GridBackgroundDemo />
+            <HeroSection />
             <Footer/>
         </div>
     )
