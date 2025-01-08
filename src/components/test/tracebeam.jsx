@@ -7,7 +7,7 @@ export function TracingBeamDemo() {
         <TracingBeam className="px-6">
             <div className="max-w-2xl mx-auto antialiased pt-4 relative">
                 {dummyContent.map((item, index) => (
-                    <div key={`content-${index}`} className="mb-10">
+                    <div key={`content-${index}`} className="mb-10 mt-24">
                         <p className="text-xl mb-4">
                             {item.title}
                         </p>
