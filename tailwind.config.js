@@ -30,6 +30,9 @@ module.exports = {
       fontFamily: {
         'playfair-display': ['"Playfair Display"', 'serif'],
       },
+      backgroundImage: {
+        'gradient-and-gif': "linear-gradient(to top, rgba(187,53,66,0.5), rgba(187,53,66,0.5)), url('./src/assets/icons/portvid.gif')",
+      }
     },
   },
   plugins: [addVariablesForColors,
