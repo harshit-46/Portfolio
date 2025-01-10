@@ -1,3 +1,5 @@
+// NOTE: Have to update a navigation system for a single page application.
+
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Welcome from './components/Welcome';
 import Home from './components/Home';
