@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 const Tech = () => {
     return (
-        <div> {/** NOTE: Have to search for good tech icons for the ui */}
+        <div>
             <GridBackgroundskills/>
             <Footer/>
         </div>
