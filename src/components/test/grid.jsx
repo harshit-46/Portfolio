@@ -1,4 +1,3 @@
-// NOTE: Have to complete this project till the next phase check.
 import React from "react";
 import '../../assets/CSS/home.css';
 
