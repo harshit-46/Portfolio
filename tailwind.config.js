@@ -2,12 +2,10 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const svgToDataUri = require("mini-svg-data-uri");
 const colors = require("tailwindcss/colors");
 
-const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    // your paths
+    // Define your paths here
     "./src/**/*.{js,jsx}",
   ],
   darkMode: "class",
@@ -16,7 +14,6 @@ module.exports = {
       animation: {
         aurora: "aurora 60s ease-in-out infinite",
       },
-    
       keyframes: {
         aurora: {
           "0%": {
@@ -28,15 +25,19 @@ module.exports = {
         },
       },
       fontFamily: {
-        'playfair-display': ['"Playfair Display"', 'serif'],
+        "playfair-display": ['"Playfair Display"', "serif"],
       },
       backgroundImage: {
-        'gradient-and-gif': "linear-gradient(to top, rgba(187,53,66,0.5), rgba(187,53,66,0.5)), url('./src/assets/icons/portvid.gif')",
-      }
+        "gradient-and-gif":
+          "linear-gradient(to top, rgba(187,53,66,0.5), rgba(187,53,66,0.5)), url('./src/assets/icons/portvid.gif')",
+      },
     },
   },
-  plugins: [addVariablesForColors,
+  plugins: [
+    addVariablesForColors,
     function ({ matchUtilities, theme }) {
+      const backgroundColors = theme("backgroundColor"); // Use `theme` to access background colors
+
       matchUtilities(
         {
           "bg-grid": (value) => ({
@@ -55,17 +56,17 @@ module.exports = {
             )}")`,
           }),
         },
-        { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+        { values: backgroundColors, type: "color" }
       );
     },
   ],
 };
 
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+// Plugin to add colors as CSS variables
 function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  const colors = theme("colors"); // Use the theme directly to access colors
+  const newVars = Object.fromEntries(
+    Object.entries(colors).map(([key, val]) => [`--${key}`, val])
   );
 
   addBase({
