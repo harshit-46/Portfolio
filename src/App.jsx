@@ -51,18 +51,20 @@ function App() {
   };
 
   return (
-    <main>
+    <>
       {/* Pass the scroll function to Header */}
       <Header scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} />
 
       {/* Sections */}
-      <section ref={homeRef}><Home /></section>
-      <section ref={skillsRef}><Tech /></section>
-      <section ref={educationRef}><Education /></section>
-      <section ref={projectsRef}><Projects /></section>
-      <section ref={contactRef}><Contact /></section>
+      <div>
+        <section ref={homeRef}><Home /></section>
+        <section ref={skillsRef}><Tech /></section>
+        <section ref={educationRef}><Education /></section>
+        <section ref={projectsRef}><Projects /></section>
+        <section ref={contactRef}><Contact /></section>
+      </div>
       <Footer scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} />
-    </main>
+    </>
   );
 }
 

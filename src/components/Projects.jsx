@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from './Footer';
+import { GridBackgroundProjects } from './test/grid-projects';
 
 const Projects = () => {
     return (
-        <div className='bg-black'>
-            <Footer/>
+        <div className='border-2 border-yellow-600'>
+            <GridBackgroundProjects/>
         </div>
     )
 }

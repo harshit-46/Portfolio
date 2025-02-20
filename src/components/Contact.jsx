@@ -1,12 +1,10 @@
 import React from 'react';
 import {GridBackgroundContact} from './test/grid-contact';
-import Footer from './Footer';
 
 const Contact = () => {
     return (
-        <div>
+        <div className='border-2 border-red-600'>
             <GridBackgroundContact/>
-            <Footer/>
         </div>
     )
 }

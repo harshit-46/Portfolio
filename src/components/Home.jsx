@@ -1,13 +1,10 @@
 import React from 'react';
 import { HeroSection} from './test/grid';
-import Footer from './Footer';
-
 
 const Home = () => {
     return (
-        <div>
+        <div className='border-2 border-pink-600'>
             <HeroSection />
-            <Footer/>
         </div>
     )
 }

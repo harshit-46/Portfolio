@@ -1,12 +1,10 @@
 import React from 'react';
 import { GridBackgroundskills } from './test/grid-tech';
-import Footer from './Footer';
 
 const Tech = () => {
     return (
-        <div>
+        <div className='border-2 border-green-600'>
             <GridBackgroundskills/>
-            <Footer/>
         </div>
     )
 }
