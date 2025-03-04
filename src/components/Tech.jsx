@@ -3,7 +3,7 @@ import { GridBackgroundskills } from './test/grid-tech';
 
 const Tech = () => {
     return (
-        <div className='border-2 border-green-600'>
+        <div className=''>
             <GridBackgroundskills/>
         </div>
     )

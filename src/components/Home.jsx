@@ -3,7 +3,7 @@ import { HeroSection} from './test/grid';
 
 const Home = () => {
     return (
-        <div className='border-2 border-pink-600'>
+        <div className=''>
             <HeroSection />
         </div>
     )
