@@ -56,7 +56,7 @@ const Header = ({ scrollToSection, refs }) => {
             <nav className="navbar border-b border-stone-800 flex items-center justify-between p-4">
                 {/* App Logo */}
                 <button onClick={() => scrollToSection(refs.welcomeRef)} aria-label="Go to Welcome">
-                    <img src={AppLogo} height="80" width="80" alt="App logo" loading="lazy" />
+                    <img src={AppLogo} height="80" width="80" alt="App logo"/>
                 </button>
 
                 {/* Navigation Links */}
@@ -72,7 +72,7 @@ const Header = ({ scrollToSection, refs }) => {
 
                 {/* GitHub Link */}
                 <a href="https://github.com/harshit-46" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                    <img src={githubLogo} height="32" width="32" alt="GitHub Logo" className="githubLogo" loading="lazy" />
+                    <img src={githubLogo} height="32" width="32" alt="GitHub Logo"/>
                 </a>
             </nav>
         </header>
