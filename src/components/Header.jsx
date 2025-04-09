@@ -11,11 +11,11 @@ const Header = ({ scrollToSection, refs }) => {
                 </button>
                 <div className="nav-head">
                     <ul className="links flex space-x-4">
-                        <li><button onClick={() => scrollToSection(refs.homeRef)}>Home</button></li>
-                        <li><button onClick={() => scrollToSection(refs.skillsRef)}>Skills</button></li>
-                        <li><button onClick={() => scrollToSection(refs.educationRef)}>Education</button></li>
-                        <li><button onClick={() => scrollToSection(refs.projectsRef)}>Projects</button></li>
-                        <li><button onClick={() => scrollToSection(refs.contactRef)}>Contact</button></li>
+                        <li><button onClick={() => scrollToSection(refs.homeRef)} className="cursor-pointer">Home</button></li>
+                        <li><button onClick={() => scrollToSection(refs.skillsRef)} className="cursor-pointer">Skills</button></li>
+                        <li><button onClick={() => scrollToSection(refs.educationRef)} className="cursor-pointer">Education</button></li>
+                        <li><button onClick={() => scrollToSection(refs.projectsRef)} className="cursor-pointer">Projects</button></li>
+                        <li><button onClick={() => scrollToSection(refs.contactRef)} className="cursor-pointer">Contact</button></li>
                     </ul>
                 </div>
                 <a href="https://github.com/harshit-46" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">

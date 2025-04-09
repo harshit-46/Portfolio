@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CursorCircle from "./components/CursorCircle";
 
 function App() {
   const homeRef = useRef(null);
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <>
+      <CursorCircle/>
       <Header scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} />
       <div>
         <section ref={homeRef}><Home /></section>
