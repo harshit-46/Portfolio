@@ -45,11 +45,12 @@ export default function CursorCircle() {
                     opacity: hovering ? 0 : 1
                 }}
                 transition={{
-                    x: { type: "spring", stiffness: 1000, damping: 30 },
-                    y: { type: "spring", stiffness: 1000, damping: 30 },
+                    x: { type: "tween", ease: "linear", duration: 0.05 },
+                    y: { type: "tween", ease: "linear", duration: 0.05 },
                     scale: { duration: 0.3 },
                     opacity: { duration: 0.3 }
                 }}
+
             >
                 <div
                     className="rounded-full border-2 border-white bg-transparent transition-transform duration-300"
