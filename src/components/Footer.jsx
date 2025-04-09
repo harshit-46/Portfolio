@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/icons/AppLogo.png";
 import "../assets/CSS/footer.css";
+import BackToTopButton from "./Top";
 
 const Footer = ({ scrollToSection, refs }) => {
     return (
@@ -58,6 +59,7 @@ const Footer = ({ scrollToSection, refs }) => {
                     </a>
                 </div>
             </div>
+            <BackToTopButton/>
         </div>
     );
 };
