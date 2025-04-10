@@ -53,7 +53,7 @@ export default function CursorCircle() {
 
             >
                 <div
-                    className="rounded-full border-2 border-white bg-transparent transition-transform duration-300"
+                    className="rounded-full border-2 border-stone-400 bg-transparent transition-transform duration-300"
                     style={{ width: circleSize, height: circleSize }}
                 />
             </motion.div>

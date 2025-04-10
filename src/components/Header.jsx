@@ -7,19 +7,32 @@ const Header = ({ scrollToSection, refs }) => {
         <header className="navbar-main">
             <nav className="navbar border-b border-stone-800 flex items-center justify-between p-4">
                 <button onClick={() => scrollToSection(refs.welcomeRef)} aria-label="Go to Welcome">
-                    <img src={AppLogo} height="80" width="80" alt="App logo"/>
+                    <img src={AppLogo} height="80" width="80" alt="App logo" />
                 </button>
                 <div className="nav-head">
                     <ul className="links flex space-x-4">
-                        <li><button onClick={() => scrollToSection(refs.homeRef)} className="cursor-pointer">Home</button></li>
-                        <li><button onClick={() => scrollToSection(refs.skillsRef)} className="cursor-pointer">Skills</button></li>
-                        <li><button onClick={() => scrollToSection(refs.educationRef)} className="cursor-pointer">Education</button></li>
-                        <li><button onClick={() => scrollToSection(refs.projectsRef)} className="cursor-pointer">Projects</button></li>
-                        <li><button onClick={() => scrollToSection(refs.contactRef)} className="cursor-pointer">Contact</button></li>
+                        {[
+                            { label: "Home", ref: refs.homeRef },
+                            { label: "Skills", ref: refs.skillsRef },
+                            { label: "Education", ref: refs.educationRef },
+                            { label: "Projects", ref: refs.projectsRef },
+                            { label: "Contact", ref: refs.contactRef },
+                        ].map((item) => (
+                            <li key={item.label}>
+                                <button
+                                    onClick={() => scrollToSection(item.ref)}
+                                    className="cursor-pointer group relative text-white"
+                                >
+                                    {item.label}
+                                    <span className="absolute left-0 bottom-0 h-0.25 w-0 bg-white transition-all duration-300 group-hover:w-full" />
+                                </button>
+                            </li>
+                        ))}
                     </ul>
+
                 </div>
                 <a href="https://github.com/harshit-46" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                    <img src={githubLogo} height="32" width="32" alt="GitHub Logo"/>
+                    <img src={githubLogo} height="32" width="32" alt="GitHub Logo" />
                 </a>
             </nav>
         </header>
