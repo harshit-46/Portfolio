@@ -1,10 +1,9 @@
 import React from 'react';
-import { GridBackgroundProjects } from './test/grid-projects';
 
 const Projects = () => {
     return (
-        <div className=''>
-            <GridBackgroundProjects/>
+        <div className='h-[100vh] w-full bg-black text-white'>
+            <p>PROJECTS</p>
         </div>
     )
 }

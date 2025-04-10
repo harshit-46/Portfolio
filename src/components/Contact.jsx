@@ -1,10 +1,9 @@
 import React from 'react';
-import {GridBackgroundContact} from './test/grid-contact';
 
 const Contact = () => {
     return (
-        <div className=''>
-            <GridBackgroundContact/>
+        <div className='h-[100vh] w-full bg-black text-white'>
+            <p>CONTACT</p>
         </div>
     )
 }

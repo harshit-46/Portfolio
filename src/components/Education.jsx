@@ -1,10 +1,9 @@
 import React from 'react';
-import { GridBackgroundEdu } from './test/grid-edu';
 
 const Education = () => {
     return (
-        <div className=''>
-            <GridBackgroundEdu />
+        <div className='h-[100vh] w-full bg-black text-white'>
+            <p>EDUCATION</p>
         </div>
     )
 }
