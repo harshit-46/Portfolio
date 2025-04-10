@@ -1,5 +1,4 @@
 import React from 'react';
-import { HeroSection} from './test/grid';
 
 const Home = () => {
     return (
