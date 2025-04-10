@@ -12,7 +12,7 @@ export default function CursorCircle() {
 
         const handleMouseOver = (e) => {
             const tag = e.target.tagName.toLowerCase();
-            if (["a", "button", "svg"].includes(tag) || e.target.getAttribute("data-hover") === "true") {
+            if (["a", "button", "svg", "img"].includes(tag) || e.target.getAttribute("data-hover") === "true") {
                 setHovering(true);
             }
         };
