@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <CursorCircle/>
-      <Header scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} />
+      {/* <Header scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} /> */}
       <div>
         <section ref={homeRef}><Home /></section>
         <section ref={skillsRef}><Tech /></section>

@@ -2,10 +2,14 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div className="h-[100vh] w-full bg-black -mt-20">
-            <div className="flex h-fit pt-32 font-bold">
-                <h1 className="Home text-white ml-6 text-[190px] leading-none select-none cursor-pointer">HARSHIT</h1>
-                <h1 className="homevid ml-4 text-[190px] leading-none select-none text-transparent bg-cover bg-no-repeat bg-center bg-clip-text bg-gradient-and-gif cursor-pointer">GUPTA</h1>
+        <div className="h-[100vh] w-full bg-black pt-20 border-2 border-pink-400">
+            <div className="font-bold leading-none">
+                <span className="text-white text-[80px] md:text-[120px] lg:text-[190px] tracking-tighter p-0 m-0">
+                    HARSHIT
+                </span>
+                <span className="text-[80px] md:text-[120px] lg:text-[190px] tracking-tighter text-transparent bg-cover bg-no-repeat bg-center bg-clip-text bg-gradient-and-gif p-0 m-0">
+                    GUPTA
+                </span>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ import AppLogo from "../assets/icons/AppLogo.png";
 const Header = ({ scrollToSection, refs }) => {
     return (
         <header className="navbar-main">
-            <nav className="navbar border-b border-stone-800 flex items-center justify-between p-4">
+            <nav className="navbar flex items-center justify-between p-4">
                 <button onClick={() => scrollToSection(refs.welcomeRef)} aria-label="Go to Welcome">
                     <img src={AppLogo} height="80" width="80" alt="App logo" />
                 </button>
