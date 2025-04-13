@@ -19,8 +19,8 @@ const Header = ({ scrollToSection, refs }) => {
     };
 
     return (
-        <header className="navbar-main bg-black sticky top-0 z-50">
-            <nav className="navbar flex items-center justify-between p-4 px-6 md:px-10 ">
+        <header className="navbar-main bg-black sticky top-0 z-50 ">
+            <nav className="navbar flex items-center justify-between p-4 px-6 md:px-10 border-b border-white/10">
                 <button onClick={() => scrollToSection(refs.homeRef)} aria-label="Go to Home">
                     <img src={AppLogo} height="80" width="80" alt="App logo" />
                 </button>
