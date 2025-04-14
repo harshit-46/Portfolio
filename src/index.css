@@ -2,7 +2,7 @@
 
 @config '../tailwind.config.js';
 
-.navbar {
+/*.navbar {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -17,7 +17,7 @@
     align-items: center;
     backdrop-filter: blur(7px);
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-}
+}*/
 
 .links {
     display: flex;
