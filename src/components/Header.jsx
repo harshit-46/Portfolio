@@ -7,7 +7,7 @@ const Header = ({ scrollToSection, refs }) => {
 
     const navLinks = [
         { label: "HOME", ref: refs.homeRef },
-        { label: "SKILLS", ref: refs.skillsRef },
+        { label: "ABOUT", ref: refs.aboutRef },
         { label: "EDUCATION", ref: refs.educationRef },
         { label: "PROJECTS", ref: refs.projectsRef },
         { label: "CONTACT", ref: refs.contactRef },

@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/icons/AppLogo.png";
 import "../assets/CSS/footer.css";
+//import sign from "../assets/icons/sign.png"
 import BackToTopButton from "./Top";
 
 const Footer = () => {

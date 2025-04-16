@@ -10,7 +10,7 @@ import CursorCircle from "./components/CursorCircle";
 
 function App() {
   const homeRef = useRef(null);
-  const skillsRef = useRef(null);
+  const aboutRef = useRef(null);
   const educationRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
@@ -22,15 +22,15 @@ function App() {
   return (
     <>
       <CursorCircle/>
-      <Header scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} />
+      <Header scrollToSection={scrollToSection} refs={{ homeRef, aboutRef, educationRef, projectsRef, contactRef }} />
       <div>
         <section ref={homeRef}><Home /></section>
-        <section ref={skillsRef}><Tech /></section>
+        <section ref={aboutRef}><Tech /></section>
         <section ref={educationRef}><Education /></section>
         <section ref={projectsRef}><Projects /></section>
         <section ref={contactRef}><Contact /></section>
       </div>
-      <Footer scrollToSection={scrollToSection} refs={{ homeRef, skillsRef, educationRef, projectsRef, contactRef }} />
+      <Footer scrollToSection={scrollToSection} refs={{ homeRef, aboutRef, educationRef, projectsRef, contactRef }} />
     </>
   );
 }
