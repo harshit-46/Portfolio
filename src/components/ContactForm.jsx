@@ -1,7 +1,10 @@
+import CursorCircle from "../components/CursorCircle";
+
 const ContactForm = () => {
     return(
         <>
-            <div className="text-black">
+            <CursorCircle/>
+            <div className="text-white bg-black h-[100vh]">
                 <p>This is a contact page</p>
             </div>
         </>

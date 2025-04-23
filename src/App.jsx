@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import HomeLayout from "./components/HomeLayout"; // existing single-page with refs
-import ContactForm from "./components/ContactForm"; // new separate page
+import HomeLayout from "./components/HomeLayout"; 
+import ContactForm from "./components/ContactForm"; 
 
 function App() {
   return (
