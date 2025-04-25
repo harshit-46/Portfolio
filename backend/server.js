@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose'); // ✅ You were missing this line!
+const mongoose = require('mongoose'); 
 
 const app = express();
 const PORT = 5000;
@@ -34,8 +34,8 @@ app.post('/api/contact', async (req, res) => {
 });
 app.get('/', (req, res) => {
     res.send('🚀 Backend is running!');
-  });
-  
+});
+
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
