@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/portfolioDB', {
     useUnifiedTopology: true,
 });
 mongoose.connection.once('open', () => {
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
 });
 
 // Message model
