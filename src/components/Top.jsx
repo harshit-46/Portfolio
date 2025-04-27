@@ -6,7 +6,13 @@ export default function BackToTopBottom() {
 
     return (
         <div>
-            <a id="top" onClick={scrollToTop} className="inline-block cursor-pointer">GO BACK TO TOP</a>
+            <button
+                onClick={scrollToTop}
+                className="relative inline-block group cursor-pointer text-white"
+            >
+                GO BACK TO TOP
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </button>
         </div>
     );
 }

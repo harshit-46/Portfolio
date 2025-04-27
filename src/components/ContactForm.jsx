@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import CursorCircle from './CursorCircle';
+import ContactNavbar from './ContactNavbar';
+import "../assets/CSS/contactform.css"
 import { LiaHeadphonesSolid } from "react-icons/lia";
 import { AiOutlineMail } from "react-icons/ai";
 import { GrLocation } from "react-icons/gr";
@@ -48,19 +50,21 @@ const ContactForm = () => {
     return (
         <>
             <CursorCircle />
+            <ContactNavbar/>
             <div className="text-white bg-black text-center py-16 px-4">
-                <h1 className="text-6xl md:text-8xl font-bold mb-6">SAY HELLO!</h1>
-                <p className="max-w-2xl mx-auto text-gray-400">
+                <h1 className="text-9xl mb-12 pt-12" id='heading'>SAY HELLO!</h1>
+                <p className="max-w-3xl mx-auto text-stone-400">
                     Fill out the form below to get in touch with me. I'm always excited to hear about new opportunities and I'll do my best to respond to your inquiry within 24 hours.
                 </p>
             </div>
 
+            <h1 className="text-6xl text-white font-semibold bg-black pl-32 pt-16 pb-4" id='contact'>CONTACT ME</h1>
             <div className="bg-black flex items-center justify-center px-6 py-16">
                 <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                    {/* Left Section (1/3) */}
-                    <div className="col-span-1 bg-[#111] rounded-lg p-10 flex flex-col space-y-16 text-white min-h-[650px]">
-                        {/* Location */}
+
+                    <div className="col-span-1 bg-[#111] rounded-lg p-10 flex flex-col space-y-12 text-white min-h-[500px]">
+
                         <div className="flex flex-col items-start space-y-4">
                             <GrLocation className="text-5xl text-green-400 mb-3" />
                             <div>
@@ -69,7 +73,6 @@ const ContactForm = () => {
                             </div>
                         </div>
 
-                        {/* Contact Number */}
                         <div className="flex flex-col items-start space-y-4">
                             <LiaHeadphonesSolid className="text-5xl text-green-400 mb-3" />
                             <div>
@@ -78,7 +81,6 @@ const ContactForm = () => {
                             </div>
                         </div>
 
-                        {/* Email */}
                         <div className="flex flex-col items-start space-y-4">
                             <AiOutlineMail className="text-5xl text-green-400 mb-3" />
                             <div>
@@ -87,33 +89,27 @@ const ContactForm = () => {
                             </div>
                         </div>
 
-                        {/* Social Links */}
                         <div>
                             <p className="font-bold text-lg">SOCIALS</p>
                             <div className="flex gap-4 pt-6">
-                                <a href="#" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
+                                <a href="https://www.instagram.com/_harshit.25/" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
                                     <IoLogoInstagram />
                                 </a>
-                                <a href="#" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
+                                <a href="https://x.com/harshit__25" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
                                     <BsTwitterX />
                                 </a>
-                                <a href="#" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
+                                <a href="https://www.linkedin.com/in/harshithere/" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
                                     <TfiLinkedin />
                                 </a>
-                                <a href="#" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
+                                <a href="https://github.com/harshit-46" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
                                     <FiGithub />
                                 </a>
                             </div>
                         </div>
                     </div>
 
-
-
-                    {/* Right Section (2/3) */}
                     <div className="col-span-2 bg-[#111] rounded-lg p-8 text-white">
-                        <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
-
-                            {/* Full Name and Email Side-by-side */}
+                        <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="flex-1 flex flex-col">
                                     <label className="mb-4 text-sm font-semibold text-gray-400">FULL NAME</label>
@@ -140,8 +136,6 @@ const ContactForm = () => {
                                     />
                                 </div>
                             </div>
-
-                            {/* Subject */}
                             <div className="flex flex-col">
                                 <label className="mb-4 text-sm font-semibold text-gray-400">SUBJECT</label>
                                 <input
@@ -154,30 +148,25 @@ const ContactForm = () => {
                                     placeholder="Your Subject"
                                 />
                             </div>
-
-                            {/* Message */}
                             <div className="flex flex-col">
                                 <label className="mb-4 text-sm font-semibold text-gray-400">YOUR MESSAGE</label>
                                 <textarea
                                     name="message"
                                     value={form.message}
                                     onChange={handleChange}
-                                    rows="5"
+                                    rows="8"
                                     required
                                     className="p-3 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
                                     placeholder="Write your message"
                                 />
                             </div>
-
-                            {/* Send Message Button */}
                             <button
                                 type="submit"
-                                className="mt-4 bg-green-500 text-black font-semibold py-3 px-8 rounded-md hover:bg-green-400 transition w-fit"
+                                className="mt-6 bg-green-500 text-black font-semibold py-3 px-8 rounded-md cursor-pointer hover:bg-green-400 transition w-fit"
                             >
                                 Send Message
                             </button>
 
-                            {/* Status */}
                             {status && (
                                 <p className={`text-center text-sm font-semibold mt-4 ${error ? 'text-red-400' : 'text-green-400'}`}>
                                     {status}
@@ -185,15 +174,14 @@ const ContactForm = () => {
                             )}
                         </form>
                     </div>
-
                 </div>
             </div>
 
-            {/* Footer */}
-            <div className="bg-black text-white text-center py-8 pt-20">
-                <p className='py-8'>Have a project in mind?</p>
-                <h1 className='text-9xl font-bold'>LET'S WORK</h1>
-                <div>
+
+            <div className="bg-black text-white text-center py-16">
+                <p className='py-8 text-[22px]'>Have a project in mind?</p>
+                <h1 className='text-9xl font-bold pt-6' id='heading2'>LET'S WORK</h1>
+                <div className='mt-20 flex justify-between px-12 text-2xl font-semibold' id='footer'>
                     <p>&copy; 2025 ALL RIGHTS RESERVED</p>
                     <p><BackToTopBottom /></p>
                 </div>

@@ -1,4 +1,18 @@
-#contact , #heading {
+#heading , #heading2{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#contact {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#footer{
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
