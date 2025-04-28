@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CursorCircle from './CursorCircle';
 import ContactNavbar from './ContactNavbar';
-import "../assets/CSS/contactform.css"
 import { LiaHeadphonesSolid } from "react-icons/lia";
 import { AiOutlineMail } from "react-icons/ai";
 import { GrLocation } from "react-icons/gr";
@@ -10,6 +9,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
 import { FiGithub } from "react-icons/fi";
 import BackToTopBottom from './Top';
+import "../assets/CSS/contactform.css";
 
 const ContactForm = () => {
     const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -47,69 +47,84 @@ const ContactForm = () => {
         }
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <CursorCircle />
-            <ContactNavbar/>
+            <ContactNavbar />
             <div className="text-white bg-black text-center py-16 px-4">
-                <h1 className="text-9xl mb-12 pt-12" id='heading'>SAY HELLO!</h1>
-                <p className="max-w-3xl mx-auto text-stone-400">
-                    Fill out the form below to get in touch with me. I'm always excited to hear about new opportunities and I'll do my best to respond to your inquiry within 24 hours.
+                <h1 className="text-8xl md:text-9xl mb-12 pt-12 leading-tight" id='heading'>
+                    <span className="block md:inline">SAY</span> <span className="block md:inline">HELLO!</span>
+                </h1>
+
+                <p className="max-w-3xl mx-auto text-stone-400 text-lg md:text-xl">
+                    Fill out the form below to get in touch with me. I'm always excited to hear about new opportunities and I'll do my best to respond within 24 hours.
                 </p>
             </div>
 
-            <h1 className="text-6xl text-white font-semibold bg-black pl-32 pt-16 pb-4" id='contact'>CONTACT ME</h1>
-            <div className="bg-black flex items-center justify-center px-6 py-16">
-                <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-black">
+                <h2 className="text-5xl md:text-6xl font-semibold text-white pl-4 md:pl-32 pt-16 text-left" id="contact">
+                    CONTACT ME
+                </h2>
+            </div>
+
+            <div className="bg-black flex items-center justify-center px-4 md:px-8 py-16">
+                <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
 
 
-                    <div className="col-span-1 bg-[#111] rounded-lg p-10 flex flex-col space-y-12 text-white min-h-[500px]">
+                    <div className="w-full md:w-1/3 bg-[#111] rounded-lg p-10 flex flex-col space-y-12 text-white min-h-[500px]">
+                        <div className="space-y-10">
 
-                        <div className="flex flex-col items-start space-y-4">
-                            <GrLocation className="text-5xl text-green-400 mb-3" />
-                            <div>
-                                <p className="font-bold text-lg">OUR OFFICE:</p>
-                                <p className="text-gray-400 mt-1">Dehradun, India</p>
+                            <div className="flex flex-col items-start space-y-2">
+                                <GrLocation className="text-5xl text-green-400" />
+                                <div>
+                                    <p className="font-bold text-lg mt-2">LOCATION:</p>
+                                    <p className="text-gray-400">Dehradun, India</p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-start space-y-2">
+                                <LiaHeadphonesSolid className="text-5xl text-green-400" />
+                                <div>
+                                    <p className="font-bold text-lg mt-2">CONTACT NUMBER:</p>
+                                    <p className="text-gray-400">+91 9690424413</p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-start space-y-2">
+                                <AiOutlineMail className="text-5xl text-green-400" />
+                                <div>
+                                    <p className="font-bold text-lg mt-2">EMAIL ME:</p>
+                                    <p className="text-gray-400">iamharshit999@gmail.com</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-start space-y-4">
-                            <LiaHeadphonesSolid className="text-5xl text-green-400 mb-3" />
-                            <div>
-                                <p className="font-bold text-lg">CONTACT NUMBER:</p>
-                                <p className="text-gray-400 mt-1">+91 9690424413</p>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col items-start space-y-4">
-                            <AiOutlineMail className="text-5xl text-green-400 mb-3" />
-                            <div>
-                                <p className="font-bold text-lg">EMAIL US:</p>
-                                <p className="text-gray-400 mt-1">iamharshit999@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p className="font-bold text-lg">SOCIALS</p>
-                            <div className="flex gap-4 pt-6">
-                                <a href="https://www.instagram.com/_harshit.25/" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
+                        <div className="pt-8">
+                            <p className="font-bold text-lg mb-4">SOCIALS</p>
+                            <div className="flex gap-4">
+                                <a href="https://www.instagram.com/_harshit.25/" target="_blank" rel="noreferrer" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
                                     <IoLogoInstagram />
                                 </a>
-                                <a href="https://x.com/harshit__25" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
+                                <a href="https://x.com/harshit__25" target="_blank" rel="noreferrer" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
                                     <BsTwitterX />
                                 </a>
-                                <a href="https://www.linkedin.com/in/harshithere/" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
+                                <a href="https://www.linkedin.com/in/harshithere/" target="_blank" rel="noreferrer" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
                                     <TfiLinkedin />
                                 </a>
-                                <a href="https://github.com/harshit-46" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl" target='_blank'>
+                                <a href="https://github.com/harshit-46" target="_blank" rel="noreferrer" className="p-3 border border-gray-600 rounded-md hover:bg-green-400 hover:text-black transition text-2xl">
                                     <FiGithub />
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <div className="col-span-2 bg-[#111] rounded-lg p-8 text-white">
+                    <div className="w-full md:w-2/3 bg-[#111] rounded-lg p-8 text-white">
                         <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
+
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="flex-1 flex flex-col">
                                     <label className="mb-4 text-sm font-semibold text-gray-400">FULL NAME</label>
@@ -136,6 +151,7 @@ const ContactForm = () => {
                                     />
                                 </div>
                             </div>
+
                             <div className="flex flex-col">
                                 <label className="mb-4 text-sm font-semibold text-gray-400">SUBJECT</label>
                                 <input
@@ -148,21 +164,23 @@ const ContactForm = () => {
                                     placeholder="Your Subject"
                                 />
                             </div>
+
                             <div className="flex flex-col">
                                 <label className="mb-4 text-sm font-semibold text-gray-400">YOUR MESSAGE</label>
                                 <textarea
                                     name="message"
                                     value={form.message}
                                     onChange={handleChange}
-                                    rows="8"
+                                    rows="9"
                                     required
                                     className="p-3 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
                                     placeholder="Write your message"
                                 />
                             </div>
+
                             <button
                                 type="submit"
-                                className="mt-6 bg-green-500 text-black font-semibold py-3 px-8 rounded-md cursor-pointer hover:bg-green-400 transition w-fit"
+                                className="mt-4 bg-green-500 text-black font-semibold py-3 px-8 rounded-md hover:bg-green-400 transition w-fit"
                             >
                                 Send Message
                             </button>
@@ -174,18 +192,22 @@ const ContactForm = () => {
                             )}
                         </form>
                     </div>
+
                 </div>
             </div>
 
-
             <div className="bg-black text-white text-center py-16">
-                <p className='py-8 text-[22px]'>Have a project in mind?</p>
-                <h1 className='text-9xl font-bold pt-6' id='heading2'>LET'S WORK</h1>
-                <div className='mt-20 flex justify-between px-12 text-2xl font-semibold' id='footer'>
+                <p className="py-8 text-[22px]">Have a project in mind?</p>
+                <h1 className='text-8xl md:text-9xl font-bold pt-6 leading-tight' id='heading2'>
+                    <span className="block md:inline">LET'S</span> <span className="block md:inline">WORK</span>
+                </h1>
+
+                <div className="mt-20 flex flex-col md:flex-row justify-between items-center px-6 md:px-12 text-xl md:text-2xl font-semibold gap-8" id='footer'>
                     <p>&copy; 2025 ALL RIGHTS RESERVED</p>
                     <p><BackToTopBottom /></p>
                 </div>
             </div>
+
         </>
     );
 };
