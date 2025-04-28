@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/CSS/home.css';
 
 const Home = () => {
     return (
@@ -8,11 +9,11 @@ const Home = () => {
                 <p className="text-white/70 font-semibold">AVAILABLE FOR FREELANCE</p>
             </div>
 
-            <div className="font-bold leading-none flex flex-col md:flex-row justify-evenly items-center text-center md:text-left">
-                <span className="-ml-0 md:-ml-4 text-white text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] p-0 m-0 select-none cursor-pointer">
+            <div className="font-bold leading-none flex flex-col md:flex-row justify-center gap-x-16 items-center text-center md:text-left">
+                <span className="-ml-0 md:-ml-4 text-white text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] p-0 m-0 select-none cursor-pointer" id='name1'>
                     HARSHIT
                 </span>
-                <span className="text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] text-transparent bg-cover bg-no-repeat bg-center bg-clip-text bg-gradient-and-gif p-0 m-0 select-none cursor-pointer">
+                <span className="text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] text-transparent bg-cover bg-no-repeat bg-center bg-clip-text bg-gradient-and-gif p-0 m-0 select-none cursor-pointer" id='name2'>
                     GUPTA
                 </span>
             </div>
