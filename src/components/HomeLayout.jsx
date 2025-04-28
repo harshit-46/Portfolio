@@ -31,7 +31,7 @@ const HomeLayout = () => {
                 <section ref={projectsRef}><Projects /></section>
                 <section ref={contactRef}><Contact /></section>
             </div>
-            <Footer scrollToSection={scrollToSection} refs={{ homeRef, aboutRef, educationRef, projectsRef, contactRef }} />
+            <Footer />
         </>
     );
 };

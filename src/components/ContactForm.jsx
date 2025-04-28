@@ -8,6 +8,8 @@ import { IoLogoInstagram } from "react-icons/io";
 import { BsTwitterX } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
 import { FiGithub } from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa6";
+import { MdMailOutline } from "react-icons/md";
 import BackToTopBottom from './Top';
 import "../assets/CSS/contactform.css";
 
@@ -124,73 +126,90 @@ const ContactForm = () => {
 
                     <div className="w-full md:w-2/3 bg-[#111] rounded-lg p-8 text-white">
                         <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
-
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="flex-1 flex flex-col">
                                     <label className="mb-4 text-sm font-semibold text-gray-400">FULL NAME</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={form.name}
-                                        onChange={handleChange}
-                                        required
-                                        className="p-3 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
-                                        placeholder="Steve Milner"
-                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={form.name}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full p-3 pr-12 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
+                                            placeholder="Steve Milner"
+                                        />
+                                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl">
+                                            <FaRegUser />
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div className="flex-1 flex flex-col">
                                     <label className="mb-4 text-sm font-semibold text-gray-400">EMAIL ADDRESS</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={form.email}
-                                        onChange={handleChange}
-                                        required
-                                        className="p-3 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
-                                        placeholder="hello@websitename.com"
-                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full p-3 pr-12 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
+                                            placeholder="hello@websitename.com"
+                                        />
+                                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl">
+                                            <MdMailOutline />
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
 
                             <div className="flex flex-col">
                                 <label className="mb-4 text-sm font-semibold text-gray-400">SUBJECT</label>
-                                <input
-                                    type="text"
-                                    name="subject"
-                                    value={form.subject}
-                                    onChange={handleChange}
-                                    required
-                                    className="p-3 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
-                                    placeholder="Your Subject"
-                                />
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        name="subject"
+                                        value={form.subject}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full p-3 pr-12 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
+                                        placeholder="Your Subject"
+                                    />
+                                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl">
+                                        <FaRegUser />
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="flex flex-col">
                                 <label className="mb-4 text-sm font-semibold text-gray-400">YOUR MESSAGE</label>
-                                <textarea
-                                    name="message"
-                                    value={form.message}
-                                    onChange={handleChange}
-                                    rows="9"
-                                    required
-                                    className="p-3 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
-                                    placeholder="Write your message"
-                                />
+                                <div className="relative">
+                                    <textarea
+                                        name="message"
+                                        value={form.message}
+                                        onChange={handleChange}
+                                        rows="9"
+                                        required
+                                        className="w-full p-3 pr-12 bg-black border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none"
+                                        placeholder="Write your message"
+                                    />
+                                </div>
                             </div>
 
-                            <button
-                                type="submit"
-                                className="mt-4 bg-green-500 text-black font-semibold py-3 px-8 rounded-md hover:bg-green-400 transition w-fit"
-                            >
-                                Send Message
-                            </button>
-
+                            {/* Submit Button */}
+                            <button type="submit" className="mt-4 bg-green-500 text-black font-semibold py-3 px-8 rounded-md hover:bg-green-400 transition w-fit flex items-center gap-2">
+                                <span>Send Message</span>
+                                <AiOutlineMail className="text-xl" /></button>
                             {status && (
                                 <p className={`text-center text-sm font-semibold mt-4 ${error ? 'text-red-400' : 'text-green-400'}`}>
                                     {status}
                                 </p>
                             )}
+
                         </form>
+
                     </div>
 
                 </div>
@@ -204,7 +223,7 @@ const ContactForm = () => {
 
                 <div className="mt-20 flex flex-col md:flex-row justify-between items-center px-6 md:px-12 text-xl md:text-2xl font-semibold gap-8" id='footer'>
                     <p>&copy; 2025 ALL RIGHTS RESERVED</p>
-                    <p><BackToTopBottom /></p>
+                    <div><BackToTopBottom /></div>
                 </div>
             </div>
 
