@@ -198,7 +198,6 @@ const ContactForm = () => {
                                 </div>
                             </div>
 
-                            {/* Submit Button */}
                             <button type="submit" className="mt-4 bg-green-500 text-black font-semibold py-3 px-8 rounded-md hover:bg-green-400 transition w-fit flex items-center gap-2">
                                 <span>Send Message</span>
                                 <AiOutlineMail className="text-xl" /></button>
@@ -222,7 +221,7 @@ const ContactForm = () => {
                 </h1>
 
                 <div className="mt-20 flex flex-col md:flex-row justify-between items-center px-6 md:px-12 text-xl md:text-2xl font-semibold gap-8" id='footer'>
-                    <p>&copy; 2025 ALL RIGHTS RESERVED</p>
+                    <p>&copy; {new Date().getFullYear()} ALL RIGHTS RESERVED</p>
                     <div><BackToTopBottom /></div>
                 </div>
             </div>

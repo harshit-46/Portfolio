@@ -1,5 +1,3 @@
-/*
-
 import React from 'react';
 import { IoLogoInstagram } from "react-icons/io";
 import { BsTwitterX } from "react-icons/bs";
@@ -39,8 +37,7 @@ const Footer = () => {
 
 export default Footer;
 
-
-*/
+/*
 
 
 import React from 'react';
@@ -49,8 +46,6 @@ import signature from '../assets/icons/sign.png';
 const Footer = () => {
     return (
         <footer className="bg-black text-white py-12 flex flex-col items-center space-y-8">
-
-            {/* Signature Image */}
             <div className="w-48">
                 <img
                     src={signature}
@@ -58,8 +53,6 @@ const Footer = () => {
                     className="w-full object-contain"
                 />
             </div>
-
-            {/* Small Footer Text */}
             <p className="text-gray-400 text-sm tracking-wide">
                 © 2025 Harshit. All Rights Reserved.
             </p>
@@ -69,3 +62,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+*/
