@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/CSS/home.css';
+import myPhoto from '../assets/icons/Profile.jpg';
 
 const Home = () => {
     return (
@@ -17,6 +18,17 @@ const Home = () => {
                     GUPTA
                 </span>
             </div>
+            <div className="flex justify-center -mt-8">
+                <img
+                    src={myPhoto}
+                    alt="Harshit Gupta"
+                    className="w-80 h-100 object-cover rounded-2xl shadow-lg border-2 border-white transform rotate-7 hover:rotate-0 transition duration-500 ease-in-out"
+                />
+                <p className='text-white'>
+                    Hi, I am Harshit a passionate web developer dedicated to creating user-friendly digital experience.
+                </p>
+            </div>
+
         </div>
     );
 };
