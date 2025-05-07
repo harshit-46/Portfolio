@@ -18,19 +18,68 @@ const Home = () => {
                     GUPTA
                 </span>
             </div>
-            <div className="flex justify-center -mt-8">
-                <img
-                    src={myPhoto}
-                    alt="Harshit Gupta"
-                    className="w-80 h-100 object-cover rounded-2xl shadow-lg border-2 border-white transform rotate-7 hover:rotate-0 transition duration-500 ease-in-out"
-                />
-                <p className='text-white'>
-                    Hi, I am Harshit a passionate web developer dedicated to creating user-friendly digital experience.
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
+                <div className="hidden md:block" />
+                <div className="transform rotate-6 hover:rotate-0 transition duration-500">
+                    <img
+                        src={myPhoto}
+                        alt="Harshit Gupta"
+                        className="w-80 h-100 object-cover rounded-2xl border-2 border-white shadow-lg"
+                    />
+                </div>
+                <div className="text-white text-center md:text-left max-w-md">
+                    <p className="text-lg md:text-xl font-medium leading-relaxed">
+                        Hi, I'm <strong>Harshit</strong>, a passionate frontend developer dedicated to creating user-friendly digital experiences.
+                    </p>
+                    <button className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition">
+                        RESUME
+                    </button>
+                </div>
             </div>
-
         </div>
     );
 };
 
 export default Home;
+
+
+/*
+import React from 'react';
+import '../assets/CSS/home.css';
+import myPhoto from '../assets/icons/Profile.jpg';
+
+const Home = () => {
+    return (
+        <div className="min-h-screen w-full bg-black pt-28 px-4 md:px-16">
+            <div className="flex justify-center items-center space-x-2 mb-6">
+                <span className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_3px_rgba(34,197,94,0.6)]"></span>
+                <p className="text-white/70 font-semibold">AVAILABLE FOR FREELANCE</p>
+            </div>
+            <div className="text-center font-bold leading-none mb-12">
+                <span className="block text-white text-[80px] md:text-[120px] lg:text-[190px]" id="name1">HARSHIT</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-and-gif text-[80px] md:text-[120px] lg:text-[190px]" id="name2">GUPTA</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
+                <div className="hidden md:block" />
+                <div className="transform rotate-6 hover:rotate-0 transition duration-500">
+                    <img
+                        src={myPhoto}
+                        alt="Harshit Gupta"
+                        className="w-72 h-96 object-cover rounded-2xl border-2 border-white shadow-lg"
+                    />
+                </div>
+                <div className="text-white text-center md:text-left max-w-md">
+                    <p className="text-lg md:text-xl font-medium leading-relaxed">
+                        Hi, I’m <strong>Harshit</strong>, a passionate frontend developer dedicated to creating user-friendly digital experiences.
+                    </p>
+                    <button className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition">
+                        Get In Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Home;
+*/
