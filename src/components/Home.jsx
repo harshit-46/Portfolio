@@ -1,10 +1,25 @@
-import React from 'react';
+/*
+
+import React , {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../assets/CSS/home.css';
 import myPhoto from '../assets/icons/Profile.jpg';
 
 const Home = () => {
+
+    const [isStraight,setIsStraight] = useState(false);
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+        setIsStraight(!isStraight)
+    };
+
+    const handleBtnClick = () => {
+        navigate('/ContactForm');
+    };
+
     return (
-        <div className="h-[100vh] w-full bg-black pt-28">
+        <div className="min-h-screen w-full bg-black pt-28 border border-pink-600">
             <div className="flex justify-center items-center space-x-2 md:mt-0 mb-4">
                 <span className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_3px_rgba(34,197,94,0.6)]"></span>
                 <p className="text-white/70 font-semibold">AVAILABLE FOR FREELANCE</p>
@@ -19,60 +34,25 @@ const Home = () => {
                 </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
-                <div className="hidden md:block" />
-                <div className="transform rotate-6 hover:rotate-0 transition duration-500">
+                <div className="md:block text-white">
+                    <button>Resume</button>
+                </div>
+                <div className={`transition duration-500 ease-in-out cursor-pointer -mt-8 transform ${
+                        isStraight ? 'rotate-0' : 'rotate-6'
+                    } md:hover:rotate-0`} onClick={handleOnClick}>
                     <img
                         src={myPhoto}
-                        alt="Harshit Gupta"
+                        alt="Harshit Gupta's Profile"
                         className="w-80 h-100 object-cover rounded-2xl border-2 border-white shadow-lg"
                     />
                 </div>
                 <div className="text-white text-center md:text-left max-w-md">
                     <p className="text-lg md:text-xl font-medium leading-relaxed">
-                        Hi, I'm <strong>Harshit</strong>, a passionate frontend developer dedicated to creating user-friendly digital experiences.
+                        Hi, I'm Harshit, a passionate Full - Stack developer dedicated to creating user-friendly digital experiences.
                     </p>
-                    <button className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition">
-                        RESUME
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default Home;
-
-
-/*
-import React from 'react';
-import '../assets/CSS/home.css';
-import myPhoto from '../assets/icons/Profile.jpg';
-
-const Home = () => {
-    return (
-        <div className="min-h-screen w-full bg-black pt-28 px-4 md:px-16">
-            <div className="flex justify-center items-center space-x-2 mb-6">
-                <span className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_3px_rgba(34,197,94,0.6)]"></span>
-                <p className="text-white/70 font-semibold">AVAILABLE FOR FREELANCE</p>
-            </div>
-            <div className="text-center font-bold leading-none mb-12">
-                <span className="block text-white text-[80px] md:text-[120px] lg:text-[190px]" id="name1">HARSHIT</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-and-gif text-[80px] md:text-[120px] lg:text-[190px]" id="name2">GUPTA</span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
-                <div className="hidden md:block" />
-                <div className="transform rotate-6 hover:rotate-0 transition duration-500">
-                    <img
-                        src={myPhoto}
-                        alt="Harshit Gupta"
-                        className="w-72 h-96 object-cover rounded-2xl border-2 border-white shadow-lg"
-                    />
-                </div>
-                <div className="text-white text-center md:text-left max-w-md">
-                    <p className="text-lg md:text-xl font-medium leading-relaxed">
-                        Hi, I’m <strong>Harshit</strong>, a passionate frontend developer dedicated to creating user-friendly digital experiences.
-                    </p>
-                    <button className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition">
+                    <button className="mt-6 px-6 py-2 bg-[#ee4818] text-white font-semibold rounded hover:bg-black transition cursor-pointer"
+                    onClick={handleBtnClick}
+                    >
                         Get In Touch
                     </button>
                 </div>
@@ -82,4 +62,80 @@ const Home = () => {
 };
 
 export default Home;
+
 */
+
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../assets/CSS/home.css';
+import myPhoto from '../assets/icons/Profile.jpg';
+
+const Home = () => {
+    const [isStraight, setIsStraight] = useState(false);
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+        setIsStraight(!isStraight);
+    };
+
+    const handleBtnClick = () => {
+        navigate('/ContactForm');
+    };
+
+    return (
+        <div className="min-h-screen w-full bg-black pt-28">
+            {/* Availability Notice */}
+            <div className="flex justify-center items-center space-x-2 md:mt-0 mb-4">
+                <span className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_3px_rgba(34,197,94,0.6)]"></span>
+                <p className="text-white/70 font-semibold">AVAILABLE FOR FREELANCE</p>
+            </div>
+
+            {/* Name Heading */}
+            <div className="font-bold leading-none flex flex-col md:flex-row justify-center gap-x-16 items-center text-center md:text-left">
+                <span className="-ml-0 md:-ml-4 text-white text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] p-0 m-0 select-none cursor-pointer" id="name1">
+                    HARSHIT
+                </span>
+                <span className="text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] text-transparent bg-cover bg-no-repeat bg-center bg-clip-text bg-gradient-and-gif p-0 m-0 select-none cursor-pointer" id="name2">
+                    GUPTA
+                </span>
+            </div>
+
+            {/* Profile Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center px-4 pb-12 md:px-0 md:pb-0 mt-8">
+                {/* Optional left section (e.g., Resume button) */}
+                <div className="hidden md:block text-white">
+                    <button className="px-4 py-2 border border-white rounded hover:bg-white hover:text-black transition">Resume</button>
+                </div>
+
+                {/* Image */}
+                <div
+                    onClick={handleOnClick}
+                    className={`cursor-pointer transform transition duration-500 ${isStraight ? 'rotate-0' : 'rotate-6'
+                        } md:hover:rotate-0 mt-4 md:mt-0`}
+                >
+                    <img
+                        src={myPhoto}
+                        alt="Harshit Gupta's Profile"
+                        className="w-80 h-100 object-cover rounded-2xl border-2 border-white shadow-lg"
+                    />
+                </div>
+
+                {/* Bio Text */}
+                <div className="text-white text-center md:text-left max-w-md mt-6 md:mt-0 px-2 md:px-0">
+                    <p className="text-lg md:text-xl font-medium leading-relaxed">
+                        Hi, I'm <strong>Harshit</strong>, a passionate Full - Stack developer dedicated to creating user-friendly digital experiences.
+                    </p>
+                    <button
+                        className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition"
+                        onClick={handleBtnClick}
+                    >
+                        Get In Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Home;

@@ -15,7 +15,7 @@ const Header = ({ scrollToSection, refs }) => {
 
     const handleClick = (ref) => {
         scrollToSection(ref);
-        setIsMenuOpen(false);  // Close the menu when clicking a nav link
+        setIsMenuOpen(false);
     };
 
     return (
