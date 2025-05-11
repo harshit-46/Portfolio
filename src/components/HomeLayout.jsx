@@ -1,8 +1,7 @@
-// components/HomeLayout.jsx
 import React, { useRef } from "react";
 import Home from "./Home";
 import Projects from "./Projects";
-import Tech from "./Tech";
+import About from "./About";
 import Contact from "./Contact";
 import Education from "./Education";
 import Header from "./Header";
@@ -27,7 +26,7 @@ const HomeLayout = () => {
             <div>
                 <section ref={homeRef}><Home /></section>
                 <section ref={projectsRef}><Projects /></section>
-                <section ref={aboutRef}><Tech /></section>
+                <section ref={aboutRef}><About /></section>
                 <section ref={educationRef}><Education /></section>
                 <section ref={contactRef}><Contact /></section>
             </div>

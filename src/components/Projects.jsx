@@ -35,7 +35,7 @@ const Projects = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {projectList.map((project, index) => (
-                    <div key={index} className="group relative rounded-xl overflow-hidden bg-[#111] hover:shadow-xl transition-shadow">
+                    <div key={index} className="group relative rounded-xl border border-gray-600 overflow-hidden bg-[#111] hover:shadow-xl transition-shadow">
                         <img src={project.img} alt={project.title} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
                         <div className="p-4 flex justify-between items-end">
                             <div>

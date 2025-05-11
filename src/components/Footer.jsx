@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { IoLogoInstagram } from "react-icons/io";
 import { BsTwitterX } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
@@ -37,31 +37,30 @@ const Footer = () => {
 
 export default Footer;
 
-/*
-
+*/
 
 import React from 'react';
 import signature from '../assets/icons/sign.png';
 
 const Footer = () => {
     return (
-        <footer className="bg-black text-white py-12 flex flex-col items-center space-y-8">
-            <div className="w-48">
+        <footer className="bg-black text-white py-10 px-6">
+            <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
+                {/* Signature Image */}
                 <img
                     src={signature}
                     alt="Harshit Signature"
-                    className="w-full object-contain"
+                    className="w-64 md:w-80 object-contain"
                 />
-            </div>
-            <p className="text-gray-400 text-sm tracking-wide">
-                © 2025 Harshit. All Rights Reserved.
-            </p>
 
+                {/* Footer Text */}
+                <div className="text-center">
+                    <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Harshit. All rights reserved.</p>
+                    <p className="text-xs text-gray-500 mt-1">Built with ❤️ by Harshit Gupta</p>
+                </div>
+            </div>
         </footer>
     );
 };
 
 export default Footer;
-
-
-*/
