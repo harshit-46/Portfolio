@@ -22,11 +22,14 @@ const Contact = () => {
 
                 {/* Contact Button */}
                 <button
-                    onClick={handleBtnClick}
-                    className="mt-6 px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition"
-                >
-                    CONTACT NOW
-                </button>
+                onClick={handleBtnClick}
+                        className="relative overflow-hidden border-2 border-white bg-white text-black font-bold px-5 md:px-8 py-2 rounded-full group text-sm md:text-base"
+                    >
+                        <span className="absolute inset-0 w-full h-full bg-black scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-300 ease-in-out rounded-full z-0"></span>
+                        <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                            CONTACT NOW
+                        </span>
+                    </button>
             </div>
 
             {/* Oval Profile Image */}
