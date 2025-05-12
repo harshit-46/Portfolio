@@ -1,5 +1,5 @@
 import React from 'react';
-import project1 from '../assets/icons/sign.png'; 
+import project1 from '../assets/icons/sign.png';
 
 const projectList = [
     {
@@ -24,10 +24,12 @@ const projectList = [
 
 const Projects = () => {
     return (
-        <div className="bg-black text-white px-4 md:px-20 py-24">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
-                <h1 className="text-5xl font-bold">FEATURED <br /> WORK</h1>
-                <p className="mt-6 md:mt-0 max-w-xl text-gray-400 text-lg">
+        <div className="bg-black text-white px-4 md:px-10 py-24">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20 text-white">
+                <h1 className="text-[44px] sm:text-[64px] md:text-[96px] leading-none font-bold tracking-tight text-center md:text-left">
+                    FEATURED<br />WORK
+                </h1>
+                <p className="hidden md:block text-lg md:text-xl leading-relaxed font-medium max-w-xl">
                     My creative spirit comes alive in the digital realm. With nimble fingers flying across the keyboard,
                     I craft clear experiences out of nothing but ones and zeroes.
                 </p>
