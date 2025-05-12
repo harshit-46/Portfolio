@@ -115,7 +115,7 @@ export default About;
 
 import React, { useState } from 'react';
 import '../assets/CSS/about.css';
-import signature from '../assets/icons/sign.png';
+import signature from '../assets/icons/Signature.png';
 
 const expertiseData = [
     {
@@ -266,7 +266,7 @@ const About = () => {
 
                         {/* Signature */}
                         <img
-                            src={signature} // Replace with your actual image path
+                            src={signature}
                             alt="Signature"
                             className="w-32 pt-4"
                         />
