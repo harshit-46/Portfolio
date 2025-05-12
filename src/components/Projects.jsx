@@ -124,6 +124,48 @@ const projectList = [
         year: '2022',
         img: project1,
     },
+    {
+        title: 'Website Clone',
+        type: 'Clone',
+        year: '2022',
+        img: project1,
+    },
+    {
+        title: 'Myntra eCommerce Website',
+        type: 'eCommerce',
+        year: '2022',
+        img: project1,
+    },
+    {
+        title: 'Currency Converter',
+        type: 'Mini Game',
+        year: '2022',
+        img: project1,
+    },
+    {
+        title: 'Calculator',
+        type: 'Mini Game',
+        year: '2022',
+        img: project1,
+    },
+    {
+        title: 'TextUtils App',
+        type: 'Mini Game',
+        year: '2022',
+        img: project1,
+    },
+    {
+        title: 'Chat App',
+        type: 'Mini Game',
+        year: '2022',
+        img: project1,
+    },
+    {
+        title: 'iNoteBook App',
+        type: 'Mini Game',
+        year: '2022',
+        img: project1,
+    },
 ];
 
 const Projects = () => {
@@ -161,7 +203,7 @@ const Projects = () => {
                         <img
                             src={project.img}
                             alt={project.title}
-                            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="p-4 flex justify-between items-end">
                             <div>
