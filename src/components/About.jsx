@@ -88,38 +88,46 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Expertise Section */}
-            <section className="mb-12 px-4">
-                <h1 className="text-[44px] sm:text-[64px] md:text-[96px] leading-none font-bold tracking-tight text-center md:text-left">
+
+            {/* EXPERTISE SECTION */}
+            <section className="mb-4 md:px-4">
+                <h1 className="text-[44px] sm:text-[64px] md:text-[96px] leading-none font-bold tracking-tight md:text-left">
                     MY<br />EXPERTISE
                 </h1>
             </section>
 
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {expertiseData.map(({ number, title, description }) => (
-                    <article
-                        key={number}
-                        className="relative bg-[#0a0a0a] text-white rounded-xl p-6 lg:p-8 border border-[#1c1c1c] hover:shadow-md transition-all duration-300"
-                    >
-                        <div className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center border border-white/10 rounded-full text-white/70 text-lg hover:bg-white hover:text-black transition">
-                            +
-                        </div>
-                        <div className="text-white/60 text-sm font-semibold mb-2">({number})</div>
-                        <h3 className="text-2xl font-extrabold tracking-tight uppercase mb-4">
-                            {title}
-                        </h3>
-                        <p className="text-white/60 text-base leading-relaxed">
-                            {description}
-                        </p>
-                    </article>
-                ))}
+            <section className="max-w-9xl mx-auto md:px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+                {expertiseData.map(({ number, title, description }, index) => {
+                    const colSpan = index < 3 ? 'lg:col-span-2' : 'lg:col-span-3';
+
+                    return (
+                        <article
+                            key={number}
+                            className={`relative ${colSpan} bg-[#0a0a0a] text-white rounded-xl p-6 lg:p-8 border border-[#1c1c1c] hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[260px]`}
+                        >
+                            {/* Plus icon hidden on mobile */}
+                            <div className="absolute top-5 right-5 hidden md:flex items-center justify-center w-14 h-14 rounded-full border border-white/10 text-white/80 text-4xl font-medium hover:bg-white hover:text-black transition-all duration-300">
+                                +
+                            </div>
+
+
+
+                            <div className='mt-16'>
+                                <div className="text-white text-sm font-semibold mb-2">({number})</div>
+                                <h3 className="text-2xl font-extrabold uppercase tracking-tight mb-4">{title}</h3>
+                                <p className="text-white/60 text-[15px] leading-relaxed font-medium">{description}</p>
+                            </div>
+                        </article>
+                    );
+                })}
             </section>
 
+
             {/* Motivation Section */}
-            <section className="mt-28 px-4 md:px-20">
+            <section className="mt-28 px-4">
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     <div>
-                        <h2 className="text-5xl font-extrabold">MOTIVATION</h2>
+                        <h1 className="text-[50px] font-bold">MOTIVATION</h1>
                     </div>
                     <div className="text-white text-lg md:text-xl leading-relaxed space-y-6">
                         <p>
