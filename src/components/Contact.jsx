@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowUpRightFromSquare } from "react-icons/fa6"; // for the small arrows
+import { MdOutlineArrowOutward } from "react-icons/md";
 
 const Contact = () => {
     const navigate = useNavigate();
@@ -52,13 +52,13 @@ const Contact = () => {
                 {/* Social Links */}
                 <div className="flex justify-center items-center gap-10 text-white text-sm md:text-lg font-semibold">
                     <a href="https://www.instagram.com/_harshit.25/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
-                        INSTAGRAM <FaArrowUpRightFromSquare className="text-xs" />
+                        INSTAGRAM <MdOutlineArrowOutward className='text-2xl'/>
                     </a>
                     <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
-                        LINKEDIN <FaArrowUpRightFromSquare className="text-xs" />
+                        LINKEDIN <MdOutlineArrowOutward className='text-2xl'/>
                     </a>
                     <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
-                        TWITTER <FaArrowUpRightFromSquare className="text-xs" />
+                        TWITTER <MdOutlineArrowOutward className='text-2xl'/>
                     </a>
                 </div>
             </div>
