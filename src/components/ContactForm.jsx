@@ -75,8 +75,6 @@ const ContactForm = () => {
 
             <div className="bg-black flex items-center justify-center px-4 md:px-8 py-16">
                 <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
-
-
                     <div className="w-full md:w-1/3 bg-[#111] rounded-lg p-10 flex flex-col space-y-12 text-white min-h-[500px]">
                         <div className="space-y-10">
 
@@ -162,7 +160,6 @@ const ContactForm = () => {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div className="flex flex-col">
@@ -206,11 +203,8 @@ const ContactForm = () => {
                                     {status}
                                 </p>
                             )}
-
                         </form>
-
                     </div>
-
                 </div>
             </div>
 
@@ -220,12 +214,11 @@ const ContactForm = () => {
                     <span className="block md:inline">LET'S</span> <span className="block md:inline">WORK</span>
                 </h1>
 
-                <div className="mt-20 flex flex-col md:flex-row justify-between items-center px-6 md:px-12 text-xl md:text-2xl font-semibold gap-8" id='footer'>
+                <div className="mt-20 flex flex-col md:flex-row justify-between items-center px-6 md:px-12 text-xl md:text-2xl font-semibold gap-6" id='footer'>
                     <p>&copy; {new Date().getFullYear()} ALL RIGHTS RESERVED</p>
                     <div><BackToTopBottom /></div>
                 </div>
             </div>
-
         </>
     );
 };
