@@ -9,7 +9,7 @@ const Header = ({ scrollToSection, refs }) => {
         { label: "HOME", ref: refs.homeRef },
         { label: "PROJECTS", ref: refs.projectsRef },
         { label: "ABOUT", ref: refs.aboutRef },
-        { label: "EDUCATION", ref: refs.educationRef },
+        { label: "SERVICES", ref: refs.servicesRef },
         { label: "CONTACT", ref: refs.contactRef },
     ];
 
@@ -34,7 +34,7 @@ const Header = ({ scrollToSection, refs }) => {
                                     className="cursor-pointer group relative text-white"
                                 >
                                     {item.label}
-                                    <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-white transition-all duration-300 group-hover:w-full" />
+                                    <span className="absolute left-0 bottom-0 h-0.25 w-0 bg-white transition-all duration-300 group-hover:w-full" />
                                 </button>
                             </li>
                         ))}
@@ -70,7 +70,6 @@ const Header = ({ scrollToSection, refs }) => {
             <div
                 className={`fixed top-0 right-0 h-full w-[72%] bg-black z-50 px-6 pt-4 pb-6 flex flex-col items-start space-y-6 shadow-xl transform transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
-                {/* Close Button (X) */}
                 <button
                     onClick={() => setIsMenuOpen(false)}
                     className="self-end text-white"

@@ -39,7 +39,6 @@ const About = () => {
 
     return (
         <main className="bg-black text-white px-4">
-            {/* Intro Header */}
             <h1 className="text-center font-bold tracking-tight mb-16">
                 <span className="block text-[40px] sm:text-[60px] md:text-[100px] leading-[1]">
                     MORE ABOUT
@@ -48,8 +47,6 @@ const About = () => {
                     HARSHIT©
                 </span>
             </h1>
-
-            {/* Profile Section */}
             <section className="flex justify-center mb-20">
                 <figure className="overflow-hidden rounded-[50%/35%] w-60 h-80 md:w-[488px] md:h-[659px] border-2 border-white-600">
                     <img
@@ -59,8 +56,6 @@ const About = () => {
                     />
                 </figure>
             </section>
-
-            {/* Bio Section */}
             <section className="text-center text-white max-w-5xl mx-auto mb-20">
                 <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-8" id="section-heading">
                     I'M A CREATIVE FRONTEND DEVELOPER BASED IN INDIA.<br />
@@ -72,7 +67,6 @@ const About = () => {
                     <span className="italic font-semibold text-white">"unexpected solutions"</span> and believe great design tells a story
                     and solves a problem at the same time.
                 </p>
-
                 <div className="mt-10">
                     <a
                         href="https://drive.google.com/file/d/1Bobdd2gRXL6-r2sMy2zhQFp4Vi_tYjze/view"
@@ -87,31 +81,22 @@ const About = () => {
                     </a>
                 </div>
             </section>
-
-
-            {/* EXPERTISE SECTION */}
             <section className="mb-4 md:px-4">
                 <h1 className="text-[44px] sm:text-[64px] md:text-[96px] leading-none font-bold tracking-tight md:text-left">
                     MY<br />EXPERTISE
                 </h1>
             </section>
-
             <section className="max-w-9xl mx-auto md:px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
                 {expertiseData.map(({ number, title, description }, index) => {
                     const colSpan = index < 3 ? 'lg:col-span-2' : 'lg:col-span-3';
-
                     return (
                         <article
                             key={number}
                             className={`relative ${colSpan} bg-[#0a0a0a] text-white rounded-xl p-6 lg:p-8 border border-[#1c1c1c] hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[260px]`}
                         >
-                            {/* Plus icon hidden on mobile */}
                             <div className="absolute top-5 right-5 hidden md:flex items-center justify-center w-14 h-14 rounded-full border border-white/10 text-white/80 text-4xl font-medium hover:bg-white hover:text-black transition-all duration-300">
                                 +
                             </div>
-
-
-
                             <div className='mt-16'>
                                 <div className="text-white text-sm font-semibold mb-2">({number})</div>
                                 <h3 className="text-2xl font-extrabold uppercase tracking-tight mb-4">{title}</h3>
@@ -121,9 +106,6 @@ const About = () => {
                     );
                 })}
             </section>
-
-
-            {/* Motivation Section */}
             <section className="mt-28 px-4">
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     <div>

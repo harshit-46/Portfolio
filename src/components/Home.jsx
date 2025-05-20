@@ -56,7 +56,7 @@ const Home = () => {
                         className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition"
                         onClick={handleBtnClick}
                     >
-                        Get In Touch
+                        Let's Talk
                     </button>
                 </div>
             </div>
