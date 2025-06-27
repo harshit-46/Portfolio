@@ -64,6 +64,15 @@ export default Projects;
 
 import React, { useEffect, useRef, useState } from 'react';
 import project1 from '../assets/icons/sign.png';
+import project2 from '../assets/icons/sign.png';
+import project3 from '../assets/icons/sign.png';
+import project4 from '../assets/icons/sign.png';
+import project5 from '../assets/icons/sign.png';
+import project6 from '../assets/icons/sign.png';
+import project7 from '../assets/icons/sign.png';
+import project8 from '../assets/icons/sign.png';
+import project9 from '../assets/icons/sign.png';
+import project10 from '../assets/icons/sign.png';
 
 // Hook: Detect Scroll Direction
 const useScrollDirection = () => {
@@ -84,7 +93,6 @@ const useScrollDirection = () => {
     return direction;
 };
 
-// Hook: Detect if element is in viewport
 const useInView = (threshold = 0.5) => {
     const ref = useRef(null);
     const [inView, setInView] = useState(false);
@@ -107,7 +115,7 @@ const useInView = (threshold = 0.5) => {
 
 const projectList = [
     {
-        title: 'Portfolio Website',
+        title: 'Algoviser',
         type: 'Web Design',
         year: '2024',
         img: project1,
@@ -116,56 +124,56 @@ const projectList = [
         title: 'NewsMonkey',
         type: 'News App',
         year: '2023',
-        img: project1,
+        img: project2,
     },
     {
-        title: 'Snake Game',
-        type: 'Mini Game',
+        title: 'Transpiler',
+        type: 'Language to Language converter',
         year: '2022',
-        img: project1,
-    },
-    {
-        title: 'Website Clone',
-        type: 'Clone',
-        year: '2022',
-        img: project1,
-    },
-    {
-        title: 'Myntra eCommerce Website',
-        type: 'eCommerce',
-        year: '2022',
-        img: project1,
-    },
-    {
-        title: 'Currency Converter',
-        type: 'Mini Game',
-        year: '2022',
-        img: project1,
-    },
-    {
-        title: 'Calculator',
-        type: 'Mini Game',
-        year: '2022',
-        img: project1,
+        img: project3,
     },
     {
         title: 'TextUtils App',
         type: 'Mini Game',
         year: '2022',
-        img: project1,
+        img: project4,
     },
     {
         title: 'Chat App',
         type: 'Mini Game',
         year: '2022',
-        img: project1,
+        img: project5,
     },
     {
         title: 'iNoteBook App',
         type: 'Mini Game',
         year: '2022',
-        img: project1,
+        img: project6,
     },
+    {
+        title: 'Snake Game',
+        type: 'Mini Game',
+        year: '2022',
+        img: project7,
+    },
+    {
+        title: 'eCommerce Website',
+        type: 'eCommerce',
+        year: '2022',
+        img: project8,
+    },
+    {
+        title: 'Currency Converter',
+        type: 'Mini Game',
+        year: '2022',
+        img: project9,
+    },
+    {
+        title: 'Calculator',
+        type: 'Mini Game',
+        year: '2022',
+        img: project10,
+    }
 ];
 
 const Projects = () => {
