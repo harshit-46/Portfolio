@@ -33,7 +33,10 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center px-4 pb-12 md:px-0 md:pb-0 mt-8">
                 <div className="order-1 md:order-none text-white">
-                    <button className="px-4 py-2 border border-white rounded hover:bg-white hover:text-black transition">Resume</button>
+                    <a href="/path/to/resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <button className="px-4 py-2 border border-white rounded bg-white text-black font-semibold">Resume</button>
+                    </a>
+
                 </div>
 
                 <div
@@ -50,7 +53,7 @@ const Home = () => {
 
                 <div className="order-3 md:order-none text-white text-center md:text-left max-w-md mt-6 md:mt-0 px-2 md:px-0">
                     <p className="text-lg md:text-xl font-medium leading-relaxed">
-                        Hi, I'm <strong>Harshit</strong>, a passionate Full - Stack developer dedicated to creating user-friendly digital experiences.
+                        Hi, I'm <strong>Harshit</strong>, a passionate Full-Stack developer dedicated to creating user-friendly digital experiences.
                     </p>
                     <button
                         className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition"
