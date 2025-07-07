@@ -4,3 +4,41 @@
     font-weight: 500;
     font-style: normal;
 }
+
+@keyframes drift {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.6;
+    }
+}
+
+@keyframes streakMove {
+    0% {
+        transform: translateX(0) rotate(var(--rotation));
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateX(40px) rotate(var(--rotation));
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(0) rotate(var(--rotation));
+        opacity: 0.2;
+    }
+}
+
+.drifting {
+    animation: drift 4s ease-in-out infinite;
+}
+
+.streaking {
+    animation: streakMove 6s ease-in-out infinite;
+}
