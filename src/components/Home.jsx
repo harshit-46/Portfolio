@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Palette, Code, Zap } from "lucide-react";
 import CountUp from 'react-countup';
-import { Briefcase, Users, Clock } from "lucide-react";
 import '../assets/CSS/home.css';
 import myPhoto from '../assets/icons/Profile.jpg';
 
@@ -87,7 +86,7 @@ const Home = () => {
                             top: streak.top,
                             animationDelay: streak.animationDelay,
                             transform: `rotate(${streak.rotation})`,
-                            "--rotation": streak.rotation, // Required for rotate in keyframes
+                            "--rotation": streak.rotation, 
                         }}
                     />
 
@@ -117,15 +116,12 @@ const Home = () => {
             <section className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center px-4 pb-12 mt-8">
                 <div className="order-1 md:order-none text-white text-center md:text-left">
                     <div className="grid grid-cols-2 gap-6">
-                        {/* Projects */}
                         <div className="flex flex-col items-center hover:scale-105 transition">
                             <span className="text-4xl font-bold text-purple-400">
                                 <CountUp end={15} duration={2} />+
                             </span>
                             <span className="text-sm text-white mt-1">Projects Completed</span>
                         </div>
-
-                        {/* Technologies */}
                         <div className="flex flex-col items-center hover:scale-105 transition">
                             <span className="text-4xl font-bold text-blue-400">
                                 <CountUp end={10} duration={2} />+
@@ -134,8 +130,6 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
-
 
                 <div
                     onClick={handleOnClick}
@@ -166,10 +160,10 @@ const Home = () => {
 
                 <div className="order-3 md:order-none text-white text-center md:text-left max-w-md mt-6 md:mt-0 px-2">
                     <p className="text-lg md:text-xl font-medium leading-relaxed">
-                        Hi, I'm <strong>Harshit</strong>, a passionate Full-Stack developer dedicated to creating user-friendly digital experiences.
+                        Hi, I'm Harshit, a skilled Full-Stack developer dedicated to creating user-friendly digital experiences.
                     </p>
                     <button
-                        className="mt-6 px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition"
+                        className="mt-6 px-6 py-2 bg-white text-black font-semibold cursor-pointer hover:bg-gray-200 transition"
                         onClick={handleBtnClick}
                     >
                         Let's Talk

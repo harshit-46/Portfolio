@@ -62,7 +62,7 @@ const ContactForm = () => {
                     <span className="block md:inline">SAY</span> <span className="block md:inline">HELLO!</span>
                 </h1>
 
-                <p className="max-w-3xl mx-auto text-stone-400 text-lg md:text-xl">
+                <p className="max-w-3xl mx-auto text-white/70 text-lg md:text-xl">
                     Fill out the form below to get in touch with me. I'm always excited to hear about new opportunities and I'll do my best to respond within 24 hours.
                 </p>
             </div>

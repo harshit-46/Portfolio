@@ -84,30 +84,6 @@ const projectList = [
         type: 'Mini Game',
         year: '2022',
         img: project6,
-    },
-    {
-        title: 'Snake Game',
-        type: 'Mini Game',
-        year: '2022',
-        img: project7,
-    },
-    {
-        title: 'eCommerce Website',
-        type: 'eCommerce',
-        year: '2022',
-        img: project8,
-    },
-    {
-        title: 'Currency Converter',
-        type: 'Mini Game',
-        year: '2022',
-        img: project9,
-    },
-    {
-        title: 'Calculator',
-        type: 'Mini Game',
-        year: '2022',
-        img: project10,
     }
 ];
 
