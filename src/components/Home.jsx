@@ -58,7 +58,7 @@ const Home = () => {
 
 
     return (
-        <main className="min-h-screen w-full bg-black pt-28 overflow-hidden relative">
+        <main className="min-h-screen w-full bg-black pt-24 overflow-hidden relative border border-red-600">
             <div className="absolute inset-0 pointer-events-none">
                 {bubbles.map(bubble => (
                     <div
@@ -127,6 +127,9 @@ const Home = () => {
                                 <CountUp end={10} duration={2} />+
                             </span>
                             <span className="text-sm text-white mt-1">Technologies</span>
+                        </div>
+                        <div>
+                            <button>Download Resume</button>
                         </div>
                     </div>
                 </div>

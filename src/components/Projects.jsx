@@ -5,10 +5,6 @@ import project3 from '../assets/icons/sign.png';
 import project4 from '../assets/icons/sign.png';
 import project5 from '../assets/icons/sign.png';
 import project6 from '../assets/icons/sign.png';
-import project7 from '../assets/icons/sign.png';
-import project8 from '../assets/icons/sign.png';
-import project9 from '../assets/icons/sign.png';
-import project10 from '../assets/icons/sign.png';
 
 const useScrollDirection = () => {
     const [direction, setDirection] = useState('down');
@@ -99,8 +95,8 @@ const Projects = () => {
         }`;
 
     return (
-        <div className="bg-black text-white px-4 md:px-10 py-24 min-h-screen">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20">
+        <div className="bg-black text-white px-4 md:px-10 py-24 min-h-screen border border-yellow-600">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between border border-pink-600 mb-20">
                 <h1
                     ref={headingRef}
                     className={`${headingClasses} text-[44px] sm:text-[64px] md:text-[96px] leading-none font-bold tracking-tight text-center md:text-left`}
