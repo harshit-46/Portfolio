@@ -58,7 +58,7 @@ const Home = () => {
 
 
     return (
-        <main className="min-h-screen w-full bg-black pt-24 overflow-hidden relative border border-red-600">
+        <main className="min-h-screen w-full bg-black pt-24 overflow-hidden relative">
             <div className="absolute inset-0 pointer-events-none">
                 {bubbles.map(bubble => (
                     <div

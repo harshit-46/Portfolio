@@ -1,5 +1,3 @@
-// #f0f0e4
-
 import React, { useRef } from "react";
 import Home from "./Home";
 import Projects from "./Projects";
