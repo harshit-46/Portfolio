@@ -1,284 +1,424 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback, useMemo } from "react";
 import projectList from "../components/ProjectData";
 
+// Animation variants
+const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 }
+};
+
+const modalVariants = {
+    hidden: { scale: 0.95, opacity: 0, y: 20 },
+    visible: {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: "spring",
+            stiffness: 400,
+            damping: 25,
+            duration: 0.3
+        }
+    },
+    exit: { scale: 0.95, opacity: 0, y: 20 }
+};
+
+const contentVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { delay: 0.1, duration: 0.5 }
+    }
+};
+
+// Modern glassmorphism card component
+const GlassCard = ({ children, className = "", ...props }) => (
+    <div
+        className={`backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-2xl ${className}`}
+        {...props}
+    >
+        {children}
+    </div>
+);
+
+// Floating section component with modern styling
+const ModernSection = ({ title, children, icon, className = "" }) => (
+    <motion.div
+        className={`group ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+    >
+        <GlassCard className="p-8 hover:bg-white/10 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+                {icon && <span className="text-2xl">{icon}</span>}
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    {title}
+                </h2>
+            </div>
+            <div className="text-gray-200 leading-relaxed text-lg">
+                {children}
+            </div>
+        </GlassCard>
+    </motion.div>
+);
+
+// Hero section with stunning visuals
+const ProjectHero = ({ project, onImageError }) => (
+    <motion.div
+        className="relative overflow-hidden rounded-3xl mb-12"
+        variants={contentVariants}
+    >
+        {project.img ? (
+            <div className="relative h-[50vh] md:h-[60vh] lg:h-[70vh]">
+                <img
+                    src={project.img}
+                    alt={`${project.title} project`}
+                    className="w-full h-full object-cover"
+                    onError={onImageError}
+                    loading="lazy"
+                />
+                {/* Modern gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-purple-600/20"></div>
+
+                {/* Floating content over image */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                    >
+                        <div className="flex flex-wrap items-center gap-4 mb-6">
+                            <span className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-semibold backdrop-blur-sm shadow-lg">
+                                {project.type}
+                            </span>
+                            {project.year && (
+                                <span className="px-4 py-2 bg-black/30 backdrop-blur-sm text-white rounded-full text-sm font-medium border border-white/20">
+                                    {project.year}
+                                </span>
+                            )}
+                        </div>
+
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-tight tracking-tight">
+                            {project.title}
+                        </h1>
+                    </motion.div>
+                </div>
+            </div>
+        ) : (
+            // Fallback hero without image
+            <div className="relative h-96 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl flex items-center justify-center">
+                <div className="text-center">
+                    <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+                        <span className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-semibold">
+                            {project.type}
+                        </span>
+                        {project.year && (
+                            <span className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-medium border border-white/20">
+                                {project.year}
+                            </span>
+                        )}
+                    </div>
+
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+                        {project.title}
+                    </h1>
+                </div>
+            </div>
+        )}
+    </motion.div>
+);
+
+// Technology pills with modern styling
+const TechPill = ({ tech, index }) => (
+    <motion.span
+        key={tech}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: index * 0.05, duration: 0.3 }}
+        className="group relative overflow-hidden"
+    >
+        <div className="px-6 py-3 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10 rounded-full text-white font-medium hover:from-indigo-500/40 hover:to-purple-500/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/25">
+            {tech}
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 rounded-full transition-all duration-300"></div>
+        </div>
+    </motion.span>
+);
+
+// Action buttons with modern styling
+const ActionButton = ({ href, children, variant = "primary", icon }) => {
+    const baseClasses = "group relative overflow-hidden px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-opacity-50 flex items-center gap-3";
+
+    const variants = {
+        primary: "bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white shadow-lg hover:shadow-emerald-500/25 focus:ring-emerald-500",
+        secondary: "bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white shadow-lg hover:shadow-gray-500/25 focus:ring-gray-500"
+    };
+
+    return (
+        <motion.a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${baseClasses} ${variants[variant]}`}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+        >
+            <span className="relative z-10 flex items-center gap-3">
+                {icon && <span className="text-xl">{icon}</span>}
+                {children}
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/10 group-hover:to-white/10 transition-all duration-300"></div>
+        </motion.a>
+    );
+};
+
+// Error modal with modern design
+const ErrorModal = ({ onClose }) => (
+    <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+        variants={backdropVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        onClick={onClose}
+    >
+        <motion.div
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 max-w-md w-full shadow-2xl text-center border border-white/10"
+            variants={modalVariants}
+            onClick={(e) => e.stopPropagation()}
+        >
+            <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">❌</span>
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-4">Project Not Found</h2>
+            <p className="text-gray-300 mb-8">The requested project could not be found.</p>
+            <button
+                onClick={onClose}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-2xl transition-all duration-200 font-semibold hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                autoFocus
+            >
+                Go Back
+            </button>
+        </motion.div>
+    </motion.div>
+);
+
+// Main component
 const ProjectModal = () => {
     const { projectId } = useParams();
     const navigate = useNavigate();
     const modalRef = useRef(null);
-    const project = projectList.find((p) => p.id === projectId);
 
-    const closeModal = () => {
+    const project = useMemo(() =>
+        projectList.find((p) => p.id === projectId),
+        [projectId]
+    );
+
+    const closeModal = useCallback(() => {
         navigate("/", { replace: true });
-    };
+    }, [navigate]);
 
-    // Handle keyboard events
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === "Escape") {
-                closeModal();
-            }
+            if (event.key === "Escape") closeModal();
         };
-
         document.addEventListener("keydown", handleKeyDown);
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, []);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [closeModal]);
 
-    // Handle body scroll and focus management
     useEffect(() => {
         if (!project) return;
 
+        const originalOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
-        
-        if (modalRef.current) {
-            modalRef.current.focus();
-        }
+
+        const timeoutId = setTimeout(() => {
+            modalRef.current?.focus();
+        }, 100);
 
         return () => {
-            document.body.style.overflow = "";
+            document.body.style.overflow = originalOverflow;
+            clearTimeout(timeoutId);
         };
     }, [project]);
 
-    // If project not found, show error state
+    const handleImageError = useCallback((e) => {
+        e.target.style.display = 'none';
+    }, []);
+
     if (!project) {
         return (
-            <AnimatePresence>
-                <motion.div
-                    className="fixed inset-4 z-50 flex items-center justify-center bg-black bg-opacity-80"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={closeModal}
-                >
-                    <motion.div
-                        className="bg-zinc-800 rounded-2xl p-8 max-w-md w-full shadow-2xl text-center"
-                        initial={{ scale: 0.8, opacity: 0, y: 100 }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.8, opacity: 0, y: 100 }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <h2 className="text-xl font-semibold text-white mb-4">Project Not Found</h2>
-                        <p className="text-gray-300 mb-6">The requested project could not be found.</p>
-                        <button
-                            onClick={closeModal}
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
-                        >
-                            Go Back
-                        </button>
-                    </motion.div>
-                </motion.div>
+            <AnimatePresence mode="wait">
+                <ErrorModal onClose={closeModal} />
             </AnimatePresence>
         );
     }
 
+    const description = project.Modaldescription || project.description;
+
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             <motion.div
-                key="backdrop"
-                className="fixed inset-4 z-50 bg-black bg-opacity-90"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 bg-gradient-to-br from-black/90 via-gray-900/95 to-black/90 backdrop-blur-sm"
+                variants={backdropVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
                 onClick={closeModal}
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="modal-title"
-                aria-describedby="modal-description"
             >
                 <motion.div
                     ref={modalRef}
-                    key="modal"
-                    className="w-full h-full bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl shadow-2xl relative focus:outline-none overflow-hidden"
-                    initial={{ scale: 0.9, opacity: 0, y: 50 }}
-                    animate={{ scale: 1, opacity: 1, y: 0 }}
-                    exit={{ scale: 0.9, opacity: 0, y: 50 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className="relative w-full h-full overflow-hidden"
+                    variants={modalVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
                     onClick={(e) => e.stopPropagation()}
                     tabIndex={-1}
                 >
-                    {/* Close Button */}
-                    <button
+                    {/* Modern close button */}
+                    <motion.button
                         onClick={closeModal}
-                        className="absolute top-6 right-6 z-10 text-3xl text-gray-400 hover:text-red-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 rounded-full w-12 h-12 flex items-center justify-center bg-black bg-opacity-20 backdrop-blur-sm"
-                        aria-label="Close modal"
+                        className="fixed top-8 right-8 z-20 w-14 h-14 bg-black/40 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 group"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                     >
-                        &times;
-                    </button>
-                    
-                    {/* Scrollable Content */}
-                    <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-600">
-                        <div className="p-8 lg:p-12">
-                            {/* Project Image */}
-                            {project.img && (
-                                <div className="mb-8 relative">
-                                    <img
-                                        src={project.img}
-                                        alt={project.title}
-                                        className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-xl shadow-2xl"
-                                        onError={(e) => {
-                                            e.target.style.display = 'none';
-                                        }}
-                                        loading="lazy"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
-                                </div>
-                            )}
+                        <svg className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </motion.button>
 
-                            {/* Project Header */}
-                            <div className="mb-8">
-                                <h1 
-                                    id="modal-title" 
-                                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
-                                >
-                                    {project.title}
-                                </h1>
-                                
-                                <div className="flex flex-wrap items-center gap-4 text-gray-300">
-                                    <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
-                                        {project.type}
-                                    </span>
-                                    <span className="text-lg font-medium">{project.year}</span>
-                                </div>
-                            </div>
+                    {/* Scrollable content with custom scrollbar */}
+                    <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 hover:scrollbar-thumb-white/40">
+                        <div className="min-h-full px-8 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
+
+                            {/* Hero Section */}
+                            <ProjectHero project={project} onImageError={handleImageError} />
 
                             {/* Content Grid */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <motion.div
+                                className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-12"
+                                variants={contentVariants}
+                                initial="hidden"
+                                animate="visible"
+                            >
                                 {/* Left Column */}
                                 <div className="space-y-8">
-                                    {/* Project Description */}
-                                    <section>
-                                        <h2 className="text-2xl font-bold text-white mb-4 border-b border-zinc-600 pb-2">
-                                            Project Overview
-                                        </h2>
-                                        <div className="text-gray-300 leading-relaxed text-lg">
-                                            {typeof project.description === 'string' ? (
-                                                <p>{project.Modaldescription}</p>
-                                            ) : (
-                                                project.description
-                                            )}
-                                        </div>
-                                    </section>
+                                    <ModernSection title="Overview" icon="📋">
+                                        <p className="text-xl leading-relaxed">
+                                            {description || "A comprehensive project showcasing modern development practices and innovative solutions."}
+                                        </p>
+                                    </ModernSection>
 
-                                    {/* Project Approach */}
-                                    <section>
-                                        <h2 className="text-2xl font-bold text-white mb-4 border-b border-zinc-600 pb-2">
-                                            Approach & Process
-                                        </h2>
-                                        <div className="text-gray-300 leading-relaxed text-lg">
-                                            {project.approach ? (
-                                                typeof project.approach === 'string' ? (
-                                                    <p>{project.approach}</p>
-                                                ) : (
-                                                    project.approach
-                                                )
-                                            ) : (
-                                                <p className="text-gray-400 italic">
-                                                    This project followed a systematic approach focusing on user experience, 
-                                                    clean code architecture, and modern development practices.
-                                                </p>
-                                            )}
+                                    <ModernSection title="Approach" icon="🎯">
+                                        <div className="text-lg leading-relaxed">
+                                            {project.approach || "This project followed a systematic approach focusing on user experience, clean code architecture, and modern development practices."}
                                         </div>
-                                    </section>
+                                    </ModernSection>
                                 </div>
 
                                 {/* Right Column */}
                                 <div className="space-y-8">
-                                    {/* What I Learned */}
-                                    <section>
-                                        <h2 className="text-2xl font-bold text-white mb-4 border-b border-zinc-600 pb-2">
-                                            Key Learnings
-                                        </h2>
-                                        <div className="text-gray-300 leading-relaxed text-lg">
+                                    <ModernSection title="Key Learnings" icon="💡">
+                                        <div className="space-y-4">
                                             {project.learnings ? (
                                                 typeof project.learnings === 'string' ? (
-                                                    <p>{project.learnings}</p>
+                                                    <p className="text-lg">{project.learnings}</p>
                                                 ) : (
                                                     project.learnings
                                                 )
                                             ) : (
                                                 <div className="space-y-3">
-                                                    <p>• Enhanced understanding of modern web development practices</p>
-                                                    <p>• Improved skills in user interface design and user experience</p>
-                                                    <p>• Gained experience with project architecture and code organization</p>
-                                                    <p>• Developed problem-solving abilities through technical challenges</p>
+                                                    <div className="flex items-start gap-3">
+                                                        <span className="text-emerald-400 mt-1">▸</span>
+                                                        <span>Enhanced understanding of modern web development practices</span>
+                                                    </div>
+                                                    <div className="flex items-start gap-3">
+                                                        <span className="text-blue-400 mt-1">▸</span>
+                                                        <span>Improved skills in user interface design and user experience</span>
+                                                    </div>
+                                                    <div className="flex items-start gap-3">
+                                                        <span className="text-purple-400 mt-1">▸</span>
+                                                        <span>Gained experience with project architecture and code organization</span>
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
-                                    </section>
+                                    </ModernSection>
 
-                                    {/* Difficulties Faced */}
-                                    <section>
-                                        <h2 className="text-2xl font-bold text-white mb-4 border-b border-zinc-600 pb-2">
-                                            Challenges & Solutions
-                                        </h2>
-                                        <div className="text-gray-300 leading-relaxed text-lg">
+                                    <ModernSection title="Challenges" icon="⚡">
+                                        <div className="space-y-4">
                                             {project.difficulties ? (
                                                 typeof project.difficulties === 'string' ? (
-                                                    <p>{project.difficulties}</p>
+                                                    <p className="text-lg">{project.difficulties}</p>
                                                 ) : (
                                                     project.difficulties
                                                 )
                                             ) : (
-                                                <div className="space-y-3">
-                                                    <p>• <span className="text-red-400 font-medium">Challenge:</span> Complex state management</p>
-                                                    <p>• <span className="text-green-400 font-medium">Solution:</span> Implemented efficient data flow patterns</p>
-                                                    <p>• <span className="text-red-400 font-medium">Challenge:</span> Performance optimization</p>
-                                                    <p>• <span className="text-green-400 font-medium">Solution:</span> Applied best practices for code efficiency</p>
+                                                <div className="space-y-4">
+                                                    <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+                                                        <span className="text-red-400 font-semibold">Challenge:</span> Complex state management
+                                                    </div>
+                                                    <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                                                        <span className="text-emerald-400 font-semibold">Solution:</span> Implemented efficient data flow patterns
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
-                                    </section>
+                                    </ModernSection>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            {/* Technologies Used */}
-                            {project.technologies && (
-                                <section className="mt-12">
-                                    <h2 className="text-2xl font-bold text-white mb-6 border-b border-zinc-600 pb-2">
-                                        Technologies & Tools
-                                    </h2>
-                                    <div className="flex flex-wrap gap-3">
-                                        {project.technologies.map((tech, index) => (
-                                            <span
-                                                key={index}
-                                                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </section>
+                            {/* Technologies Section */}
+                            {project.technologies && project.technologies.length > 0 && (
+                                <motion.div
+                                    className="mb-12"
+                                    variants={contentVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                >
+                                    <ModernSection title="Technologies" icon="🛠️">
+                                        <div className="flex flex-wrap gap-3">
+                                            {project.technologies.map((tech, index) => (
+                                                <TechPill key={tech} tech={tech} index={index} />
+                                            ))}
+                                        </div>
+                                    </ModernSection>
+                                </motion.div>
                             )}
 
-                            {/* Project Links */}
+                            {/* Action Buttons */}
                             {(project.liveUrl || project.githubUrl) && (
-                                <section className="mt-12 pt-8 border-t border-zinc-600">
-                                    <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                                        {project.liveUrl && (
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-3 rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
-                                            >
-                                                🚀 View Live Project
-                                            </a>
-                                        )}
-                                        {project.githubUrl && (
-                                            <a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-800 hover:to-gray-700 text-white px-8 py-3 rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
-                                            >
-                                                📂 View Source Code
-                                            </a>
-                                        )}
-                                    </div>
-                                </section>
+                                <motion.div
+                                    className="flex flex-wrap gap-6 justify-center"
+                                    variants={contentVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                >
+                                    {project.liveUrl && (
+                                        <ActionButton
+                                            href={project.liveUrl}
+                                            variant="primary"
+                                            icon="🚀"
+                                        >
+                                            View Live Project
+                                        </ActionButton>
+                                    )}
+                                    {project.githubUrl && (
+                                        <ActionButton
+                                            href={project.githubUrl}
+                                            variant="secondary"
+                                            icon="📂"
+                                        >
+                                            View Source Code
+                                        </ActionButton>
+                                    )}
+                                </motion.div>
                             )}
                         </div>
                     </div>
