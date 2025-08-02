@@ -35,7 +35,7 @@ const ProjectModal = () => {
             >
                 <motion.div
                     key="modal"
-                    className="bg-white rounded-2xl p-8 max-w-xl w-full shadow-xl relative"
+                    className="bg-zinc-700 rounded-2xl p-8 max-w-3xl w-full shadow-xl relative"
                     initial={{ scale: 0.8, opacity: 0, y: 100 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     exit={{ scale: 0.8, opacity: 0, y: 100 }}
@@ -44,7 +44,7 @@ const ProjectModal = () => {
                 >
                     <button
                         onClick={closeModal}
-                        className="absolute top-2 right-3 text-xl text-gray-700 hover:text-red-500"
+                        className="absolute top-2 right-3 text-xl text-white hover:text-red-500"
                     >
                         &times;
                     </button>
