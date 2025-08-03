@@ -35,42 +35,37 @@ const contentVariants = {
     }
 };
 
-// Modern glassmorphism card component
-const GlassCard = ({ children, className = "", ...props }) => (
-    <div
-        className={`backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-2xl ${className}`}
-        {...props}
-    >
-        {children}
-    </div>
-);
-
-// Floating section component with modern styling
-const ModernSection = ({ title, children, icon, className = "" }) => (
+// Modern section heading component
+const SectionHeading = ({ title, icon, className = "" }) => (
     <motion.div
-        className={`group ${className}`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        className={`flex items-center gap-3 mb-6 ${className}`}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
     >
-        <GlassCard className="p-8 hover:bg-white/10 transition-all duration-300">
-            <div className="flex items-center gap-3 mb-6">
-                {icon && <span className="text-2xl">{icon}</span>}
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    {title}
-                </h2>
-            </div>
-            <div className="text-gray-200 leading-relaxed text-lg">
-                {children}
-            </div>
-        </GlassCard>
+        {icon && <span className="text-2xl">{icon}</span>}
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+            {title}
+        </h2>
+    </motion.div>
+);
+
+// Modern content text component
+const ContentText = ({ children, className = "" }) => (
+    <motion.div
+        className={`text-gray-200 leading-relaxed text-lg mb-8 ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+    >
+        {children}
     </motion.div>
 );
 
 // Hero section with stunning visuals
 const ProjectHero = ({ project, onImageError }) => (
     <motion.div
-        className="relative overflow-hidden rounded-3xl mb-12"
+        className="relative overflow-hidden rounded-3xl mb-16"
         variants={contentVariants}
     >
         {project.img ? (
@@ -264,7 +259,7 @@ const ProjectModal = () => {
     return (
         <AnimatePresence mode="wait">
             <motion.div
-                className="fixed inset-0 z-50 bg-gradient-to-br from-black/90 via-gray-900/95 to-black/90 backdrop-blur-sm"
+                className="fixed inset-0 z-50 bg-black backdrop-blur-sm"
                 variants={backdropVariants}
                 initial="hidden"
                 animate="visible"
@@ -284,7 +279,7 @@ const ProjectModal = () => {
                     {/* Modern close button */}
                     <motion.button
                         onClick={closeModal}
-                        className="fixed top-8 right-8 z-20 w-14 h-14 bg-black/40 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 group"
+                        className="fixed top-8 right-8 z-20 w-12 h-12 bg-black/40 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 group"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                     >
@@ -300,39 +295,41 @@ const ProjectModal = () => {
                             {/* Hero Section */}
                             <ProjectHero project={project} onImageError={handleImageError} />
 
-                            {/* Content Grid */}
+                            {/* Direct Content Sections */}
                             <motion.div
-                                className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-12"
+                                className="max-w-4xl mx-auto space-y-12"
                                 variants={contentVariants}
                                 initial="hidden"
                                 animate="visible"
                             >
-                                {/* Left Column */}
-                                <div className="space-y-8">
-                                    <ModernSection title="Overview" icon="📋">
-                                        <p className="text-xl leading-relaxed">
-                                            {description || "A comprehensive project showcasing modern development practices and innovative solutions."}
-                                        </p>
-                                    </ModernSection>
-
-                                    <ModernSection title="Approach" icon="🎯">
-                                        <div className="text-lg leading-relaxed">
-                                            {project.approach || "This project followed a systematic approach focusing on user experience, clean code architecture, and modern development practices."}
-                                        </div>
-                                    </ModernSection>
+                                {/* Overview Section */}
+                                <div>
+                                    <SectionHeading title="Overview"/>
+                                    <ContentText>
+                                        {description || "A comprehensive project showcasing modern development practices and innovative solutions."}
+                                    </ContentText>
                                 </div>
 
-                                {/* Right Column */}
-                                <div className="space-y-8">
-                                    <ModernSection title="Key Learnings" icon="💡">
-                                        <div className="space-y-4">
-                                            {project.learnings ? (
-                                                typeof project.learnings === 'string' ? (
-                                                    <p className="text-lg">{project.learnings}</p>
-                                                ) : (
-                                                    project.learnings
-                                                )
+                                {/* Approach Section */}
+                                <div>
+                                    <SectionHeading title="Approach"/>
+                                    <ContentText>
+                                        {project.approach || "This project followed a systematic approach focusing on user experience, clean code architecture, and modern development practices."}
+                                    </ContentText>
+                                </div>
+
+                                {/* Key Learnings Section */}
+                                <div>
+                                    <SectionHeading title="Key Learnings"/>
+                                    <div className="space-y-4">
+                                        {project.learnings ? (
+                                            typeof project.learnings === 'string' ? (
+                                                <ContentText>{project.learnings}</ContentText>
                                             ) : (
+                                                <ContentText>{project.learnings}</ContentText>
+                                            )
+                                        ) : (
+                                            <ContentText>
                                                 <div className="space-y-3">
                                                     <div className="flex items-start gap-3">
                                                         <span className="text-emerald-400 mt-1">▸</span>
@@ -347,19 +344,23 @@ const ProjectModal = () => {
                                                         <span>Gained experience with project architecture and code organization</span>
                                                     </div>
                                                 </div>
-                                            )}
-                                        </div>
-                                    </ModernSection>
+                                            </ContentText>
+                                        )}
+                                    </div>
+                                </div>
 
-                                    <ModernSection title="Challenges" icon="⚡">
-                                        <div className="space-y-4">
-                                            {project.difficulties ? (
-                                                typeof project.difficulties === 'string' ? (
-                                                    <p className="text-lg">{project.difficulties}</p>
-                                                ) : (
-                                                    project.difficulties
-                                                )
+                                {/* Challenges Section */}
+                                <div>
+                                    <SectionHeading title="Challenges"/>
+                                    <div className="space-y-4">
+                                        {project.difficulties ? (
+                                            typeof project.difficulties === 'string' ? (
+                                                <ContentText>{project.difficulties}</ContentText>
                                             ) : (
+                                                <ContentText>{project.difficulties}</ContentText>
+                                            )
+                                        ) : (
+                                            <ContentText>
                                                 <div className="space-y-4">
                                                     <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
                                                         <span className="text-red-400 font-semibold">Challenge:</span> Complex state management
@@ -368,58 +369,46 @@ const ProjectModal = () => {
                                                         <span className="text-emerald-400 font-semibold">Solution:</span> Implemented efficient data flow patterns
                                                     </div>
                                                 </div>
-                                            )}
-                                        </div>
-                                    </ModernSection>
+                                            </ContentText>
+                                        )}
+                                    </div>
                                 </div>
-                            </motion.div>
 
-                            {/* Technologies Section */}
-                            {project.technologies && project.technologies.length > 0 && (
-                                <motion.div
-                                    className="mb-12"
-                                    variants={contentVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                >
-                                    <ModernSection title="Technologies" icon="🛠️">
-                                        <div className="flex flex-wrap gap-3">
+                                {/* Technologies Section */}
+                                {project.technologies && project.technologies.length > 0 && (
+                                    <div>
+                                        <SectionHeading title="Technologies"/>
+                                        <div className="flex flex-wrap gap-3 mb-8">
                                             {project.technologies.map((tech, index) => (
                                                 <TechPill key={tech} tech={tech} index={index} />
                                             ))}
                                         </div>
-                                    </ModernSection>
-                                </motion.div>
-                            )}
+                                    </div>
+                                )}
 
-                            {/* Action Buttons */}
-                            {(project.liveUrl || project.githubUrl) && (
-                                <motion.div
-                                    className="flex flex-wrap gap-6 justify-center"
-                                    variants={contentVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                >
-                                    {project.liveUrl && (
-                                        <ActionButton
-                                            href={project.liveUrl}
-                                            variant="primary"
-                                            icon="🚀"
-                                        >
-                                            View Live Project
-                                        </ActionButton>
-                                    )}
-                                    {project.githubUrl && (
-                                        <ActionButton
-                                            href={project.githubUrl}
-                                            variant="secondary"
-                                            icon="📂"
-                                        >
-                                            View Source Code
-                                        </ActionButton>
-                                    )}
-                                </motion.div>
-                            )}
+                                {/* Action Buttons */}
+                                {(project.liveUrl || project.githubUrl) && (
+                                    <div className="flex flex-wrap gap-6 justify-center pt-8">
+                                        {project.liveUrl && (
+                                            <ActionButton
+                                                href={project.liveUrl}
+                                                variant="primary"
+                                                icon="🚀"
+                                            >
+                                                View Live Project
+                                            </ActionButton>
+                                        )}
+                                        {project.githubUrl && (
+                                            <ActionButton
+                                                href={project.githubUrl}
+                                                variant="secondary"
+                                            >
+                                                View Source Code
+                                            </ActionButton>
+                                        )}
+                                    </div>
+                                )}
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>

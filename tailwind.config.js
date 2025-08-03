@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       animation: {
         aurora: "aurora 60s ease-in-out infinite",
+        "fade-in": "fade-in 0.4s ease forwards",
       },
       keyframes: {
         aurora: {
@@ -22,6 +23,10 @@ module.exports = {
           "100%": {
             backgroundPosition: "350% 50%, 350% 50%",
           },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateX(-10px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
         },
       },
       fontFamily: {
