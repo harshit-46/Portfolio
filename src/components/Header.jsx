@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import githubLogo from "../assets/icons/github.png";
 import AppLogo from "../assets/icons/AppLogo.png";
+import '../assets/CSS/header.css';
 
 const Header = ({ scrollToSection, refs }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinks = [
         { label: "HOME", ref: refs.homeRef },
-        { label: "PROJECTS", ref: refs.projectsRef },
+        { label: "PROJECT", ref: refs.projectsRef },
         { label: "ABOUT", ref: refs.aboutRef },
         { label: "SERVICES", ref: refs.servicesRef },
-        { label: "CONTACT", ref: refs.contactRef },
     ];
 
     const handleClick = (ref) => {
@@ -19,36 +18,33 @@ const Header = ({ scrollToSection, refs }) => {
     };
 
     return (
-        <header className="navbar-main bg-black z-50">
-            <nav className="navbar flex items-center justify-between p-4 px-6 md:px-10 border-b border-white/10">
+        <header className="navbar-main bg-black z-50 sticky top-0">
+            <nav className="navbar flex items-center justify-between p-4 px-6 md:px-10">
                 <button onClick={() => scrollToSection(refs.homeRef)} aria-label="Go to Home">
                     <img src={AppLogo} height="80" width="80" alt="App logo" />
                 </button>
 
-                <div className="nav-head hidden md:flex">
-                    <ul className="links flex space-x-4">
+                <div className="nav-head hidden md:flex items-center">
+                    <ul className="links flex space-x-2 mr-8">
                         {navLinks.map((item) => (
                             <li key={item.label}>
                                 <button
                                     onClick={() => handleClick(item.ref)}
-                                    className="cursor-pointer group relative text-white"
+                                    className="cursor-pointer text-white text-sm hover:text-gray-300 transition-colors duration-300"
                                 >
                                     {item.label}
-                                    <span className="absolute left-0 bottom-0 h-0.25 w-0 bg-white transition-all duration-300 group-hover:w-full" />
                                 </button>
                             </li>
                         ))}
                     </ul>
+                    
+                    <button
+                        onClick={() => handleClick(refs.contactRef)}
+                        className="bg-white cursor-pointer text-black px-6 py-2 text-sm font-medium rounded-2xl hover:bg-gray-200 transition-colors duration-300"
+                    >
+                        CONTACT
+                    </button>
                 </div>
-
-                <a
-                    href="https://github.com/harshit-46"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden md:block"
-                >
-                    <img src={githubLogo} height="32" width="32" alt="GitHub Logo" />
-                </a>
 
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -84,16 +80,24 @@ const Header = ({ scrollToSection, refs }) => {
                     {navLinks.map((item) => (
                         <li
                             key={item.label}
-                            className="border-b border-white/20 last:border-b-0 pb-2"
+                            className="pb-2"
                         >
                             <button
                                 onClick={() => handleClick(item.ref)}
-                                className="text-white text-base w-full text-left"
+                                className="text-white text-sm w-full text-left hover:text-gray-300 transition-colors duration-300"
                             >
                                 {item.label}
                             </button>
                         </li>
                     ))}
+                    <li className="border-b border-white/20 pb-2">
+                        <button
+                            onClick={() => handleClick(refs.contactRef)}
+                            className="text-white text-sm w-full text-left hover:text-gray-300 transition-colors duration-300"
+                        >
+                            CONTACT
+                        </button>
+                    </li>
                 </ul>
             </div>
         </header>

@@ -137,6 +137,7 @@ export default About;
 import { useState, useEffect } from 'react';
 import { Plus, Download, ArrowRight, Sparkles, Code, Palette, Target, Zap } from "lucide-react";
 import signature from '../assets/icons/Signature.png';
+import '../assets/CSS/about.css';
 
 const expertiseData = [
     {
@@ -332,9 +333,8 @@ export default function About() {
                                     <img
                                         src={signature}
                                         alt="Harshit's handwritten signature"
-                                        className="w-40 pt-4 filter brightness-0 invert group-hover:scale-110 transition-transform duration-300"
+                                        className="w-40 pt-4 filter brightness-0 invert"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
                                 </div>
                             </figure>
                         </div>
