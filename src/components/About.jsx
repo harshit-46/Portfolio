@@ -216,7 +216,7 @@ export default function About() {
     return (
         <main className="bg-black text-white min-h-screen py-16 sm:py-24 relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
-            <p className='pl-6 text-6xl font-bold about-link tracking-normal'>I'M A CREATIVE FULL STACK DEVELOPER <br /> BASED IN INDIA.
+                <p className='pl-6 text-6xl font-bold about-link tracking-normal'>I'M A CREATIVE FULL STACK DEVELOPER <br /> BASED IN INDIA.
                     MY PASSION FOR BOLD <br /> INTERFACES, ELEGANT TYPOGRAPHY, <br /> AND USER CENTRIC DESIGN SHINES <br />THROUGH MY WORK.</p>
 
                 {/* Red "about me" text, absolutely positioned */}
@@ -245,6 +245,11 @@ export default function About() {
                         ))}
                     </span>
                 </span>
+            </div>
+
+            <div>
+                <p>HI, I am Harshit I specialize in modern web technologies like React, Tailwind CSS, and various web frameworks to bring ideas to life. My approach merges
+                    function and design to create intuitive, elegant digital experiences. I enjoy experimenting with</p>
             </div>
         </main>
     );
