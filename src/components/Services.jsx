@@ -146,10 +146,14 @@ import imgs2 from '../assets/icons/p2.avif';
 import imgs3 from '../assets/icons/p3.avif';
 import imgs4 from '../assets/icons/p4.avif';
 import imgs5 from '../assets/icons/p5.avif';
+import imgs1 from '../assets/icons/p1.jpg';
 import '../assets/CSS/services.css';
+import signature from '../assets/icons/Signature.png';
+
 
 const Services = () => {
     const word1 = "expertise";
+    const word2 = "discipline";
     const [hoveredItem, setHoveredItem] = useState(null);
     const navigate = useNavigate();
 
@@ -180,13 +184,13 @@ const Services = () => {
             title: "Ecommerce Solutions",
             description: "Creating seamless, conversion-focused online stores that drive sales and growth.",
             image: imgs3,
-            technologies: ["Shopify","Stripe", "PayPal", "Magento"]
+            technologies: ["Shopify", "Stripe", "PayPal", "Magento"]
         },
         {
             id: 5,
             title: "Machine Learning & AI Solutions",
             description: "Developing applications that leverage machine learning and artificial intelligence.",
-            image: imgs2,
+            image: imgs1,
             technologies: ["PyTorch", "OpenAI", "Scikit-learn", "Pandas"]
         }
     ];
@@ -245,11 +249,10 @@ const Services = () => {
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className={`w-68 h-68 object-cover rounded-2xl shadow-2xl transition-all duration-500 ease-out transform ${
-                                        hoveredItem === service.id 
-                                            ? 'opacity-100 scale-100' 
-                                            : 'opacity-0 scale-0'
-                                    }`}
+                                    className={`w-68 h-68 object-cover rounded-2xl shadow-2xl transition-all duration-500 ease-out transform ${hoveredItem === service.id
+                                        ? 'opacity-100 scale-100'
+                                        : 'opacity-0 scale-0'
+                                        }`}
                                     loading="lazy"
                                 />
                             </div>
@@ -271,6 +274,49 @@ const Services = () => {
                     </div>
                 ))}
             </div>
+            <section className="mb-28 sm:mb-40 mt-20 px-8">
+                <div className="grid md:grid-cols-2 gap-16 items-start">
+                    <div className="relative">
+                        <h2 className="text-4xl md:text-8xl tracking-tighter text-white sm:text-6xl font-bold">
+                            MOTIVATION
+                        </h2>
+                        <span className="absolute left-15 top-10 flex flex-wrap">
+                            <span className="ser-pro text-[#ff0000] text-5xl sm:text-8xl pr-4 flex">
+                                {word2.split('').map((char, index) => (
+                                    <span
+                                        key={index}
+                                        className="inline-block opacity-0 animate-fade-in"
+                                        style={{ animationDelay: `${index * 0.1}s` }}
+                                    >
+                                        {char}
+                                    </span>
+                                ))}
+                            </span>
+                        </span>
+                    </div>
+                    <div className="text-lg md:text-xl leading-relaxed space-y-8 text-white">
+                        <div className="md:mt-32 md:mr-12">
+                            <p className="mb-4 text-2xl font-medium">
+                                More than a job, web design is an outlet for your vision. You have the power to take an idea from concept
+                                to reality. Your sites can tell a story, "show off a brand" or change lives. As the web expands, so do the possibilities.
+                            </p>
+                            <p className='font-medium text-2xl'>
+                                As a developer, you get to blend art and technology to create
+                                "digital experiences" that inform, entertain, and inspire. Every day is different one day you may be sketching site layouts, the next you're coding up responsive page templates. Web design keeps you on your toes!
+                            </p>
+                        </div>
+                        <figure className="flex justify-center md:justify-start">
+                            <div className="relative group">
+                                <img
+                                    src={signature}
+                                    alt="Harshit's handwritten signature"
+                                    className="w-40 pt-4 filter brightness-0 invert"
+                                />
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

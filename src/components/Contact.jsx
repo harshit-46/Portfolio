@@ -30,14 +30,6 @@ const Contact = () => {
                     </button>
             </div>
 
-            <div className="overflow-hidden rounded-[50%/35%] w-60 h-80 md:w-72 md:h-96 border-2 border-gray-600">
-                <img
-                    src="/your-image.jpg" 
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                />
-            </div>
-
             <div className="max-w-3xl text-center space-y-8">
                 <p className="font-bold text-lg md:text-2xl leading-relaxed">
                     BASED IN INDIA, I AM AN INNOVATIVE DEVELOPER AND DESIGN ENTHUSIAST.

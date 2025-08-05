@@ -219,7 +219,6 @@ export default function About() {
                 <p className='pl-6 text-6xl font-bold about-link tracking-normal'>I'M A CREATIVE FULL STACK DEVELOPER <br /> BASED IN INDIA.
                     MY PASSION FOR BOLD <br /> INTERFACES, ELEGANT TYPOGRAPHY, <br /> AND USER CENTRIC DESIGN SHINES <br />THROUGH MY WORK.</p>
 
-                {/* Red "about me" text, absolutely positioned */}
                 <span className='absolute left-10 sm:left-20 top-80 sm:top-56 flex flex-wrap'>
                     <span className='about-pro text-[#ff0000] text-6xl sm:text-9xl pr-4 flex'>
                         {word1.split('').map((char, index) => (
@@ -247,9 +246,8 @@ export default function About() {
                 </span>
             </div>
 
-            <div>
-                <p>HI, I am Harshit I specialize in modern web technologies like React, Tailwind CSS, and various web frameworks to bring ideas to life. My approach merges
-                    function and design to create intuitive, elegant digital experiences. I enjoy experimenting with</p>
+            <div className='flex pt-12 max-w-6xl border border-yellow-600 float-right'>
+                <p className='font-semibold text-lg'>Hi 👋, I am Harshit I specialize in modern web technologies like React, <br /> Tailwind CSS,and various web frameworks to bring ideas to life. My <br /> approach merges function and design to create intuitive, elegant digital experiences.</p>
             </div>
         </main>
     );
