@@ -17,7 +17,7 @@ const Home = () => {
     };
 
     return (
-        <main className="min-h-screen w-full bg-black pt-12 overflow-hidden relative border border-pink-600">
+        <main className="min-h-screen w-full bg-black pt-12 overflow-hidden relative">
             <div className="flex justify-center items-center space-x-2 mb-8">
                 <span className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_3px_rgba(34,197,94,0.6)]" />
                 <p className="text-white/70 font-semibold text-sm tracking-wide">AVAILABLE FOR FREELANCE</p>
