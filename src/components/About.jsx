@@ -246,8 +246,8 @@ export default function About() {
                 </span>
             </div>
 
-            <div className='flex pt-12 max-w-6xl border border-yellow-600 float-right'>
-                <p className='font-semibold text-lg'>Hi 👋, I am Harshit I specialize in modern web technologies like React, <br /> Tailwind CSS,and various web frameworks to bring ideas to life. My <br /> approach merges function and design to create intuitive, elegant digital experiences.</p>
+            <div className='flex pt-12 max-w-2xl float-right'>
+                <p className='font-semibold text-lg'>Hi 👋 , I am Harshit I specialize in modern web technologies like React, <br /> Tailwind CSS,and various web frameworks to bring ideas to life. My <br /> approach merges function and design to create intuitive, elegant digital experiences.</p>
             </div>
         </main>
     );
