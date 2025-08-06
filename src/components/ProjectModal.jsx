@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useCallback, useMemo } from "react";
 import projectList from "../components/ProjectData";
 
-// Animation variants
 const backdropVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -35,7 +34,6 @@ const contentVariants = {
     }
 };
 
-// Modern section heading component
 const SectionHeading = ({ title, icon, className = "" }) => (
     <motion.div
         className={`flex items-center gap-3 mb-6 ${className}`}
@@ -50,7 +48,6 @@ const SectionHeading = ({ title, icon, className = "" }) => (
     </motion.div>
 );
 
-// Modern content text component
 const ContentText = ({ children, className = "" }) => (
     <motion.div
         className={`text-gray-200 leading-relaxed text-lg mb-8 ${className}`}
@@ -62,7 +59,6 @@ const ContentText = ({ children, className = "" }) => (
     </motion.div>
 );
 
-// Hero section with stunning visuals
 const ProjectHero = ({ project, onImageError }) => (
     <motion.div
         className="relative overflow-hidden rounded-3xl mb-16"
@@ -81,7 +77,6 @@ const ProjectHero = ({ project, onImageError }) => (
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-purple-600/20"></div>
 
-                {/* Floating content over image */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -106,7 +101,6 @@ const ProjectHero = ({ project, onImageError }) => (
                 </div>
             </div>
         ) : (
-            // Fallback hero without image
             <div className="relative h-96 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl flex items-center justify-center">
                 <div className="text-center">
                     <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
@@ -129,7 +123,6 @@ const ProjectHero = ({ project, onImageError }) => (
     </motion.div>
 );
 
-// Technology pills with modern styling
 const TechPill = ({ tech, index }) => (
     <motion.span
         key={tech}
@@ -145,7 +138,6 @@ const TechPill = ({ tech, index }) => (
     </motion.span>
 );
 
-// Action buttons with modern styling
 const ActionButton = ({ href, children, variant = "primary", icon }) => {
     const baseClasses = "group relative overflow-hidden px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-opacity-50 flex items-center gap-3";
 
@@ -172,7 +164,6 @@ const ActionButton = ({ href, children, variant = "primary", icon }) => {
     );
 };
 
-// Error modal with modern design
 const ErrorModal = ({ onClose }) => (
     <motion.div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
@@ -203,7 +194,6 @@ const ErrorModal = ({ onClose }) => (
     </motion.div>
 );
 
-// Main component
 const ProjectModal = () => {
     const { projectId } = useParams();
     const navigate = useNavigate();
@@ -393,7 +383,6 @@ const ProjectModal = () => {
                                             <ActionButton
                                                 href={project.liveUrl}
                                                 variant="primary"
-                                                icon="🚀"
                                             >
                                                 View Live Project
                                             </ActionButton>
