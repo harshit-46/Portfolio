@@ -1,4 +1,3 @@
-/*
 import {
     SiReact,
     SiTailwindcss,
@@ -103,7 +102,7 @@ export default function About() {
                     </span>
                 </span>
             </div>
-            <div className="max-w-3xl mx-auto pt-12 space-y-4 text-lg font-medium leading-relaxed px-4 border border-pink-600 mt-8">
+            <div className="max-w-3xl mx-auto pt-12 space-y-4 text-lg font-medium leading-relaxed px-4 mt-8">
                 <p>
                     Hi 👋, I'm Harshit — a passionate web developer and aspiring AI
                     engineer who thrives at the intersection of creativity and technology.
@@ -158,8 +157,9 @@ export default function About() {
     );
 }
 
-*/
 
+
+/*
 
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -378,3 +378,4 @@ export default function About() {
 }
 
 
+*/
