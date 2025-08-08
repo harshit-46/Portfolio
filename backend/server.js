@@ -12,7 +12,11 @@ app.use(express.json());
 
 console.log('MongoDB URI:', process.env.MONGODB_URI);
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI , { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'portfolioDB'
+    })
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.error("MongoDB connection error:", err));
 mongoose.connection.once('open', () => {
