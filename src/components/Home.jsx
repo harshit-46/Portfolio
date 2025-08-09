@@ -30,7 +30,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <header className="font-bold leading-none flex flex-col md:flex-row justify-center gap-x-16 items-center text-center md:text-left">
+            <header className="font-bold leading-none flex flex-col md:flex-row md:mt-8 justify-center gap-x-16 items-center text-center md:text-left">
                 <h1
                     id="name1"
                     className="text-white text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] p-0 m-0 select-none cursor-pointer"
@@ -82,7 +82,7 @@ const Home = () => {
 
                 <div className="order-3 md:order-none text-white text-center md:text-left max-w-md mt-6 md:mt-0 px-2">
                     <p className="text-lg md:text-xl font-medium leading-relaxed text-white/90">
-                        Hi, I'm Harshit, a skilled Full-Stack developer dedicated to creating user-friendly digital experiences.
+                        Hi, I'm Harshit, a skilled Full-Stack developer dedicated to creating user friendly digital experiences.
                     </p>
                     <button
                         className="mt-6 px-8 py-3 bg-white text-black font-semibold cursor-pointer hover:bg-gray-100 transition-all duration-300 rounded-lg hover:scale-105 shadow-lg"

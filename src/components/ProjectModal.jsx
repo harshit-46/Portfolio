@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useEffect, useRef, useCallback, useMemo, useState } from "react";
 import projectList from "../components/ProjectData";
 
 const backdropVariants = {
@@ -27,19 +27,18 @@ const modalVariants = {
 
 const contentVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { delay: 0.1, duration: 0.5 }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const staggerContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } }
 };
 
 const SectionHeading = ({ title, icon, className = "" }) => (
     <motion.div
         className={`flex items-center gap-3 mb-6 ${className}`}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
+        variants={contentVariants}
     >
         {icon && <span className="text-2xl">{icon}</span>}
         <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
@@ -51,29 +50,26 @@ const SectionHeading = ({ title, icon, className = "" }) => (
 const ContentText = ({ children, className = "" }) => (
     <motion.div
         className={`text-gray-200 leading-relaxed text-lg mb-8 ${className}`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        variants={contentVariants}
     >
         {children}
     </motion.div>
 );
 
-const ProjectHero = ({ project, onImageError }) => (
+const ProjectHero = ({ project, onImageError, imageError }) => (
     <motion.div
         className="relative overflow-hidden rounded-3xl mb-16"
         variants={contentVariants}
     >
-        {project.img ? (
+        {!imageError && project.img ? (
             <div className="relative h-[50vh] md:h-[60vh] lg:h-[70vh]">
                 <img
                     src={project.img}
-                    alt={`${project.title} project`}
+                    alt={`${project.title} - ${project.type} project`}
                     className="w-full h-full object-cover"
                     onError={onImageError}
                     loading="lazy"
                 />
-                {/* Modern gradient overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-purple-600/20"></div>
 
@@ -101,7 +97,7 @@ const ProjectHero = ({ project, onImageError }) => (
                 </div>
             </div>
         ) : (
-            <div className="relative h-96 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl flex items-center justify-center">
+            <div className="relative h-[50vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl flex items-center justify-center">
                 <div className="text-center">
                     <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
                         <span className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-semibold">
@@ -113,7 +109,6 @@ const ProjectHero = ({ project, onImageError }) => (
                             </span>
                         )}
                     </div>
-
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
                         {project.title}
                     </h1>
@@ -125,22 +120,17 @@ const ProjectHero = ({ project, onImageError }) => (
 
 const TechPill = ({ tech, index }) => (
     <motion.span
-        key={tech}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: index * 0.05, duration: 0.3 }}
+        variants={contentVariants}
         className="group relative overflow-hidden"
     >
         <div className="px-6 py-3 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10 rounded-full text-white font-medium hover:from-indigo-500/40 hover:to-purple-500/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/25">
             {tech}
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 rounded-full transition-all duration-300"></div>
         </div>
     </motion.span>
 );
 
 const ActionButton = ({ href, children, variant = "primary", icon }) => {
     const baseClasses = "group relative overflow-hidden px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-opacity-50 flex items-center gap-3";
-
     const variants = {
         primary: "bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white shadow-lg hover:shadow-emerald-500/25 focus:ring-emerald-500",
         secondary: "bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white shadow-lg hover:shadow-gray-500/25 focus:ring-gray-500"
@@ -155,11 +145,8 @@ const ActionButton = ({ href, children, variant = "primary", icon }) => {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
         >
-            <span className="relative z-10 flex items-center gap-3">
-                {icon && <span className="text-xl">{icon}</span>}
-                {children}
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/10 group-hover:to-white/10 transition-all duration-300"></div>
+            {icon && <span className="text-xl">{icon}</span>}
+            {children}
         </motion.a>
     );
 };
@@ -198,6 +185,7 @@ const ProjectModal = () => {
     const { projectId } = useParams();
     const navigate = useNavigate();
     const modalRef = useRef(null);
+    const [imageError, setImageError] = useState(false);
 
     const project = useMemo(() =>
         projectList.find((p) => p.id === projectId),
@@ -218,23 +206,11 @@ const ProjectModal = () => {
 
     useEffect(() => {
         if (!project) return;
-
         const originalOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
-
-        const timeoutId = setTimeout(() => {
-            modalRef.current?.focus();
-        }, 100);
-
-        return () => {
-            document.body.style.overflow = originalOverflow;
-            clearTimeout(timeoutId);
-        };
+        modalRef.current?.focus();
+        return () => { document.body.style.overflow = originalOverflow; };
     }, [project]);
-
-    const handleImageError = useCallback((e) => {
-        e.target.style.display = 'none';
-    }, []);
 
     if (!project) {
         return (
@@ -266,134 +242,66 @@ const ProjectModal = () => {
                     onClick={(e) => e.stopPropagation()}
                     tabIndex={-1}
                 >
-                    {/* Modern close button */}
                     <motion.button
                         onClick={closeModal}
-                        className="fixed top-8 right-8 z-20 w-12 h-12 bg-black/40 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 group"
+                        className="fixed top-4 right-4 sm:top-8 sm:right-8 z-20 w-12 h-12 bg-black/40 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 group"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
+                        aria-label="Close project details"
                     >
                         <svg className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </motion.button>
 
-                    {/* Scrollable content with custom scrollbar */}
-                    <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 hover:scrollbar-thumb-white/40">
+                    <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 hover:scrollbar-thumb-white/40 overscroll-contain">
                         <div className="min-h-full px-8 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
+                            <ProjectHero project={project} imageError={imageError} onImageError={() => setImageError(true)} />
 
-                            {/* Hero Section */}
-                            <ProjectHero project={project} onImageError={handleImageError} />
-
-                            {/* Direct Content Sections */}
                             <motion.div
                                 className="max-w-4xl mx-auto space-y-12"
-                                variants={contentVariants}
+                                variants={staggerContainer}
                                 initial="hidden"
                                 animate="visible"
                             >
-                                {/* Overview Section */}
                                 <div>
-                                    <SectionHeading title="Overview"/>
-                                    <ContentText>
-                                        {description || "A comprehensive project showcasing modern development practices and innovative solutions."}
-                                    </ContentText>
+                                    <SectionHeading title="Overview" />
+                                    <ContentText>{description || "A comprehensive project showcasing modern development practices."}</ContentText>
                                 </div>
 
-                                {/* Approach Section */}
                                 <div>
-                                    <SectionHeading title="Approach"/>
-                                    <ContentText>
-                                        {project.approach || "This project followed a systematic approach focusing on user experience, clean code architecture, and modern development practices."}
-                                    </ContentText>
+                                    <SectionHeading title="Approach" />
+                                    <ContentText>{project.approach || "This project followed a systematic approach focusing on user experience and clean architecture."}</ContentText>
                                 </div>
 
-                                {/* Key Learnings Section */}
                                 <div>
-                                    <SectionHeading title="Key Learnings"/>
-                                    <div className="space-y-4">
-                                        {project.learnings ? (
-                                            typeof project.learnings === 'string' ? (
-                                                <ContentText>{project.learnings}</ContentText>
-                                            ) : (
-                                                <ContentText>{project.learnings}</ContentText>
-                                            )
-                                        ) : (
-                                            <ContentText>
-                                                <div className="space-y-3">
-                                                    <div className="flex items-start gap-3">
-                                                        <span className="text-emerald-400 mt-1">▸</span>
-                                                        <span>Enhanced understanding of modern web development practices</span>
-                                                    </div>
-                                                    <div className="flex items-start gap-3">
-                                                        <span className="text-blue-400 mt-1">▸</span>
-                                                        <span>Improved skills in user interface design and user experience</span>
-                                                    </div>
-                                                    <div className="flex items-start gap-3">
-                                                        <span className="text-purple-400 mt-1">▸</span>
-                                                        <span>Gained experience with project architecture and code organization</span>
-                                                    </div>
-                                                </div>
-                                            </ContentText>
-                                        )}
-                                    </div>
+                                    <SectionHeading title="Key Learnings" />
+                                    <ContentText>{project.learnings || "Enhanced understanding of modern web development practices."}</ContentText>
                                 </div>
 
-                                {/* Challenges Section */}
                                 <div>
-                                    <SectionHeading title="Challenges"/>
-                                    <div className="space-y-4">
-                                        {project.difficulties ? (
-                                            typeof project.difficulties === 'string' ? (
-                                                <ContentText>{project.difficulties}</ContentText>
-                                            ) : (
-                                                <ContentText>{project.difficulties}</ContentText>
-                                            )
-                                        ) : (
-                                            <ContentText>
-                                                <div className="space-y-4">
-                                                    <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-                                                        <span className="text-red-400 font-semibold">Challenge:</span> Complex state management
-                                                    </div>
-                                                    <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                                                        <span className="text-emerald-400 font-semibold">Solution:</span> Implemented efficient data flow patterns
-                                                    </div>
-                                                </div>
-                                            </ContentText>
-                                        )}
-                                    </div>
+                                    <SectionHeading title="Challenges" />
+                                    <ContentText>{project.difficulties || "Managed complex state and improved data flow patterns."}</ContentText>
                                 </div>
 
-                                {/* Technologies Section */}
-                                {project.technologies && project.technologies.length > 0 && (
+                                {project.technologies && (
                                     <div>
-                                        <SectionHeading title="Technologies"/>
+                                        <SectionHeading title="Technologies" />
                                         <div className="flex flex-wrap gap-3 mb-8">
-                                            {project.technologies.map((tech, index) => (
-                                                <TechPill key={tech} tech={tech} index={index} />
+                                            {project.technologies.map((tech, i) => (
+                                                <TechPill key={tech} tech={tech} index={i} />
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
-                                {/* Action Buttons */}
                                 {(project.liveUrl || project.githubUrl) && (
                                     <div className="flex flex-wrap gap-6 justify-center pt-8">
                                         {project.liveUrl && (
-                                            <ActionButton
-                                                href={project.liveUrl}
-                                                variant="primary"
-                                            >
-                                                View Live Project
-                                            </ActionButton>
+                                            <ActionButton href={project.liveUrl} variant="primary">View Live Project</ActionButton>
                                         )}
                                         {project.githubUrl && (
-                                            <ActionButton
-                                                href={project.githubUrl}
-                                                variant="secondary"
-                                            >
-                                                View Source Code
-                                            </ActionButton>
+                                            <ActionButton href={project.githubUrl} variant="secondary">View Source Code</ActionButton>
                                         )}
                                     </div>
                                 )}
