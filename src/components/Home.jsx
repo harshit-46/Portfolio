@@ -68,7 +68,7 @@ const Home = () => {
                             <span className="text-sm text-white/80 mt-1">Technologies</span>
                         </div>
                         <div className="col-span-2 flex justify-center mt-4">
-                            <button className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg border border-gray-700 hover:from-gray-700 hover:to-gray-800" onClick={handleDownload}>
+                            <button className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg border border-gray-700 hover:from-gray-700 hover:to-gray-800 cursor-pointer" onClick={handleDownload}>
                                 Download Resume
                             </button>
                         </div>
