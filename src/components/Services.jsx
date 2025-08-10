@@ -201,7 +201,6 @@ const Services = () => {
 
     return (
         <div className='min-h-screen bg-black pt-20 relative overflow-hidden'>
-
             <div className="px-8 relative z-10">
                 <h1 className="ser-pax text-white text-4xl sm:text-6xl md:text-8xl font-bold">
                     SERVICES

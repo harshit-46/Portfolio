@@ -16,6 +16,13 @@ const Home = () => {
         navigate('/ContactForm');
     };
 
+    const handleDownload = () => {
+        window.open(
+            "https://drive.google.com/file/d/1Bobdd2gRXL6-r2sMy2zhQFp4Vi_tYjze/view",
+            "_blank"
+        );
+    }
+
     return (
         <main className="min-h-screen w-full bg-black pt-12 overflow-hidden relative">
             <div className='flex justify-center'>
@@ -48,20 +55,20 @@ const Home = () => {
             <section className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center px-6 pb-12 max-w-7xl mx-auto">
                 <div className="order-1 md:order-none text-white text-center md:text-left">
                     <div className="grid grid-cols-2 gap-6">
-                        <div className="flex flex-col items-center hover:scale-105 transition-transform duration-300">
+                        <div className="flex flex-col items-center transition-transform duration-300">
                             <span className="text-4xl font-bold text-purple-400">
                                 <CountUp end={15} duration={2} />+
                             </span>
                             <span className="text-sm text-white/80 mt-1">Projects Completed</span>
                         </div>
-                        <div className="flex flex-col items-center hover:scale-105 transition-transform duration-300">
+                        <div className="flex flex-col items-center transition-transform duration-300">
                             <span className="text-4xl font-bold text-blue-400">
                                 <CountUp end={10} duration={2} />+
                             </span>
                             <span className="text-sm text-white/80 mt-1">Technologies</span>
                         </div>
                         <div className="col-span-2 flex justify-center mt-4">
-                            <button className="px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white font-semibold rounded-lg border border-gray-700 hover:from-gray-700 hover:to-gray-800 transition-all duration-300 hover:scale-105 shadow-lg">
+                            <button className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg border border-gray-700 hover:from-gray-700 hover:to-gray-800" onClick={handleDownload}>
                                 Download Resume
                             </button>
                         </div>
@@ -85,18 +92,13 @@ const Home = () => {
                         Hi, I'm Harshit, a skilled Full-Stack developer dedicated to creating user friendly digital experiences.
                     </p>
                     <button
-                        className="mt-6 px-8 py-3 bg-white text-black font-semibold cursor-pointer hover:bg-gray-100 transition-all duration-300 rounded-lg hover:scale-105 shadow-lg"
+                        className="mt-6 px-8 py-3 bg-white text-black font-semibold cursor-pointer hover:bg-gray-100"
                         onClick={handleBtnClick}
                     >
                         Let's Talk
                     </button>
                 </div>
             </section>
-
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-            </div>
         </main>
     );
 };
