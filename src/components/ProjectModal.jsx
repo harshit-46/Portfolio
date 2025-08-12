@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useCallback, useMemo, useState } from "react";
 import projectList from "../components/ProjectData";
+import "../assets/CSS/ProjectModal.css";
+
 
 const backdropVariants = {
     hidden: { opacity: 0 },
@@ -315,3 +317,222 @@ const ProjectModal = () => {
 };
 
 export default ProjectModal;
+
+
+
+/*
+import React, { useState, useEffect, Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+
+const ActionButton = ({ children, variant = "primary", ...props }) => {
+    const baseClasses =
+        "px-4 py-2 rounded-full font-semibold transition-transform duration-300 ease-in-out transform hover:scale-105";
+    const variantClasses =
+        variant === "primary"
+            ? "bg-gradient-to-r from-teal-400 to-blue-500 text-white shadow-lg hover:shadow-xl"
+            : "bg-white text-gray-800 border border-gray-300 shadow-sm hover:shadow-md";
+    return (
+        <button className={`${baseClasses} ${variantClasses}`} {...props}>
+            {children}
+        </button>
+    );
+};
+
+export default function ProjectModal({
+    isOpen: externalIsOpen,
+    onClose,
+    projectId,
+    projectList,
+}) {
+    const [isOpen, setIsOpen] = useState(externalIsOpen || false);
+    const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+    const [imageError, setImageError] = useState(false);
+
+    // Sync with external open state
+    useEffect(() => {
+        setIsOpen(externalIsOpen);
+    }, [externalIsOpen]);
+
+    // Update project index when projectId changes
+    useEffect(() => {
+        if (projectId && projectList.length > 0) {
+            const index = projectList.findIndex((p) => p.id === projectId);
+            if (index !== -1) {
+                setCurrentProjectIndex(index);
+            }
+        }
+    }, [projectId, projectList]);
+
+    const closeModal = () => {
+        setIsOpen(false);
+        if (onClose) onClose();
+    };
+
+    const openModal = () => {
+        setIsOpen(true);
+        setImageError(false);
+    };
+
+    const nextProject = () => {
+        setCurrentProjectIndex((prev) => (prev + 1) % projectList.length);
+        setImageError(false);
+    };
+
+    const prevProject = () => {
+        setCurrentProjectIndex(
+            (prev) => (prev - 1 + projectList.length) % projectList.length
+        );
+        setImageError(false);
+    };
+
+    if (!projectList || projectList.length === 0) {
+        return (
+            <div className="text-center py-10 text-gray-600">No projects found.</div>
+        );
+    }
+
+    const project = projectList[currentProjectIndex];
+    if (!project) {
+        return (
+            <div className="text-center py-10 text-gray-600">
+                Project not found.
+            </div>
+        );
+    }
+
+    return (
+        <Transition appear show={isOpen} as={Fragment}>
+            <Dialog
+                as="div"
+                className="fixed inset-0 z-50 overflow-y-auto"
+                onClose={closeModal}
+                role="dialog"
+                aria-modal="true"
+            >
+                <div className="min-h-screen px-4 text-center">
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                    >
+                        <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-60" />
+                    </Transition.Child>
+
+
+                    <span
+                        className="inline-block h-screen align-middle"
+                        aria-hidden="true"
+                    >
+                        &#8203;
+                    </span>
+
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95"
+                    >
+                        <div className="inline-block w-full max-w-4xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl relative">
+
+                            <button
+                                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+                                onClick={closeModal}
+                                aria-label="Close modal"
+                            >
+                                <X size={24} />
+                            </button>
+
+                            <div className="relative">
+                                {!imageError ? (
+                                    <img
+                                        src={project.image || "/placeholder.svg"}
+                                        alt={project.title}
+                                        onError={() => setImageError(true)}
+                                        className="w-full h-96 object-cover rounded-xl shadow-md"
+                                    />
+                                ) : (
+                                    <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-xl text-gray-500">
+                                        Image not available
+                                    </div>
+                                )}
+
+                                {projectList.length > 1 && (
+                                    <>
+                                        <button
+                                            className="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:scale-110 transition"
+                                            onClick={prevProject}
+                                            aria-label="Previous project"
+                                        >
+                                            <ChevronLeft size={28} />
+                                        </button>
+                                        <button
+                                            className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:scale-110 transition"
+                                            onClick={nextProject}
+                                            aria-label="Next project"
+                                        >
+                                            <ChevronRight size={28} />
+                                        </button>
+                                    </>
+                                )}
+                            </div>
+
+                            <div className="mt-6">
+                                <Dialog.Title
+                                    as="h3"
+                                    className="text-2xl font-bold text-gray-900"
+                                >
+                                    {project.title}
+                                </Dialog.Title>
+                                <p className="mt-2 text-gray-600">{project.description}</p>
+
+                                {project.technologies && (
+                                    <div className="mt-4 flex flex-wrap gap-2">
+                                        {project.technologies.map((tech, i) => (
+                                            <span
+                                                key={`${tech}-${i}`}
+                                                className="px-3 py-1 text-sm bg-gray-100 rounded-full"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+
+
+                                <div className="mt-6 flex gap-4">
+                                    {project.liveUrl && (
+                                        <ActionButton
+                                            variant="primary"
+                                            onClick={() => window.open(project.liveUrl, "_blank")}
+                                        >
+                                            View Live
+                                        </ActionButton>
+                                    )}
+                                    {project.githubUrl && (
+                                        <ActionButton
+                                            variant="secondary"
+                                            onClick={() => window.open(project.githubUrl, "_blank")}
+                                        >
+                                            View Code
+                                        </ActionButton>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </Transition.Child>
+                </div>
+            </Dialog>
+        </Transition>
+    );
+}
+
+
+*/

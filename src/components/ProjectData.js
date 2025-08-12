@@ -19,7 +19,11 @@ const projectList = [
         difficulties: 'The main challenge was creating smooth animations while maintaining performance, especially for large datasets. Solved this by implementing efficient rendering techniques and using requestAnimationFrame for optimal performance. Another challenge was making complex algorithms understandable visually - addressed this through iterative user testing and feedback incorporation.',
         technologies: ['React.js', 'JavaScript', 'Tailwind CSS', 'CSS3 Animations', 'Responsive Design', 'Algorithm Implementation'],
         liveUrl: 'https://algoviser-five.vercel.app/',
-        githubUrl: 'https://github.com/harshit-46/AlgoViser'
+        githubUrl: 'https://github.com/harshit-46/AlgoViser',
+        duration: "3 months",
+        teamSize: "Solo Project",
+        status: "Completed",
+        featured: true
     },
     {
         id: 'newsmonkey',
@@ -34,7 +38,11 @@ const projectList = [
         difficulties: 'Managing API rate limits and handling different response formats from various news sources was challenging. Implemented caching mechanisms and error handling to ensure smooth user experience. Another challenge was optimizing image loading for better performance - solved using lazy loading and image compression techniques.',
         technologies: ['React.js', 'News API', 'Context API', 'React Router', 'Bootstrap', 'Responsive Design', 'API Integration'],
         liveUrl: '',
-        githubUrl: 'https://github.com/harshit-46/News-App-React'
+        githubUrl: 'https://github.com/harshit-46/News-App-React',
+        duration: "3 months",
+        teamSize: "Solo Project",
+        status: "Completed",
+        featured: true
     },
     {
         id: 'transpiler',
@@ -49,7 +57,11 @@ const projectList = [
         difficulties: 'The biggest challenge was handling language-specific nuances and ensuring semantic correctness during conversion. Developed comprehensive test suites and validation mechanisms. Another difficulty was optimizing conversion speed for large codebases - implemented incremental parsing and caching strategies.',
         technologies: ['Node.js', 'AST Parsing', 'Monaco Editor', 'Express.js', 'Language Grammars', 'Compiler Design', 'Algorithm Optimization'],
         liveUrl: '',
-        githubUrl: 'https://github.com/harshit-46/Transpiler'
+        githubUrl: 'https://github.com/harshit-46/Transpiler',
+        duration: "3 months",
+        teamSize: "Solo Project",
+        status: "Completed",
+        featured: true
     },
     {
         id: 'textutils',
@@ -64,10 +76,14 @@ const projectList = [
         difficulties: 'Handling large text inputs efficiently while maintaining real-time updates was challenging. Implemented debouncing and optimization techniques to ensure smooth performance. Another challenge was creating intuitive UX for multiple utility functions - solved through careful UI/UX design and user testing.',
         technologies: ['React.js', 'JavaScript', 'Regular Expressions', 'Custom Hooks', 'Bootstrap', 'Text Processing Algorithms'],
         liveUrl: '',
-        githubUrl: 'https://github.com/harshit-46/TextUtils-React'
+        githubUrl: 'https://github.com/harshit-46/TextUtils-React',
+        duration: "3 months",
+        teamSize: "Solo Project",
+        status: "Completed",
+        featured: true
     },
     {
-        id: 'chatapp',
+        id: 'chatApp',
         title: 'Chat App',
         type: 'Real-time Chat',
         year: '2024',
@@ -79,7 +95,11 @@ const projectList = [
         difficulties: 'Managing real-time state synchronization across multiple clients was complex. Implemented efficient state management and conflict resolution strategies. Another challenge was ensuring message delivery reliability - added acknowledgment systems and offline message queuing.',
         technologies: ['React.js', 'Node.js', 'Socket.io', 'MongoDB', 'JWT Authentication', 'Express.js', 'Real-time Communication'],
         liveUrl: '',
-        githubUrl: 'https://github.com/harshit-46/onChat-App'
+        githubUrl: 'https://github.com/harshit-46/onChat-App',
+        duration: "3 months",
+        teamSize: "Solo Project",
+        status: "Completed",
+        featured: true
     },
     {
         id: 'inotebook',
@@ -94,7 +114,11 @@ const projectList = [
         difficulties: 'Implementing real-time collaborative editing while maintaining data consistency was challenging. Developed operational transformation algorithms and conflict resolution mechanisms. Another difficulty was optimizing search performance for large note collections - implemented efficient indexing and pagination strategies.',
         technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Rich Text Editor', 'RESTful APIs', 'JWT Authentication', 'Full-text Search'],
         liveUrl: '',
-        githubUrl: 'https://github.com/harshit-46/iNotebook-React'
+        githubUrl: 'https://github.com/harshit-46/iNotebook-React',
+        duration: "3 months",
+        teamSize: "Solo Project",
+        status: "Completed",
+        featured: true
     }
 ];
 
