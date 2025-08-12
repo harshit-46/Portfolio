@@ -1,3 +1,5 @@
+/*
+
 import {
     SiReact,
     SiTailwindcss,
@@ -157,152 +159,51 @@ export default function About() {
     );
 }
 
+*/
 
 
-/*
-
-
-import React, { useEffect, useRef, useState } from 'react';
-import "../assets/CSS/about.css";
+import React, { useState, useEffect, useRef } from "react";
 import {
-    SiReact,
-    SiTailwindcss,
-    SiJavascript,
-    SiMongodb,
-    SiExpress,
-    SiPython,
-    SiHtml5,
-    SiCss3,
-    SiCplusplus,
-    SiFigma,
-    SiFramer,
-    SiTrello,
-    SiPandas,
-    SiNumpy,
-    SiScikitlearn,
+    SiReact, SiTailwindcss, SiJavascript, SiMongodb, SiExpress, SiPython,
+    SiHtml5, SiCss3, SiCplusplus, SiFigma, SiFramer, SiTrello, SiPandas,
+    SiNumpy, SiScikitlearn,
 } from "react-icons/si";
-
-const AnimatedParagraph = ({ children, className = "" }) => {
-    const paragraphRef = useRef(null);
-    const [wordStates, setWordStates] = useState([]);
-    
-    useEffect(() => {
-        const paragraph = paragraphRef.current;
-        if (!paragraph) return;
-
-        const text = children;
-        const words = text.split(' ');
-
-        setWordStates(new Array(words.length).fill(false));
-        
-        paragraph.innerHTML = words.map((word, index) => 
-            `<span class="word-span transition-colors duration-300 text-gray-500" data-word-index="${index}">${word}</span>`
-        ).join(' ');
-
-        const wordSpans = paragraph.querySelectorAll('.word-span');
-
-        const handleScroll = () => {
-            const rect = paragraph.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            const paragraphTop = rect.top;
-            const paragraphBottom = rect.bottom;
-            const paragraphHeight = rect.height;
-
-            let scrollProgress = 0;
-            
-            if (paragraphBottom > 0 && paragraphTop < windowHeight) {
-                if (paragraphTop <= windowHeight * 0.8) {
-                    const visibleHeight = Math.min(windowHeight * 0.8 - paragraphTop, paragraphHeight);
-                    scrollProgress = Math.max(0, visibleHeight / paragraphHeight);
-                }
-            }
-
-            const activeWordCount = Math.floor(scrollProgress * words.length);
-
-            wordSpans.forEach((span, index) => {
-                if (index < activeWordCount) {
-                    span.classList.remove('text-gray-500');
-                    span.classList.add('text-white');
-                } else {
-                    span.classList.remove('text-white');
-                    span.classList.add('text-gray-500');
-                }
-            });
-        };
-
-        handleScroll();
-
-        window.addEventListener('scroll', handleScroll);
-        
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [children]);
-
-    return (
-        <p ref={paragraphRef} className={className}>
-            {children}
-        </p>
-    );
-};
+import "../assets/CSS/about.css";
 
 export default function About() {
     const word1 = "about";
     const word2 = "me";
+    const [inView, setInView] = useState(false);
+    const headingRef = useRef(null);
+
+    // Observe when the heading enters the viewport
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => setInView(entry.isIntersecting),
+            { threshold: 0.6 }
+        );
+        if (headingRef.current) observer.observe(headingRef.current);
+        return () => {
+            if (headingRef.current) observer.unobserve(headingRef.current);
+        };
+    }, []);
 
     const techStack = [
         { name: "Figma", icon: <SiFigma size={32} style={{ color: "#F24E1E" }} /> },
-        {
-            name: "Framer",
-            icon: <SiFramer size={32} style={{ color: "#0055FF" }} />,
-        },
+        { name: "Framer", icon: <SiFramer size={32} style={{ color: "#0055FF" }} /> },
         { name: "HTML", icon: <SiHtml5 size={32} style={{ color: "#E34F26" }} /> },
         { name: "React", icon: <SiReact size={32} style={{ color: "#61DAFB" }} /> },
-        {
-            name: "Tailwind",
-            icon: <SiTailwindcss size={32} style={{ color: "#06B6D4" }} />,
-        },
-        {
-            name: "JavaScript",
-            icon: <SiJavascript size={32} style={{ color: "#F7DF1E" }} />,
-        },
-        {
-            name: "MongoDB",
-            icon: <SiMongodb size={32} style={{ color: "#47A248" }} />,
-        },
-        {
-            name: "Express",
-            icon: <SiExpress size={32} style={{ color: "#000000" }} />,
-        },
-        {
-            name: "Python",
-            icon: <SiPython size={32} style={{ color: "#3776AB" }} />,
-        },
+        { name: "Tailwind", icon: <SiTailwindcss size={32} style={{ color: "#06B6D4" }} /> },
+        { name: "JavaScript", icon: <SiJavascript size={32} style={{ color: "#F7DF1E" }} /> },
+        { name: "MongoDB", icon: <SiMongodb size={32} style={{ color: "#47A248" }} /> },
+        { name: "Express", icon: <SiExpress size={32} style={{ color: "#000000" }} /> },
+        { name: "Python", icon: <SiPython size={32} style={{ color: "#3776AB" }} /> },
         { name: "CSS", icon: <SiCss3 size={32} style={{ color: "#1572B6" }} /> },
-        {
-            name: "C++",
-            icon: <SiCplusplus size={32} style={{ color: "#00599C" }} />,
-        },
-        {
-            name: "Trello",
-            icon: <SiTrello size={32} style={{ color: "#0079BF" }} />,
-        },
-        {
-            name: "Pandas",
-            icon: <SiPandas size={32} style={{ color: "#150458" }} />,
-        },
+        { name: "C++", icon: <SiCplusplus size={32} style={{ color: "#00599C" }} /> },
+        { name: "Trello", icon: <SiTrello size={32} style={{ color: "#0079BF" }} /> },
+        { name: "Pandas", icon: <SiPandas size={32} style={{ color: "#150458" }} /> },
         { name: "Numpy", icon: <SiNumpy size={32} style={{ color: "#013243" }} /> },
-        {
-            name: "Scikit Learn",
-            icon: <SiScikitlearn size={32} style={{ color: "#F7931E" }} />,
-        },
-    ];
-
-    const paragraphs = [
-        "Hi 👋, I'm Harshit — a passionate web developer and aspiring AI engineer who thrives at the intersection of creativity and technology. I specialize in building modern, interactive web applications using technologies like React, Tailwind CSS, and a wide range of frontend tools and frameworks. Whether it's a portfolio website, a dynamic web app, or a creative UI concept, I love turning ideas into elegant digital solutions that work seamlessly and look beautiful.",
-        "I'm currently pursuing a B.Tech in Computer Science with a specialization in Artificial Intelligence and Data Science. This background not only fuels my interest in smart systems and data-driven technologies but also empowers me to create meaningful applications that solve real-world problems.",
-        "Outside development, I'm deeply interested in machine learning and AI, love solving DSA problems, and enjoy creating smooth UX experiences that users actually love.",
-        "As I continue to grow, I'm excited to work on projects that blend code, creativity, and intelligence — pushing the boundaries of what's possible with modern technology."
+        { name: "Scikit Learn", icon: <SiScikitlearn size={32} style={{ color: "#F7931E" }} /> },
     ];
 
     return (
@@ -313,24 +214,34 @@ export default function About() {
                     FOR BOLD <br /> INTERFACES, ELEGANT TYPOGRAPHY, <br /> AND USER
                     CENTRIC DESIGN SHINES <br /> THROUGH MY WORK.
                 </p>
-                <span className="absolute left-10 sm:left-20 top-80 sm:top-56 flex flex-wrap">
+
+                {/* Animated Heading */}
+                <span
+                    ref={headingRef}
+                    className="absolute left-10 sm:left-20 top-80 sm:top-56 flex flex-wrap"
+                >
+                    {/* Word 1 */}
                     <span className="about-pro text-[#ff0000] text-6xl sm:text-9xl pr-4 flex">
                         {word1.split("").map((char, index) => (
                             <span
                                 key={index}
-                                className="inline-block opacity-0 animate-fade-in"
-                                style={{ animationDelay: `${index * 0.1}s` }}
+                                className={`inline-block transform transition-all duration-700 ease-out
+                                    ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                                style={{ transitionDelay: `${index * 0.1}s` }}
                             >
                                 {char}
                             </span>
                         ))}
                     </span>
+
+                    {/* Word 2 */}
                     <span className="about-pro text-6xl sm:text-9xl text-[#ff0000] flex">
                         {word2.split("").map((char, index) => (
                             <span
                                 key={index}
-                                className="inline-block opacity-0 animate-fade-in"
-                                style={{ animationDelay: `${(word1.length + index) * 0.1}s` }}
+                                className={`inline-block transform transition-all duration-700 ease-out
+                                    ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                                style={{ transitionDelay: `${(word1.length + index) * 0.1}s` }}
                             >
                                 {char}
                             </span>
@@ -339,15 +250,35 @@ export default function About() {
                 </span>
             </div>
 
-
+            {/* About Description */}
             <div className="max-w-3xl mx-auto pt-12 space-y-4 text-lg font-medium leading-relaxed px-4 mt-8">
-                {paragraphs.map((paragraph, index) => (
-                    <AnimatedParagraph key={index}>
-                        {paragraph}
-                    </AnimatedParagraph>
-                ))}
+                <p>
+                    Hi 👋, I'm Harshit — a passionate web developer and aspiring AI
+                    engineer who thrives at the intersection of creativity and technology.
+                    I specialize in building modern, interactive web applications using
+                    technologies like React, Tailwind CSS, and a wide range of frontend
+                    tools and frameworks. Whether it's a portfolio website, a dynamic web
+                    app, or a creative UI concept, I love turning ideas into elegant
+                    digital solutions that work seamlessly and look beautiful.
+                </p>
+                <p>
+                    I'm currently pursuing a B.Tech in Computer Science with a
+                    specialization in Artificial Intelligence and Data Science. This
+                    background not only fuels my interest in smart systems and data-driven
+                    technologies but also empowers me to create meaningful applications
+                    that solve real-world problems.
+                </p>
+                <p>
+                    Outside development, I'm deeply interested in machine learning and AI, love solving DSA
+                    problems, and enjoy creating smooth UX experiences that users actually
+                    love.
+                </p>
+                <p>
+                    As I continue to grow, I’m excited to work on projects that blend code, creativity, and intelligence — pushing the boundaries of what’s possible with modern technology.
+                </p>
             </div>
 
+            {/* Tech Stack */}
             <div className="relative max-w-6xl mx-auto mt-24 px-4">
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">
                     My Tech Stack
@@ -376,6 +307,3 @@ export default function About() {
         </main>
     );
 }
-
-
-*/
