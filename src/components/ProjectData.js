@@ -22,8 +22,7 @@ const projectList = [
         githubUrl: 'https://github.com/harshit-46/AlgoViser',
         duration: "3 months",
         teamSize: "Solo Project",
-        status: "Completed",
-        featured: true
+        status: "Completed"
     },
     {
         id: 'newsmonkey',
@@ -41,8 +40,7 @@ const projectList = [
         githubUrl: 'https://github.com/harshit-46/News-App-React',
         duration: "3 months",
         teamSize: "Solo Project",
-        status: "Completed",
-        featured: true
+        status: "Completed"
     },
     {
         id: 'transpiler',
@@ -60,8 +58,7 @@ const projectList = [
         githubUrl: 'https://github.com/harshit-46/Transpiler',
         duration: "3 months",
         teamSize: "Solo Project",
-        status: "Completed",
-        featured: true
+        status: "Completed"
     },
     {
         id: 'textutils',
@@ -79,8 +76,7 @@ const projectList = [
         githubUrl: 'https://github.com/harshit-46/TextUtils-React',
         duration: "3 months",
         teamSize: "Solo Project",
-        status: "Completed",
-        featured: true
+        status: "Completed"
     },
     {
         id: 'chatApp',
@@ -98,8 +94,7 @@ const projectList = [
         githubUrl: 'https://github.com/harshit-46/onChat-App',
         duration: "3 months",
         teamSize: "Solo Project",
-        status: "Completed",
-        featured: true
+        status: "Completed"
     },
     {
         id: 'inotebook',
@@ -117,8 +112,7 @@ const projectList = [
         githubUrl: 'https://github.com/harshit-46/iNotebook-React',
         duration: "3 months",
         teamSize: "Solo Project",
-        status: "Completed",
-        featured: true
+        status: "Completed"
     }
 ];
 

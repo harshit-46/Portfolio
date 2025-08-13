@@ -321,218 +321,215 @@ export default ProjectModal;
 
 
 /*
-import React, { useState, useEffect, Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-const ActionButton = ({ children, variant = "primary", ...props }) => {
-    const baseClasses =
-        "px-4 py-2 rounded-full font-semibold transition-transform duration-300 ease-in-out transform hover:scale-105";
-    const variantClasses =
-        variant === "primary"
-            ? "bg-gradient-to-r from-teal-400 to-blue-500 text-white shadow-lg hover:shadow-xl"
-            : "bg-white text-gray-800 border border-gray-300 shadow-sm hover:shadow-md";
-    return (
-        <button className={`${baseClasses} ${variantClasses}`} {...props}>
-            {children}
-        </button>
-    );
-};
+import React, { useEffect, useRef, useCallback } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import projectList from "./ProjectData";
 
-export default function ProjectModal({
-    isOpen: externalIsOpen,
-    onClose,
-    projectId,
-    projectList,
-}) {
-    const [isOpen, setIsOpen] = useState(externalIsOpen || false);
-    const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-    const [imageError, setImageError] = useState(false);
+export default function ProjectModal() {
+    const { projectId } = useParams();
+    const navigate = useNavigate();
+    const project = projectList.find((p) => p.id === projectId);
 
-    // Sync with external open state
+    const panelRef = useRef(null);
+
+    const onClose = useCallback(() => {
+        navigate(-1); // return to background route
+    }, [navigate]);
+
+    // Close on ESC
     useEffect(() => {
-        setIsOpen(externalIsOpen);
-    }, [externalIsOpen]);
+        const keyHandler = (e) => {
+            if (e.key === "Escape") onClose();
+        };
+        document.addEventListener("keydown", keyHandler);
+        return () => document.removeEventListener("keydown", keyHandler);
+    }, [onClose]);
 
-    // Update project index when projectId changes
     useEffect(() => {
-        if (projectId && projectList.length > 0) {
-            const index = projectList.findIndex((p) => p.id === projectId);
-            if (index !== -1) {
-                setCurrentProjectIndex(index);
-            }
-        }
-    }, [projectId, projectList]);
+        const { overflow } = document.body.style;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = overflow;
+        };
+    }, []);
 
-    const closeModal = () => {
-        setIsOpen(false);
-        if (onClose) onClose();
-    };
+    if (!project) return null;
+    if (typeof document === "undefined") return null;
 
-    const openModal = () => {
-        setIsOpen(true);
-        setImageError(false);
-    };
-
-    const nextProject = () => {
-        setCurrentProjectIndex((prev) => (prev + 1) % projectList.length);
-        setImageError(false);
-    };
-
-    const prevProject = () => {
-        setCurrentProjectIndex(
-            (prev) => (prev - 1 + projectList.length) % projectList.length
-        );
-        setImageError(false);
-    };
-
-    if (!projectList || projectList.length === 0) {
-        return (
-            <div className="text-center py-10 text-gray-600">No projects found.</div>
-        );
-    }
-
-    const project = projectList[currentProjectIndex];
-    if (!project) {
-        return (
-            <div className="text-center py-10 text-gray-600">
-                Project not found.
-            </div>
-        );
-    }
-
-    return (
-        <Transition appear show={isOpen} as={Fragment}>
-            <Dialog
-                as="div"
-                className="fixed inset-0 z-50 overflow-y-auto"
-                onClose={closeModal}
-                role="dialog"
-                aria-modal="true"
+    return createPortal(
+        <AnimatePresence>
+            <motion.div
+                className="fixed inset-0 z-50 flex items-end md:items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
             >
-                <div className="min-h-screen px-4 text-center">
-                    <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                    >
-                        <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-60" />
-                    </Transition.Child>
+                <motion.div
+                    className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                    onClick={onClose}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                />
 
-
-                    <span
-                        className="inline-block h-screen align-middle"
-                        aria-hidden="true"
-                    >
-                        &#8203;
-                    </span>
-
-                    <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0 scale-95"
-                        enterTo="opacity-100 scale-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100 scale-100"
-                        leaveTo="opacity-0 scale-95"
-                    >
-                        <div className="inline-block w-full max-w-4xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl relative">
-
-                            <button
-                                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-                                onClick={closeModal}
-                                aria-label="Close modal"
-                            >
-                                <X size={24} />
-                            </button>
-
-                            <div className="relative">
-                                {!imageError ? (
-                                    <img
-                                        src={project.image || "/placeholder.svg"}
-                                        alt={project.title}
-                                        onError={() => setImageError(true)}
-                                        className="w-full h-96 object-cover rounded-xl shadow-md"
-                                    />
-                                ) : (
-                                    <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-xl text-gray-500">
-                                        Image not available
-                                    </div>
-                                )}
-
-                                {projectList.length > 1 && (
-                                    <>
-                                        <button
-                                            className="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:scale-110 transition"
-                                            onClick={prevProject}
-                                            aria-label="Previous project"
-                                        >
-                                            <ChevronLeft size={28} />
-                                        </button>
-                                        <button
-                                            className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:scale-110 transition"
-                                            onClick={nextProject}
-                                            aria-label="Next project"
-                                        >
-                                            <ChevronRight size={28} />
-                                        </button>
-                                    </>
-                                )}
-                            </div>
-
-                            <div className="mt-6">
-                                <Dialog.Title
-                                    as="h3"
-                                    className="text-2xl font-bold text-gray-900"
-                                >
-                                    {project.title}
-                                </Dialog.Title>
-                                <p className="mt-2 text-gray-600">{project.description}</p>
-
-                                {project.technologies && (
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        {project.technologies.map((tech, i) => (
-                                            <span
-                                                key={`${tech}-${i}`}
-                                                className="px-3 py-1 text-sm bg-gray-100 rounded-full"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
-
-
-                                <div className="mt-6 flex gap-4">
-                                    {project.liveUrl && (
-                                        <ActionButton
-                                            variant="primary"
-                                            onClick={() => window.open(project.liveUrl, "_blank")}
-                                        >
-                                            View Live
-                                        </ActionButton>
-                                    )}
-                                    {project.githubUrl && (
-                                        <ActionButton
-                                            variant="secondary"
-                                            onClick={() => window.open(project.githubUrl, "_blank")}
-                                        >
-                                            View Code
-                                        </ActionButton>
-                                    )}
-                                </div>
-                            </div>
+                <motion.div
+                    ref={panelRef}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${project.title} details`}
+                    onClick={(e) => e.stopPropagation()}
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{
+                        y: 0,
+                        opacity: 1,
+                        transition: { type: "spring", stiffness: 140, damping: 18 }
+                    }}
+                    exit={{ y: "100%", opacity: 0 }}
+                    className="
+            relative w-full
+            md:max-w-[90vw] lg:max-w-[1240px]
+            max-h-[92vh] overflow-auto
+            rounded-t-3xl md:rounded-3xl
+            bg-zinc-900 text-zinc-100 shadow-2xl border border-white/10
+            "
+                >
+                    <div className="relative">
+                        <img
+                            src={project.img}
+                            alt={project.title}
+                            className="h-64 md:h-80 w-full object-cover"
+                            loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                        <button
+                            onClick={onClose}
+                            className="absolute top-3 right-3 p-2 bg-white/10 hover:bg-white/20 rounded-full"
+                            aria-label="Close modal"
+                        >
+                            ✕
+                        </button>
+                        <div className="absolute bottom-3 left-4">
+                            <h2 className="text-2xl md:text-3xl font-bold">{project.title}</h2>
+                            <p className="text-sm text-zinc-300">
+                                {project.type} • {project.year}
+                            </p>
                         </div>
-                    </Transition.Child>
-                </div>
-            </Dialog>
-        </Transition>
+                    </div>
+
+                    <motion.div
+                        className="p-7 md:p-8 space-y-7"
+                        initial="hidden"
+                        animate="visible"
+                        variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
+                    >
+                        <motion.p
+                            className="text-zinc-300 leading-relaxed"
+                            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+                        >
+                            {project.Modaldescription || project.description}
+                        </motion.p>
+
+                        <motion.div
+                            className="grid md:grid-cols-2 gap-7"
+                            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+                        >
+                            <Section title="Approach" content={project.approach} />
+                            <Section title="Learnings" content={project.learnings} />
+                        </motion.div>
+
+                        {project.difficulties && (
+                            <motion.div
+                                variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+                            >
+                                <h3 className="text-sm uppercase tracking-wider text-zinc-400">Difficulties</h3>
+                                <p className="text-zinc-300 text-sm leading-relaxed mt-1">
+                                    {project.difficulties}
+                                </p>
+                            </motion.div>
+                        )}
+
+                        <motion.div
+                            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+                        >
+                            <h3 className="text-sm uppercase tracking-wider text-zinc-400">Technologies</h3>
+                            <div className="flex flex-wrap gap-2 mt-2">
+                                {project.technologies?.map((t) => (
+                                    <span
+                                        key={t}
+                                        className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-200"
+                                    >
+                                        {t}
+                                    </span>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            className="flex flex-wrap gap-3 pt-2"
+                            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+                        >
+                            {project.liveUrl ? (
+                                <a
+                                    href={project.liveUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-black hover:bg-zinc-200 transition"
+                                >
+                                    Live Demo
+                                    <ArrowIcon />
+                                </a>
+                            ) : (
+                                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/10 text-white/70 border border-white/10">
+                                    Coming Soon
+                                </span>
+                            )}
+                            {project.githubUrl && (
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-zinc-800 hover:bg-zinc-700 border border-white/10 transition text-zinc-100"
+                                >
+                                    GitHub
+                                    <ArrowIcon />
+                                </a>
+                            )}
+                        </motion.div>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
+        </AnimatePresence>,
+        document.body
     );
 }
+
+function Section({ title, content }) {
+    return (
+        <div>
+            <h3 className="text-sm uppercase tracking-wider text-zinc-400">{title}</h3>
+            <p className="text-zinc-300 text-sm leading-relaxed mt-1">{content}</p>
+        </div>
+    );
+}
+
+function ArrowIcon() {
+    return (
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M5 12h14M13 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+}
+
 
 
 */
