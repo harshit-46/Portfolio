@@ -7,18 +7,17 @@ const SectionHeading = ({ title, icon, className = "" }) => (
     <div className={`mb-8 pm-fade-up ${className}`}>
         <div className="flex items-center gap-4 mb-6">
             {icon && <span className="text-2xl">{icon}</span>}
-            <button className="group relative overflow-hidden bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 border border-slate-600 hover:border-slate-500 rounded-2xl px-8 py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-slate-500/25 focus:outline-none focus:ring-4 focus:ring-slate-500/50">
-                <span className="relative z-10 text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+            <button className="group relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-slate-600/40 hover:border-violet-500/60 rounded-2xl px-8 py-4 transition-all duration-300">
+                <span className="relative z-10 text-2xl font-bold bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">
                     {title}
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
         </div>
     </div>
 );
 
 const ContentText = ({ children, className = "" }) => (
-    <div className={`text-gray-200 leading-relaxed text-lg mb-12 pm-fade-up ${className}`}>
+    <div className={`text-slate-200 leading-relaxed text-lg mb-12 pm-fade-up ${className}`}>
         {children}
     </div>
 );
@@ -27,17 +26,17 @@ const ProjectHeroContent = ({ project }) => (
     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
         <div className="pm-fade-up delay-150">
             <div className="flex flex-wrap items-center gap-4 mb-6">
-                <span className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-semibold backdrop-blur-sm shadow-lg">
+                <span className="px-6 py-3 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white rounded-full text-sm font-semibold backdrop-blur-sm shadow-lg border border-white/10">
                     {project.type}
                 </span>
                 {project.year && (
-                    <span className="px-4 py-2 bg-black/30 backdrop-blur-sm text-white rounded-full text-sm font-medium border border-white/20">
+                    <span className="px-4 py-2 bg-slate-900/60 backdrop-blur-sm text-slate-200 rounded-full text-sm font-medium border border-slate-400/30">
                         {project.year}
                     </span>
                 )}
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent mb-4 leading-tight tracking-tight">
                 {project.title}
             </h1>
         </div>
@@ -45,19 +44,19 @@ const ProjectHeroContent = ({ project }) => (
 );
 
 const ProjectHeroFallback = ({ project }) => (
-    <div className="relative h-[50vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl flex items-center justify-center">
+    <div className="relative h-[50vh] bg-gradient-to-br from-slate-900 via-violet-900/80 to-indigo-900/80 rounded-3xl flex items-center justify-center">
         <div className="text-center">
             <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-                <span className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-semibold">
+                <span className="px-6 py-3 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white rounded-full text-sm font-semibold border border-white/10">
                     {project.type}
                 </span>
                 {project.year && (
-                    <span className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-medium border border-white/20">
+                    <span className="px-4 py-2 bg-slate-800/40 backdrop-blur-sm text-slate-200 rounded-full text-sm font-medium border border-slate-400/20">
                         {project.year}
                     </span>
                 )}
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent leading-tight tracking-tight">
                 {project.title}
             </h1>
         </div>
@@ -81,13 +80,10 @@ const ProjectHero = ({ project, onImageError, imageError }) => {
                             loading="lazy"
                         />
                     </div>
-
                     {!imageLoaded && (
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 animate-pulse" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 animate-pulse" />
                     )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-purple-600/20" />
                     <ProjectHeroContent project={project} />
                 </div>
             ) : (
@@ -99,70 +95,48 @@ const ProjectHero = ({ project, onImageError, imageError }) => {
 
 const TechPill = ({ tech }) => (
     <span className="inline-block pm-fade-up">
-        <div className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-300 hover:scale-105 border border-indigo-500/30">
+        <div className="px-6 py-3 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-slate-200 rounded-full font-semibold border border-slate-600/50 hover:border-violet-500/50 transition-all duration-300">
             {tech}
         </div>
     </span>
 );
 
-const ActionButton = ({ href, children, variant = "primary", ariaLabel }) => {
-    const base =
-        "group relative overflow-hidden px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-opacity-50 flex items-center gap-3 no-underline";
-    const styles = {
-        primary:
-            "bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white shadow-lg focus:ring-emerald-500",
-        secondary:
-            "bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white shadow-lg focus:ring-gray-500",
-    };
-    return (
-        <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={ariaLabel}
-            className={`${base} ${styles[variant]} pm-fade-up`}
-        >
-            {children}
-        </a>
-    );
-};
-
 const ProjectDetails = ({ project }) => (
     <div className="mb-16 pm-fade-up">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="group relative overflow-hidden bg-gradient-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-sm border border-slate-600/50 rounded-2xl p-6 hover:border-slate-500/70 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20">
+            <div className="group relative overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-600/40 hover:border-emerald-500/60 rounded-2xl p-6 transition-all duration-300">
                 <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mb-4 shadow-lg">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <span className="text-sm uppercase tracking-wider text-slate-400 font-semibold mb-2">Status</span>
-                    <span className="text-white font-bold text-lg">{project.status || "Completed"}</span>
+                    <span className="text-slate-100 font-bold text-lg">{project.status || "Completed"}</span>
                 </div>
             </div>
 
-            <div className="group relative overflow-hidden bg-gradient-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-sm border border-slate-600/50 rounded-2xl p-6 hover:border-slate-500/70 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20">
+            <div className="group relative overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-600/40 hover:border-blue-500/60 rounded-2xl p-6 transition-all duration-300">
                 <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <span className="text-sm uppercase tracking-wider text-slate-400 font-semibold mb-2">Duration</span>
-                    <span className="text-white font-bold text-lg">{project.duration || "3 months"}</span>
+                    <span className="text-slate-100 font-bold text-lg">{project.duration || "3 months"}</span>
                 </div>
             </div>
 
-            <div className="group relative overflow-hidden bg-gradient-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-sm border border-slate-600/50 rounded-2xl p-6 hover:border-slate-500/70 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20">
+            <div className="group relative overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-600/40 hover:border-pink-500/60 rounded-2xl p-6 transition-all duration-300">
                 <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4 shadow-lg">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <span className="text-sm uppercase tracking-wider text-slate-400 font-semibold mb-2">Team Size</span>
-                    <span className="text-white font-bold text-lg">{project.teamSize || "Solo"}</span>
+                    <span className="text-slate-100 font-bold text-lg">{project.teamSize || "Solo"}</span>
                 </div>
             </div>
         </div>
@@ -171,7 +145,7 @@ const ProjectDetails = ({ project }) => (
 
 const ErrorModal = ({ onClose }) => (
     <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 pm-fade-in"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 pm-fade-in"
         onClick={onClose}
         role="dialog"
         aria-modal="true"
@@ -179,21 +153,21 @@ const ErrorModal = ({ onClose }) => (
         aria-describedby="error-description"
     >
         <div
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 max-w-md w-full shadow-2xl text-center border border-white/10 pm-scale-in"
+            className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 max-w-md w-full shadow-2xl text-center border border-slate-600/30 pm-scale-in"
             onClick={(e) => e.stopPropagation()}
         >
             <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl" aria-hidden="true">❌</span>
             </div>
-            <h2 id="error-title" className="text-2xl font-bold text-white mb-4">
+            <h2 id="error-title" className="text-2xl font-bold text-slate-100 mb-4">
                 Project Not Found
             </h2>
-            <p id="error-description" className="text-gray-300 mb-8">
+            <p id="error-description" className="text-slate-300 mb-8">
                 The requested project could not be found. Please check the URL or return to the main page.
             </p>
             <button
                 onClick={onClose}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-2xl transition-all duration-200 font-semibold hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-8 py-3 rounded-2xl transition-all duration-200 font-semibold hover:scale-105 focus:outline-none focus:ring-4 focus:ring-violet-500/50"
                 autoFocus
             >
                 Go Back
@@ -205,7 +179,7 @@ const ErrorModal = ({ onClose }) => (
 const CloseButton = ({ onClick }) => (
     <button
         onClick={onClick}
-        className="fixed top-4 right-4 sm:top-8 sm:right-8 z-20 w-12 h-12 bg-black/40 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 group"
+        className="fixed top-4 right-4 sm:top-8 sm:right-8 z-20 w-12 h-12 bg-slate-900/40 backdrop-blur-xl border border-slate-500/20 rounded-full flex items-center justify-center text-slate-200 hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-slate-500/20 group"
         aria-label="Close project details"
     >
         <svg
@@ -222,21 +196,19 @@ const CloseButton = ({ onClick }) => (
 
 
 const ProjectModal = () => {
-    const { projectId } = useParams();         
+    const { projectId } = useParams();
     const navigate = useNavigate();
     const modalRef = useRef(null);
     const [imageError, setImageError] = useState(false);
 
-    // Memoize project lookup
     const project = useMemo(() => projectList.find((p) => p.id === projectId), [projectId]);
 
     const closeModal = useCallback(() => {
-        navigate("/", { replace: true });          
+        navigate("/", { replace: true });
     }, [navigate]);
 
     const handleImageError = useCallback(() => setImageError(true), []);
 
-    // Esc to close
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "Escape") closeModal();
@@ -245,7 +217,6 @@ const ProjectModal = () => {
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, [closeModal]);
 
-    // Prevent body scroll & keep layout stable
     useEffect(() => {
         if (!project) return;
 
@@ -277,7 +248,7 @@ const ProjectModal = () => {
 
     return (
         <div
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm pm-fade-in"
+            className="fixed inset-0 z-50 bg-slate-950 pm-fade-in"
             onClick={closeModal}
             role="dialog"
             aria-modal="true"
@@ -291,7 +262,7 @@ const ProjectModal = () => {
             >
                 <CloseButton onClick={closeModal} />
 
-                <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 hover:scrollbar-thumb-white/40 overscroll-contain">
+                <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-600/40 hover:scrollbar-thumb-slate-500/60 overscroll-contain">
                     <div className="min-h-full px-8 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
                         <ProjectHero
                             project={project}
@@ -321,27 +292,32 @@ const ProjectModal = () => {
                             )}
 
                             {(project.liveUrl || project.githubUrl) && (
-                                <div className="flex flex-wrap gap-6 justify-center pt-8 border-t border-slate-700 pm-fade-up">
+                                <div className="flex flex-wrap gap-6 justify-center pt-8 border-t border-slate-700/60 pm-fade-up">
                                     {project.liveUrl && (
-                                        <ActionButton
+                                        <a
                                             href={project.liveUrl}
-                                            variant="primary"
-                                            ariaLabel={`View live version of ${project.title}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`View live version of ${project.title}`}
+                                            className="px-8 py-4 rounded-2xl text-lg font-semibold text-slate-900 bg-gradient-to-r from-white to-slate-100 hover:from-slate-50 hover:to-white hover:scale-105 hover:rotate-1 transition-all duration-300 shadow-lg border border-slate-200/20"
                                         >
-                                            View Live Project
-                                        </ActionButton>
+                                            Live Project
+                                        </a>
                                     )}
                                     {project.githubUrl && (
-                                        <ActionButton
+                                        <a
                                             href={project.githubUrl}
-                                            variant="secondary"
-                                            ariaLabel={`View source code for ${project.title}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`View source code for ${project.title}`}
+                                            className="px-8 py-4 rounded-2xl text-lg font-semibold text-slate-900 bg-gradient-to-r from-white to-slate-100 hover:from-slate-50 hover:to-white hover:shadow-slate-400/30 hover:scale-105 hover:-rotate-1 transition-all duration-300 shadow-lg border border-slate-200/20"
                                         >
-                                            View Source Code
-                                        </ActionButton>
+                                            GitHub Repo
+                                        </a>
                                     )}
                                 </div>
                             )}
+
                         </div>
                     </div>
                 </div>
