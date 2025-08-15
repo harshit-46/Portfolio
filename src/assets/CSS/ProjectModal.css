@@ -14,3 +14,34 @@
 .animate-glow-up {
     animation: glowUp 0.3s ease-out forwards;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .pm-fade-in, .pm-scale-in, .pm-fade-up { animation: none !important; }
+}
+
+.pm-fade-in {
+    animation: pmFadeIn 0.3s ease-out both;
+}
+@keyframes pmFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.pm-scale-in {
+    animation: pmScaleIn 0.32s cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes pmScaleIn {
+    0%   { opacity: 0; transform: scale(0.96) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.pm-fade-up {
+    animation: pmFadeUp 0.5s ease-out both;
+}
+.pm-fade-up.delay-150 { animation-delay: 150ms; }
+.pm-fade-up.delay-200 { animation-delay: 200ms; }
+.pm-fade-up.delay-300 { animation-delay: 300ms; }
+
+@keyframes pmFadeUp {
+    0%   { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

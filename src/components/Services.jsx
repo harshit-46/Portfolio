@@ -142,7 +142,7 @@ const Services = () => {
                 ))}
             </div>
 
-            <section className="mb-28 sm:mb-40 mt-20 px-8">
+            <section className="mt-20 px-8">
                 <div className="grid md:grid-cols-2 gap-16 items-start">
                     <div className="relative" ref={disciplineRef}>
                         <h2 className="text-4xl md:text-8xl tracking-tighter text-white sm:text-6xl font-bold">
