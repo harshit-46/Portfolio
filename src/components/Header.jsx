@@ -84,16 +84,16 @@ const Header = ({ scrollToSection, refs }) => {
                         >
                             <button
                                 onClick={() => handleClick(item.ref)}
-                                className="text-white text-sm w-full text-left hover:text-gray-300 transition-colors duration-300"
+                                className="text-white text-sm w-full text-left font-semibold hover:text-gray-300 transition-colors duration-300"
                             >
                                 {item.label}
                             </button>
                         </li>
                     ))}
-                    <li className="border-b border-white/20 pb-2">
+                    <li className="pb-2">
                         <button
                             onClick={() => handleClick(refs.contactRef)}
-                            className="text-white text-sm w-full text-left hover:text-gray-300 transition-colors duration-300"
+                            className="text-white text-sm w-full text-left font-semibold hover:text-gray-300 transition-colors duration-300"
                         >
                             CONTACT
                         </button>

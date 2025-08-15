@@ -64,7 +64,7 @@ const AnimatedWord = ({ word, inView }) => (
         {word.split("").map((letter, index) => (
             <span
                 key={index}
-                className={`pro-heading text-[#ff0000] text-4xl md:text-8xl inline-block transform transition-all duration-500 ease-out ${
+                className={`pro-heading text-[#ff0000] text-6xl md:text-8xl inline-block transform transition-all duration-500 ease-out ${
                     inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{
@@ -93,7 +93,6 @@ const Projects = () => {
             : "opacity-0 translate-y-10"
     }`;
 
-    // Hover circle
     const circleRef = useRef(null);
     const [hoveredId, setHoveredId] = useState(null);
 
@@ -120,11 +119,11 @@ const Projects = () => {
         <div className="min-h-screen px-4 md:py-24 relative bg-black">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20 md:px-4 mx-auto">
                 <div className="relative inline-block" ref={headingRef}>
-                    <h2 className="pro-pax text-white text-4xl md:text-8xl font-bold uppercase">
+                    <h2 className="pro-pax text-white text-5xl md:text-8xl font-bold uppercase">
                         Projects
                     </h2>
 
-                    <div className="absolute left-[6.5rem] top-[0.35rem] md:left-[10.5rem] md:top-[2rem] flex">
+                    <div className="absolute left-10 top-2 md:left-[10.5rem] md:top-[2rem] flex">
                         <AnimatedWord word="works" inView={inView} />
                     </div>
                 </div>

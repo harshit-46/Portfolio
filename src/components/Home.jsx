@@ -25,7 +25,7 @@ const Home = () => {
     return (
         <main className="min-h-screen w-full bg-black pt-12 overflow-hidden relative">
             <div className="flex justify-center">
-                <div className="relative inline-flex items-center px-6 py-3 rounded-full bg-[#111] text-white font-medium text-sm shadow-inner overflow-hidden group">
+                <div className="relative inline-flex items-center px-6 py-3 rounded-full bg-[#111] text-white font-medium text-sm shadow-inner overflow-hidden group mb-8 md:mb-0">
                     <span className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-300 via-white to-gray-300 blur-sm opacity-40 [animation:spin_3s_linear_infinite]"></span>
                     <span className="absolute inset-0 rounded-full bg-[#111] m-[1.5px] z-0"></span>
                     <span className="relative flex h-2 w-2 mr-2 z-10">
@@ -36,7 +36,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <header className="font-bold leading-none flex flex-col md:flex-row md:mt-8 justify-center gap-x-16 items-center text-center md:text-left">
+            <header className="font-bold leading-none flex flex-col md:flex-row md:mt-8 justify-center gap-x-16 items-center text-center md:text-left mb-8 md:mb-0">
                 <h1
                     id="name1"
                     className="text-white text-[80px] md:text-[120px] lg:text-[190px] tracking-[-0.01em] p-0 m-0 select-none cursor-pointer"

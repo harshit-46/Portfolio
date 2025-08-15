@@ -44,7 +44,7 @@ export default function About() {
     return (
         <main className="bg-black text-white min-h-screen py-16 sm:py-24 relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
-                <p className="pl-6 text-6xl font-bold about-link tracking-normal">
+                <p className="md:pl-6 text-3xl md:text-6xl font-bold about-link tracking-normal">
                     I'M A CREATIVE FULL STACK DEVELOPER <br /> BASED IN INDIA. MY PASSION
                     FOR BOLD <br /> INTERFACES, ELEGANT TYPOGRAPHY, <br /> AND USER
                     CENTRIC DESIGN SHINES <br /> THROUGH MY WORK.
@@ -52,7 +52,7 @@ export default function About() {
 
                 <span
                     ref={headingRef}
-                    className="absolute left-10 sm:left-20 top-80 sm:top-56 flex flex-wrap"
+                    className="absolute left-10 sm:left-20 top-72 sm:top-56 flex flex-wrap"
                 >
                     <span className="about-pro text-[#ff0000] text-6xl sm:text-9xl pr-4 flex">
                         {word1.split("").map((char, index) => (
