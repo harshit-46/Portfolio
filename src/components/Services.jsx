@@ -75,11 +75,11 @@ const Services = () => {
 
     return (
         <div className='min-h-screen bg-black pt-20 relative overflow-hidden'>
-            <div className="px-8 relative z-10" ref={expertiseRef}>
-                <h1 className="ser-pax text-white text-4xl sm:text-6xl md:text-8xl font-bold">
+            <div className="px-4 md:px-8 relative z-10" ref={expertiseRef}>
+                <h1 className="ser-pax text-white text-5xl sm:text-6xl md:text-8xl font-bold">
                     SERVICES
                 </h1>
-                <span className="absolute left-15 top-7 flex flex-wrap">
+                <span className="absolute left-8 md:left-15 top-4 md:top-7 flex flex-wrap">
                     <span className="ser-pro text-[#ff0000] text-5xl sm:text-8xl pr-4 flex">
                         {word1.split('').map((char, index) => (
                             <span
@@ -142,13 +142,13 @@ const Services = () => {
                 ))}
             </div>
 
-            <section className="mt-20 px-8">
+            <section className="mt-20 md:px-8 px-4">
                 <div className="grid md:grid-cols-2 gap-16 items-start">
                     <div className="relative" ref={disciplineRef}>
-                        <h2 className="text-4xl md:text-8xl tracking-tighter text-white sm:text-6xl font-bold">
+                        <h2 className="text-5xl md:text-8xl tracking-tighter text-white sm:text-6xl font-bold">
                             MOTIVATION
                         </h2>
-                        <span className="absolute left-15 top-10 flex flex-wrap">
+                        <span className="absolute left-4 md:left-15 top-4 md:top-10 flex flex-wrap">
                             <span className="ser-pro text-[#ff0000] text-5xl sm:text-8xl pr-4 flex">
                                 {word2.split('').map((char, index) => (
                                     <span

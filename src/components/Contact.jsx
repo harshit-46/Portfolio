@@ -10,7 +10,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center px-6 py-12 space-y-16">
+        <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center md:px-6 md:py-12 space-y-16">
             <div className="text-center space-y-4">
                 <h1 className="text-5xl md:text-8xl font-bold leading-tight md:mb-8">
                     LET'S WORK

@@ -82,7 +82,7 @@ export default function About() {
                 </span>
             </div>
 
-            <div className="about-write max-w-4xl mx-auto md:mt-16 px-6 py-10 text-white text-xl space-y-6">
+            <div className="about-write max-w-4xl mx-auto mt-8 md:mt-16 px-6 py-10 text-white text-xl space-y-6">
                 <p className="font-semibold text-3xl text-center">
                     Hi 👋, I'm <span className="text-pink-400">Harshit</span> — a web developer and an AI enthusiast.
                 </p>
