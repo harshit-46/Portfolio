@@ -321,12 +321,11 @@ const Services = () => {
                             <img
                                 src={service.image}
                                 alt={service.title}
-                                className={`object-cover h-44 w-56 sm:h-68 sm:w-68 rounded-2xl shadow-2xl transition-all duration-500 ease-out transform ${hoveredItem === service.id
+                                className={`object-cover h-44 w-56 md:h-68 md:w-68 rounded-2xl shadow-2xl transition-all duration-500 ease-out transform ${hoveredItem === service.id
                                         ? 'opacity-100 scale-100'
                                         : 'opacity-100 lg:opacity-0 lg:scale-0'} lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:z-10`}
                                 loading="lazy"
                             />
-
                         </div>
 
                         <div className="flex-1 lg:flex-none lg:w-1/6 flex justify-center lg:justify-end order-4 lg:order-4 mt-4 lg:mt-0 relative lg:z-20">
@@ -345,7 +344,7 @@ const Services = () => {
                 ))}
             </div>
 
-            <section className="mt-20 md:px-8 px-4">
+            <section className="mt-8 md:mt-16 md:px-8 px-4">
                 <div className="grid md:grid-cols-2 gap-16 items-start">
                     <div className="relative" ref={disciplineRef}>
                         <h2 className="text-5xl md:text-8xl tracking-tighter text-white sm:text-6xl font-bold">

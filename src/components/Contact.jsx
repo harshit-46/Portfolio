@@ -29,7 +29,7 @@ const Contact = () => {
                     </button>
             </div>
 
-            <div className="max-w-3xl text-center space-y-8">
+            <div className="max-w-3xl text-center space-y-10">
                 <p className="font-bold text-lg md:text-2xl leading-relaxed">
                     BASED IN INDIA, I AM AN INNOVATIVE DEVELOPER AND DESIGN ENTHUSIAST.
                     MY PASSION FOR MINIMALIST AESTHETICS, ELEGANT TYPOGRAPHY,
@@ -40,15 +40,14 @@ const Contact = () => {
                     <a href="https://www.instagram.com/_harshit.25/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
                         INSTAGRAM <MdOutlineArrowOutward className='text-2xl'/>
                     </a>
-                    <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
+                    <a href="https://www.linkedin.com/in/harshithere/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
                         LINKEDIN <MdOutlineArrowOutward className='text-2xl'/>
                     </a>
-                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
-                        TWITTER <MdOutlineArrowOutward className='text-2xl'/>
+                    <a href="https://github.com/harshit-46" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
+                        GITHUB <MdOutlineArrowOutward className='text-2xl'/>
                     </a>
                 </div>
             </div>
-
         </div>
     );
 };
