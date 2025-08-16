@@ -10,8 +10,8 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center md:px-6 md:py-12 space-y-16">
-            <div className="text-center space-y-4">
+        <div className="md:min-h-screen w-full bg-black text-white flex flex-col items-center justify-center md:px-6 md:py-12 space-y-16">
+            <div className="text-center space-y-4 pt-24 md:pt-16">
                 <h1 className="text-5xl md:text-8xl font-bold leading-tight md:mb-8">
                     LET'S WORK
                     <br />
@@ -36,7 +36,7 @@ const Contact = () => {
                     AND INTUITIVE DESIGN IS EVIDENT IN MY WORK.
                 </p>
 
-                <div className="flex justify-center items-center gap-10 text-white text-sm md:text-lg font-semibold">
+                <div className="flex justify-center items-center gap-10 text-white text-sm md:text-lg font-semibold mb-12 md:mb-0">
                     <a href="https://www.instagram.com/_harshit.25/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition">
                         INSTAGRAM <MdOutlineArrowOutward className='text-2xl'/>
                     </a>

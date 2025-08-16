@@ -317,11 +317,11 @@ const Services = () => {
                             </p>
                         </div>
 
-                        <div className="w-full lg:w-1/3 px-4 order-3 lg:order-3 flex justify-center lg:block relative">
+                        <div className=" lg:w-1/3 px-4 order-3 lg:order-3 flex justify-center lg:block relative">
                             <img
                                 src={service.image}
                                 alt={service.title}
-                                className={`object-cover h-44 w-56 md:h-68 md:w-68 rounded-2xl shadow-2xl transition-all duration-500 ease-out transform ${hoveredItem === service.id
+                                className={`object-cover h-44 w-56 md:h-64 md:w-56 rounded-2xl shadow-2xl transition-all duration-500 ease-out transform ${hoveredItem === service.id
                                         ? 'opacity-100 scale-100'
                                         : 'opacity-100 lg:opacity-0 lg:scale-0'} lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:z-10`}
                                 loading="lazy"
