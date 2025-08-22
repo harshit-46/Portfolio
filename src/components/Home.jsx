@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountUp from 'react-countup';
 import '../assets/CSS/home.css';
-import myPhoto from '../assets/icons/corporate.png';
+import myPhoto from '../assets/icons/Profile.jpg';
 
 const RESUME_URL = "https://drive.google.com/file/d/1Bobdd2gRXL6-r2sMy2zhQFp4Vi_tYjze/view";
 
