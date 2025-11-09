@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 import '../assets/CSS/home.css';
 import myPhoto from '../assets/icons/Profile.jpg';
 
-const RESUME_URL = "https://drive.google.com/file/d/1Bobdd2gRXL6-r2sMy2zhQFp4Vi_tYjze/view";
+const RESUME_URL = "https://drive.google.com/file/d/1p77k8xPOMlN4zqvslxyb_0A1TxYPHQTa/view";
 
 const Home = () => {
     const [isStraight, setIsStraight] = useState(false);
