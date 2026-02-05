@@ -13,7 +13,7 @@ function App() {
       <Toaster position="top-right" reverseOrder={false} />
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<HomeLayout />} />
-        <Route path="/ContactForm" element={<ContactForm />} />
+        <Route path="/contact" element={<ContactForm />} />
       </Routes>
       {state?.backgroundLocation && (
         <Routes>

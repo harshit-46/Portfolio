@@ -15,7 +15,7 @@ const Home = () => {
     };
 
     const handleBtnClick = () => {
-        navigate('/ContactForm');
+        navigate('/contact');
     };
 
     const handleDownload = () => {
